@@ -59,33 +59,19 @@ class About extends Component {
             <div className="modalPCont d-flex justify-content-center align-items-center">
 
                 <p style={{textAlign: "justify"}}>
-                Arif-ur-Rehman Alvi, born 29 August 1949 is a Pakistani politician who is the 13th and current President of Pakistan, in 
-office since 9 September 2018. He was a member of the National Assembly of Pakistan from June 2013 to May 2018 
-and again from August to September 2018. A founding member of Pakistan Tehreek-i-Insaf (PTI), Alvi was elected as 
-President of Pakistan on 4 September 2018 following the presidential election.
+                Arif-ur-Rehman Alvi, born 29 August, 1949, is a Pakistani politician who is the 13th and current President of Pakistan, in office since 9 September 2018. He was a member of the National Assembly of Pakistan from June 2013 to May 2018 and again from August to September 2018. A founding member of Pakistan Tehreek-i-Insaf (PTI), Dr. Arif Alvi was elected as President of Pakistan on 4 September, 2018 following the presidential election. Dr. Alvi did his BDS from Lahore and was declared the ‘Best Graduate’ of the University. He underwent his first postgraduate training for two years at the University of Michigan, where he was awarded his Master of Science in Prosthodontics (MS). He was the first Pakistani to have acquired this professional qualification. In 1982 he joined the two-year orthodontic training program at the University of Pacific in San Francisco where he was awarded the Master of Science in Orthodontics (MSD). Dr. Alvi was again the first Pakistani to specialize in Orthodontics and is also the only Pakistani who is a specialist not in one, but two major fields of dentistry. In 1995, he was awarded the Diplomate American Board of Orthodontists and became one of ten Asians and the only Muslim, Pakistani, or SAARC dentist to have achieved this level of qualification.
 
-Dr. Alvi did BDS from Lahore and was declared the ‘Best Graduate’ of the University. He underwent his first 
-postgraduate training for two years at the University of Michigan, where he was awarded Master of Science in 
-Prosthodontics (MS). He was the first Pakistani to have acquired this professional qualification. In 1982 he joined the 
-two-year Orthodontic training program at the University of Pacific in San Francisco where was awarded the Master of 
-Science in Orthodontics (MSD). Dr. Alvi was again the first Pakistani to specialize in Orthodontics and is also the only 
-Pakistani who is a specialist not in one, but two major fields of dentistry. In 1995 he was awarded Diplomate American 
-Board of Orthodontists and became one of ten Asians and the only Muslim, Pakistani, or SAARC dentist to have 
-achieved this level of qualification. Professional achievements: Dr. Alvi has been the President of the Pakistan Dental 
-Association. He was Chairman of the first Pakistan International Dental Conference in 1981. In 1987 too he was 
-Chairman of the Third Pakistan International Dental Conference which was inaugurated by Prime Minister Junejo. He 
-was the Patron of the Fifth Pakistan International Dental Conference inaugurated by the President of Pakistan and the 
-Chairman of the 28th Asia Pacific Dental Congress. Dr. Arif was awarded the Fellowships of The International College 
-of Dentists, The American College of Dentists and The Pierre Fauchard Academy in recognition of his outstanding 
-academic, clinical and professional achievements. He is the Dean of the Faculty of Orthodontics of the College of 
-Physicians and Surgeons Pakistan.
+Professional achievements: 
+- Dr. Alvi has been the President of the Pakistan Dental Association.
+- He was Chairman of the first Pakistan International Dental Conference in 1981. In 1987 too he was Chairman of the Third Pakistan International Dental Conference which was inaugurated by Prime Minister Junejo.
+- He was the Patron of the Fifth Pakistan International Dental Conference inaugurated by the President of Pakistan and the Chairman of the 28th Asia Pacific Dental Congress.
+- Dr. Arif was awarded the Fellowships of The International College of Dentists, The American College of Dentists and The Pierre Fauchard Academy in recognition of his outstanding academic, clinical and professional achievements.
+- He is the Dean of the Faculty of Orthodontics of the College of Physicians and Surgeons Pakistan.
 
-Academics:
-BDS (Dentistry) from Lahore affiliate from De’Montmorency College of Dentistry
-
-Master of Science degree in Prosthodontics from the University of Michigan
-
-Master of Science in Orthodontics in from University of the Pacific, San Francisco
+Academics: 
+- BDS (Dentistry) from Lahore affiliate from De’Montmorency College of Dentistry
+- Master of Science degree in Prosthodontics from the University of Michigan
+- Master of Science in Orthodontics in from University of the Pacific, San Francisco.
                 </p>
                 
             </div><br />

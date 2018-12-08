@@ -70,9 +70,9 @@ class AI extends Component {
               <hr />
               <div className="row">
                 <div className="col-sm-12">
-                <div className="circle-line circle-line-2"></div>
+                <div className="ai-circle-line circle-line-2"></div>
                   <h1 className="sec-head">Detailed Program Structure</h1>
-                    <div className="circle-line"></div>
+                    <div className="ai-circle-line"></div>
 
                   <Blog 
                     left = {true}
@@ -212,13 +212,13 @@ class AI extends Component {
                       }
                     }
                   />
-                  <div className="btn-Grp">
+                  {/* <div className="btn-Grp">
 
                         <button className="Rectangle-60 curr" type="submit" >Download Curriculum</button>   
                         <button className="Rectangle-60 apply" type="submit" >Apply</button>                  
 
 
-                  </div>
+                  </div> */}
                 </div>
 
 

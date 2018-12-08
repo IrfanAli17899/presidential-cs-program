@@ -19,7 +19,7 @@ class SupportingPartners extends Component {
                     <p>STRATEGIC PARTNERS</p>
                 </div>
                 <div className="col-12 mt-4 mb-4 supporterIcons d-flex justify-content-center align-items-center">
-                <div className="">
+                <div className="management">
                 <ul>
                     <a href="https://iqra.edu.pk/" target="_blank" rel="noopener noreferrer"> <li><img src={iqraLogo} className="SIimg1" alt="iqra-logo"/></li></a>
                     <a href="https://www.panacloud.ai/" target="_blank" rel="noopener noreferrer"> <li><img src={panacloudLogo} alt="panacloud-logo" /></li> </a>

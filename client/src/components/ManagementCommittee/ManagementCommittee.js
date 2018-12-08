@@ -44,13 +44,45 @@ class ManagementCommittee extends Component {
                     backgroundImage: `url(${KaziRahatAli})`,
                     backgroundPosition: "top"
                   }}
-                />
+                >
+                
+                {/* <div className="checking">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/Hunaid.H.Lakhani/">
+                        <img
+                          alt="fb-icon"
+                          className="span"
+                          src={facebookIcon}
+                        />
+                        </a>
+
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/Hunaid.H.Lakhani/">
+                        <img
+                          alt="fb-icon"
+                          className="span"
+                          src={facebookIcon}
+                        />
+                        </a>
+
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/Hunaid.H.Lakhani/">
+                        <img
+                          alt="fb-icon"
+                          className="span"
+                          src={facebookIcon}
+                        />
+                        </a>
+                </div> */}
+                
+
+
+                </div>
+
+
                 <div className="imgDiv" />
 
                 {/* </center> */}
               </div>
               <h1>Kazi Rahat Ali</h1>
-              <p>General Secretary</p>
+              <p>General Secretary PIAIC</p>
               <div className="spans d-flex justify-content-center align-items-center">
                 <div>
                   <ul>
@@ -288,7 +320,7 @@ class ManagementCommittee extends Component {
                 {/* </center> */}
               </div>
               <h1>Sulaiman Mehdi</h1>
-              <p>Chairman Of The Board - Pakistan Stock Exchange</p>
+              <p>Chairman of The Board - Pakistan Stock Exchange</p>
               <div className="spans d-flex justify-content-center align-items-center">
                 <div>
                   <ul>
@@ -338,6 +370,11 @@ class ManagementCommittee extends Component {
         <br />
 
         <StrategicPartners />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }

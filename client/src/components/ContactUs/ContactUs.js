@@ -188,7 +188,7 @@ class ContactUS extends Component {
                   <div className="row">
                     <div className="col-md-12 row2mail">
                       <label className="label">
-                        Your Message:<span style={{ fontSize: ".7em" }} >(optional)</span>
+                        Your Message<span style={{ fontSize: ".7em" }} > (optional) :</span>
                         {errors && errors.errorsObj.message && (
                           <span className="errorContact staric">*</span>
                         )}

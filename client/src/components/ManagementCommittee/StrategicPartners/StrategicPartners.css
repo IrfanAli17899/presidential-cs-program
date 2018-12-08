@@ -66,7 +66,7 @@
     
 }
 @media (min-width: 1000px) {
-    .supporterIcons ul li img{
+    .management ul li img{
         height: 2.5em !important;
         /* height: 60px; */
         /* padding: 1vw 2vw; */

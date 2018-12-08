@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from './Modal/Modal';
+import dropMenu from '../../assets/drop-down-arrow.svg'
+
 
 class Navbar extends Component {
     state = { 
@@ -23,7 +25,15 @@ class Navbar extends Component {
          const {condition} = this.state;
          this.setState({condition: false})
        }
-      
+       changePage = (routeName) => {
+        this.props.history.push(routeName);
+        document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+      scrollTop = () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
 
      catd() {
         var div = document.getElementById('nav-flex-ul');
@@ -48,10 +58,10 @@ class Navbar extends Component {
             
                 <div className="container">
                 <div className="navbar_cont">
-                    <div className="navbar-flex nav-flex-1" onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : false , about : false , subs : false })}}><Link to='/'><img src={logo} /></Link>
+                    <div className="navbar-flex nav-flex-1" onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : false , about : false , subs : false });this.scrollTop()}}><Link to='/'><img src={logo} /></Link>
                   
 
-                   <div className="hamb-btn" onClick={() => {this.catd()}}>
+                   <div className="hamb-btn" onClick={() => {this.catd();this.scrollTop()}}>
                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC7SURBVGhD7djdCcJAEEXhaAWxFRvSYqwhYCu2YBGKhex6B+7rEJ+ScTkfzNssHMmPkAkAAIys937UXFtri+ZebJZoi0bn5rR802Jp0ejcnJae3i8rGp2bG+aKaO+gKfuMaC7R6FwAQFF6V8+aU7GZnbdOfzhnzUeHSlLbOxqdm9PSw2fKikbn5kb6IXFrvXymnGiLRueu05n/ftgBALvQu5oPdFuJRufmtMQHuq38dEW0xwc6AACwq2n6AiwYumzclQgXAAAAAElFTkSuQmCC" />
                    </div>
 
@@ -61,26 +71,27 @@ class Navbar extends Component {
                     {/* <p>Aftificial Inteligence</p> */}
                     <ul id="nav-flex-ul">
 
-                    <Link to='/artificial-inteligence'> <li className={ai ? 'active-color' : ''} onClick={()=>{this.setState({ai : true , cn : false , bc : false , about : false , subs : false });this.catd()}}>Artificial Intelligence</li></Link>
+                    <Link to='/artificial-inteligence'> <li className={ai ? 'active-color' : ''} onClick={()=>{this.setState({ai : true , cn : false , bc : false , about : false , subs : false });this.catd();this.scrollTop()}}>Artificial Intelligence</li></Link>
                         {/* <BrowserRouter></BrowserRouter> */}
-                        <Link to='/cloud-native'>  <li className={cn ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : true , bc : false , about : false , subs : false });this.catd()}}>Cloud Native</li></Link>
+                        <Link to='/cloud-native'>  <li className={cn ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : true , bc : false , about : false , subs : false });this.catd();this.scrollTop()}}>Cloud Native</li></Link>
                          {/* <li onClick={() => {this.setState({condition: true})}} className="about">About</li> */}
-                         <Link to='/block-chain'>  <li className={bc ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : true , about : false , subs : false });this.catd()}}>Blockchain</li></Link>
+                         <Link to='/block-chain'>  <li className={bc ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : true , about : false , subs : false });this.catd();this.scrollTop()}}>Blockchain</li></Link>
 
                         
                         
                         <Link to='#'>  <li className={about ? 'active-color' : ''} id="about" onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : true , subs : false })}}>About
+                        <img src={dropMenu} />
                         
                         {/* <div className="drop1 border"> */}
                         <ul className="drop1ul">
-                        <Link onClick={()=>{this.catd()}} to='about'><li>President</li></Link>
-                        <Link onClick={()=>{this.catd()}} to='managementcommittee'><li>Management Committee</li></Link>
+                        <Link onClick={()=>{this.catd();this.scrollTop()}} to='about'><li>The President</li></Link>
+                        <Link onClick={()=>{this.catd();this.scrollTop()}} to='managementcommittee'><li>Management Committee</li></Link>
                             
                         </ul>
                         {/* </div> */}
                         
                         </li></Link>
-                        {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd()}}>Management Committee</li></Link> */}
+                        {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd();this.scrollTop()}}>Management Committee</li></Link> */}
 
                         {
                           /*
@@ -90,7 +101,7 @@ class Navbar extends Component {
                         
 
                         
-                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : false , subs : true });this.catd()}}>Subscribe</li></Link>
+                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : false , subs : true });this.catd();this.scrollTop()}}>Subscribe</li></Link>
 
                     </ul>
                     

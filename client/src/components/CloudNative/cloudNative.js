@@ -17,14 +17,6 @@ import kuber from "../../assets/CloudNative/Kubernetes.png"
 import aws from "../../assets/CloudNative/aws-logo.png"
 
 
-
-
-
-
-
-
-
-
 class CloudNative extends Component {
   render() {
     return (

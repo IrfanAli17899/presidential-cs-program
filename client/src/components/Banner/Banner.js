@@ -4,7 +4,7 @@ const Banner = (props) => {
     const { heading1,heading2, tagline1,tagline2, courseLine ,className} = props;
     return (
         <div>
-            <div className={className}>
+            <div className={className + " d-flex justify-content-center align-items-center"}>
                 <div className="SliderData">
                     <h1 className="Artificial-Intelligence">{heading1}<br/>{heading2}</h1>
                     <p className="line">

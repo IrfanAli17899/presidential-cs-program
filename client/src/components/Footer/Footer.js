@@ -46,8 +46,14 @@ class Footer extends Component {
                 <p>Locations</p>
                 <ul>
 
-                  <li><span style={{fontWeight: '900'}}>Headquarter : </span><a  href="https://goo.gl/maps/y1G4vrtQPiL2"> Plot 245/2 M, Pakistan Employees Co-Operative Housing Society Block 6 PECHS, Karachi, Karachi City, Sindh</a></li>
-                  <li className="mt-1"><span style={{fontWeight: '900'}}>Karachi : </span><a  href="https://goo.gl/maps/y1G4vrtQPiL2">Road، Shaheed-e-Millat Expy, Defence view Phase 2 Phase 1 Defence View Housing Society, Karachi, Karachi City, Sindh 75500, Pakistan</a></li>
+                  <li><span style={{fontWeight: '900'}}>Headquarter : </span>
+                  {/* <a className="ancor" href="https://goo.gl/maps/y1G4vrtQPiL2">  */}
+                  Plot 245/2 M, Pakistan Employees Co-Operative Housing Society Block 6 PECHS, Karachi, Sindh 75400, Pakistan {/* </a> */}
+                  </li>
+                  <li className="mt-1"><span style={{fontWeight: '900'}}>Karachi : </span>
+                  {/* <a className="ancor" href="https://goo.gl/maps/y1G4vrtQPiL2"> */}
+                  Shaheed-e-Millat Expy, Defence View Housing Society, Karachi, Sindh 75500, Pakistan{/* </a> */}
+                  </li>
                   {/* <li className="text-truncate">Head office: <a  href="https://goo.gl/maps/y1G4vrtQPiL2">https://goo.gl/maps/y1G4vrtQPiL2</a></li> */}
                   {/* <li className="text-truncate">Islamabad: <a href="https://goo.gl/maps/rhhVXeVdc6q">https://goo.gl/maps/rhhVXeVdc6q</a></li> */}
 
@@ -64,7 +70,7 @@ class Footer extends Component {
                   <li onClick={() => {this.changePage("artificial-inteligence")}} className="truncate">Artificial Intelligence</li>
                   <li onClick={() => {this.changePage("cloud-native")}}>Cloud Native</li>
                   <li onClick={() => {this.changePage("block-chain")}}>Blockchain</li>
-                  <li onClick={() => {this.changePage("about")}}>About</li>
+                  <li onClick={() => {this.changePage("about")}}>The President</li>
                   <li onClick={() => {this.changePage("managementcommittee")}}>Management Committee</li>
                   {/* <li onClick={() => {this.changePage("apply")}}>Apply</li> */}
                   <li onClick={() => { this.changePage("subscribe") }}>Subscribe</li>
