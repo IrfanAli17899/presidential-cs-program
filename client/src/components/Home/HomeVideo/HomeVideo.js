@@ -43,7 +43,7 @@ class HomeVideo extends Component {
                             <div className="slider-doc-f2">
                     <div className="video-cont">
                         <h1>Registration starts in</h1>
-                        <Countdown date={`2018-12-11T00:00:00`} /> 
+                        <Countdown date={`2018-12-12T00:00:00`} /> 
                         <button onClick={() => {this.props.history.push("subscribe")}} className="subscribe mt-4">Subscribe</button>
                         
                         </div>

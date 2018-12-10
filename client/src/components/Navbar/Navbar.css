@@ -254,6 +254,7 @@ a{
 
 #about img{
     height: 15px;
+    margin-left: 3px;
 }
 #about:hover .drop1ul{
     display: block;
