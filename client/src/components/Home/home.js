@@ -29,17 +29,12 @@ class Home extends Component {
     const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
     return (
       <div>
-      {!showed && <Cover cover={this.cover} parentThis = {this} />}
+        
+      { /* !showed && <Cover cover={this.cover} parentThis = {this} /> */}
      <div className="App">
-
-     
         <HomeVideo />
         <Programs />
         <SupportingPartners />
-
-        
-
-        
         {/* {
           
           <News />

@@ -12,4 +12,6 @@ export default class path {
 
     static TEST = path.BASE_URL + "/api/rest/test";
 
+    static FACEBOOK_AUTH = path.BASE_URL + '/facebookauth';
+
 }
