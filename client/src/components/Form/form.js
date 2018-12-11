@@ -426,6 +426,8 @@ class Form extends Component {
                                         <p className="-File-type-jpg-jpeg-png">1) With white background</p>
                                         <p className="-File-type-jpg-jpeg-png">2) File size must be less than 1MB</p>
                                         <p className="-File-type-jpg-jpeg-png">3) File type: jpg, jpeg, png</p>
+                                        <p className="-File-type-jpg-jpeg-png">4) Upload your recent pasport size picture</p>
+                                        <p className="-File-type-jpg-jpeg-png">5) Your Face should be clearly visible </p>
                                     </div>
                                     <button type="button" className="Rectangle-62" onClick={() => this.refs.imagePicker.click()}>Select</button>
                                 </div>
