@@ -215,8 +215,8 @@ class Idcard extends Component {
             <div>
                 <center>
                     <div style={{ maxWidth: '1200px', minWidth: '300px', width: "100%", textAlign: "left" }}>
-                    { <div >
-                        (this.props.location.state) ?
+                    <div >
+                     
                            
                             <div className="container">
                                 <div className="row">
@@ -322,12 +322,10 @@ class Idcard extends Component {
                                 <p>6) For attestation please visit </p>
                                 <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
                             </Grid></div> </div>
-                        :
-                        // this.props.history.replace('/apply')
-                        console.log('a');
+                       
 
                 </div>
-                    }
+                    
                 </div>
                 </center>
                 </div>

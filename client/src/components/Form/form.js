@@ -49,7 +49,11 @@ class Form extends Component {
                 errorsObj: {}
             },
             showSubmitBtn: false,
-            crrProvince: "Select"
+            crrProvince: "Select",
+            serverError: {
+                hasError: false,
+                message: ""
+            }
         }
 
 
@@ -109,7 +113,7 @@ class Form extends Component {
                 students who are able to come to Karachi for exams are eligible for distance learning.`,
                 type: 'warning',
             }).then((result) => {
-    
+
             })
         }
 
@@ -177,7 +181,13 @@ class Form extends Component {
             this.setState({ submited: false });
             console.log(userData);
             if (userData.success == false) {
-                alert("Your Email Phone Or Cnic in already exist in Database")
+                let serverError = {
+                    hasError: true,
+                    message: "Your Email Phone Or Cnic in already exist in Database"
+                }
+                this.setState({ serverError });
+                // alert("Your Email Phone Or Cnic in already exist in Database");
+                this.setState({})
             }
             if (userData.fullName) {
                 ReactGA.event({
@@ -207,7 +217,7 @@ class Form extends Component {
 
 
 
-        const { errors, file, submited, showSubmitBtn, crrProvince } = this.state;
+        const { errors, file, submited, showSubmitBtn, crrProvince, serverError } = this.state;
 
         return (
 
@@ -462,6 +472,7 @@ class Form extends Component {
                             <Recaptcha googleCaptcha={this.googleCaptcha} />
                         </div>
 
+                        <p className="my-error ">{serverError.hasError && serverError.message}</p>
 
                         <button type="submit" className="Rectangle-60" disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
