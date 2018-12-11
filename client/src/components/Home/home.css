@@ -496,6 +496,10 @@ width: 100%;
   margin-top: 50px;
 }
 
+.gapInStP{
+  height: 300px;
+}
+
 .copyright{
   /* position: relative;
   bottom: 0; */
