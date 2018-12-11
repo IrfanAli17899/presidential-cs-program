@@ -4,7 +4,7 @@ import React from "react";
 function validateForm(check, data, field, err) {
     const {
         fullName, DOB, gender, email, phoneNumber, lastQualification, studentCnic, fatherName,
-        homeAddress,province, course, image, fatherCnic,city
+        homeAddress, province, course, image, fatherCnic, city
     } = data;
 
     var errors = err ? err : {
@@ -64,7 +64,7 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: homeAddress.length < 8,
-                    message: "Please Specify Your Full Adress",
+                    message: " Please specify your complete address. ",
                 }
             ],
             elem: "homeAddress"
@@ -73,7 +73,7 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: studentCnic.length !== 13,
-                    message: " Please Specify Your Full CNIC .",
+                    message: " Please enter your full NIC number. CNIC should contain only 13 digits. ",
                 }, {
                     condition: !/\d/.test(studentCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(studentCnic),
                     message: " CNIC Should Have Numbers Only . ",
@@ -91,7 +91,7 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: fatherCnic.length !== 13,
-                    message: " Please Specify Your Full Father CNIC . ",
+                    message: " Please enter your father's full NIC number. CNIC should contain only 13 digits. ",
 
                 }, {
                     condition: !/\d/.test(fatherCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(fatherCnic),
@@ -112,6 +112,9 @@ function validateForm(check, data, field, err) {
                 {
                     condition: !DOB,
                     message: "Please Select Your Date Of Birth",
+                }, {
+                    condition: (Date.now() - Date.parse(DOB) < 201429092347),
+                    message: "You are not eligible for this program",
                 }
             ],
             elem: "DOB"
@@ -156,7 +159,11 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email),
-                    message: "Please Provide A Valid Email",
+                    message: " Please enter a valid email address. ",
+                },
+                {
+                    condition: !/^(?=[^@]{3,}@)([\w\.-]*[a-zA-Z0-9_]@(?=.{3,}\.[^.]*$)[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])$/.test(email),
+                    message: " Please enter a valid email address. ",
                 }
             ],
             elem: "email"
@@ -165,11 +172,11 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: phoneNumber.indexOf("03") !== 0,
-                    message: " Please Provide A Valid Number . ",
+                    message: " Please enter a valid mobile phone number . ",
 
                 }, {
                     condition: phoneNumber.length !== 11,
-                    message: " Length Must Be Equal To 11 . "
+                    message: "  Phone number must contain 11 digits . "
                 },
                 {
                     condition: !/\d/.test(phoneNumber) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(phoneNumber),
