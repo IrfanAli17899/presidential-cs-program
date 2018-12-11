@@ -37,7 +37,12 @@
     font-size:12px !important;
   }
   
-
+  .my-error{
+    display: block;
+    text-align: center;
+    color: rgb(165, 0, 0);
+    margin: auto
+  }
   
   .APPLICATION-FORM {
     font-size: 30px;
