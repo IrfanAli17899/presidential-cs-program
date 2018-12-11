@@ -47,15 +47,15 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !image,
-                    message: "Please Select Your Picture",
+                    message: "Please select your picture",
                 },
                 {
                     condition: image && image.size > 1000000,
-                    message: "Image Size Must Be Less Than 1 MB",
+                    message: "Image size must be less than 1 MB",
                 },
                 {
                     condition: image && !image.type.toLowerCase().match(/\/(jpg|jpeg|png)$/i),
-                    message: " Please Select A Valid Image . "
+                    message: " Please select a valid image . "
                 }
             ],
             elem: "imagePicker"
@@ -73,16 +73,16 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: studentCnic.length !== 13,
-                    message: " Please enter your full NIC number. CNIC should contain only 13 digits. ",
+                    message: " Please enter your full CNIC number. CNIC # should contain only 13 digits. ",
                 }, {
                     condition: !/\d/.test(studentCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(studentCnic),
-                    message: " CNIC Should Have Numbers Only . ",
+                    message: " CNIC Should Have Numbers Only. ",
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(studentCnic),
-                    message: " No Space Hyphens '-' Or Any Special Character . ",
+                    message: " No Space Hyphens '-' Or Any Special Character. ",
                 }, {
                     condition: fatherCnic === studentCnic,
-                    message: "Candidate can only apply on  his/her own  Cnic ",
+                    message: "Candidate and Father CNIC # can not be same.",
                 }
             ],
             elem: "studentCnic"
@@ -91,17 +91,17 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: fatherCnic.length !== 13,
-                    message: " Please enter your father's full NIC number. CNIC should contain only 13 digits. ",
+                    message: " Please enter your father's full CNIC number. CNIC # should contain only 13 digits. ",
 
                 }, {
                     condition: !/\d/.test(fatherCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(fatherCnic),
-                    message: " CNIC Should Have Numbers Only . ",
+                    message: " CNIC Should Have Numbers Only. ",
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
-                    message: " No Space Hyphens '-' Or Any Special Character . ",
+                    message: " No Space Hyphens '-' Or Any Special Character. ",
                 }, {
                     condition: fatherCnic === studentCnic,
-                    message: "Candidate can only apply on  his/her own  Cnic ",
+                    message: " Please Enter Your Father CNIC Number. ",
                 }
 
             ],
@@ -111,7 +111,7 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !DOB,
-                    message: "Please Select Your Date Of Birth",
+                    message: "Please Enter A Valid Date",
                 }, {
                     condition: (Date.now() - Date.parse(DOB) < 201429092347),
                     message: "You are not eligible for this program",

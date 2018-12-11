@@ -135,6 +135,7 @@ class Form extends Component {
 
         var validate = validateForm("all", data);
         if (validate.hasError) {
+            window.scrollTo(0, 0)
             this.setState({ errors: validate });
             return
         }
@@ -253,6 +254,7 @@ class Form extends Component {
                             DisplayName: "CNIC or B-Form #",
                             name: "studentCnic",
                             id: "studentCnic",
+                            maxlength:13,
                             value: studentCnic,
                             placeholder: "CNIC or B-Form # without hyphenation",
                             changeData: this.changeData,
@@ -274,6 +276,7 @@ class Form extends Component {
                             DisplayName: "Father’s CNIC #",
                             name: "fatherCnic",
                             id: "fatherCnic",
+                            maxlength:13,
                             value: fatherCnic,
                             placeholder: "Father’s CNIC # without hyphenation",
                             changeData: this.changeData,
@@ -309,6 +312,8 @@ class Form extends Component {
                             name: "homeAddress",
                             id: "homeAddress",
                             value: homeAddress,
+                            maxlength:120,
+                            additionalData:'( maximum 120 letter )',
                             placeholder: "Your valid residential address",
                             changeData: this.changeData,
 
@@ -428,7 +433,7 @@ class Form extends Component {
                             }}
                         />
                         <div className="Rectangle-78">
-                            <h1 className="label">Your headshot</h1>
+                            <h1 className="label">Your Photo</h1>
                             <input type="file" className="d-none" name="imagePicker" ref="imagePicker"
                                 id="imagePicker" onChange={(ev) => this.changeData(ev)}
                                 accept="image/jpg,image/png,image/jpeg"
@@ -443,7 +448,7 @@ class Form extends Component {
                                         <p className="-File-type-jpg-jpeg-png">1) With white background</p>
                                         <p className="-File-type-jpg-jpeg-png">2) File size must be less than 1MB</p>
                                         <p className="-File-type-jpg-jpeg-png">3) File type: jpg, jpeg, png</p>
-                                        <p className="-File-type-jpg-jpeg-png">4) Upload your recent pasport size picture</p>
+                                        <p className="-File-type-jpg-jpeg-png">4) Upload your recent passport size picture</p>
                                         <p className="-File-type-jpg-jpeg-png">5) Your Face should be clearly visible </p>
                                     </div>
                                     <button type="button" className="Rectangle-62" onClick={() => this.refs.imagePicker.click()}>Select</button>
@@ -456,7 +461,7 @@ class Form extends Component {
                         </div>
 
 
-                        <button type="submit" className="Rectangle-60" disabled={!showSubmitBtn}>Submit Application</button>
+                        <button type="submit" className={!showSubmitBtn ? "Rectangle-60 disable-btn" : "Rectangle-60 "} disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
                 </div>
             </div >

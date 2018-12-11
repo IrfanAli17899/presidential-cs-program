@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
   }
+  .disable-btn{
+    background: lightgray!important;
+    cursor: not-allowed!important;
+  }
   #myForm{
       padding:5% 0;
   }
