@@ -1,5 +1,5 @@
 import React from "react";
-import AOS from "aos"
+// import AOS from "aos"
 
 const Blog = (props) => {
     const { data } = props;
