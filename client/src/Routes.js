@@ -20,6 +20,7 @@ import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
 import FacebookAuth from './components/FacebookAuth/facebookAuth';
+import HowItWorks from './components/HowItWorks/HowItWorks'
 
 class Routers extends Component {
   render() {
@@ -36,6 +37,7 @@ class Routers extends Component {
           <Route exact path="/cloud-native" component={CloudNative} />
           <Route exact path="/directors" component={Directors} />
           <Route exact path="/subscribe" component={Contact} />
+          <Route exact path="/howitworks" component={HowItWorks} />
 
           <Route
             exact
