@@ -7,8 +7,9 @@ class HowItWorks extends Component {
   render() { 
     return ( 
       <div className="container-fluid hiw-cont">
-        <br />
+        {/* <br /> */}
         <div className="row hiw-box1 ">
+        <div className="col-sm-12 d-flex justify-content-center align-items-center"><h1>How It Works</h1></div>
           <div className="col-sm-2  d-flex justify-content-center align-items-center"><div className="countButton d-flex justify-content-center align-items-center">1</div></div>
           <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">PIAIC will launch classes in the following locations, one city at a time, in the following order</p></div></div>
           <div className="col-sm-2 "></div>
@@ -25,11 +26,11 @@ class HowItWorks extends Component {
                 <table>
                   <tr>
                     <td></td>
-                    <td className="second-col-area"><p>City by City Roadmap</p></td>
+                    <td className="second-col-area-head"><p>City by City Roadmap</p></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td className="first-col-count"><p>1<div className="hiw-dot"></div></p></td>
+                    <td className="first-col-count"><p>1<div className="hiw-dot-active"></div></p></td>
                     <td className="second-col-area"><p className="col-area-active">Karachi</p></td>
                     <td className="third-col-status"><p>Now we are serving in Karachi</p></td>
                   </tr>
@@ -64,6 +65,14 @@ class HowItWorks extends Component {
           <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">To participate in the program and become eligible for the most prestigious credentials for 
 AI, Cloud, and Blockchain technologies in the world, students must complete the following process</p></div></div>
           <div className="col-sm-2 "></div>
+          <div className="col-sm-12 hiw-box2-text2">
+            <center>
+              <p>1- Submit the online application.</p>
+              <p>2- Get admit card attested at a PIAIC office.</p>
+              <p>3- Pass the entrance exam which consists of multiple choice English and Mathematics questions. Results are determined based on percentile.</p>
+              <p>4- Pass all PIAIC exams with an average score of at least 70%.</p>
+            </center>
+          </div>
         </div>
 
         <div className="row hiw-box3 ">
@@ -95,6 +104,13 @@ The fee structure for distance learning students is PKR 500 per month for 12 mon
         <div className="row hiw-box6 ">
           <div className="col-sm-2  d-flex justify-content-center align-items-center"><div className="countButton d-flex justify-content-center align-items-center">6</div></div>
           <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">Please note, this is a highly prestigious program. Due to the high level of difficulty, only 10% of students will be awarded the PIAIC certifications signed by the President of the Islamic Republic of Pakistan</p></div></div>
+          <div className="col-sm-2 "></div>
+        </div>
+        <div className="row hiw-box7 ">
+          <div className="col-sm-2  d-flex justify-content-center align-items-center"><div className="countButton d-flex justify-content-center align-items-center">7</div></div>
+          <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">For questions related to admissions, you may call us on the PIAIC Helpline: 03111729526.<br />
+
+For technical questions related to coursework, you may contact us via the contact form on our website: https://www.piaic.org.</p></div></div>
           <div className="col-sm-2 "></div>
         </div>
       </div>
