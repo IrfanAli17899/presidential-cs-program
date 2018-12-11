@@ -27,7 +27,7 @@ import HowItWorks from './components/HowItWorks/HowItWorks'
 import ReactGA from "react-ga";
 
 // React Google Analytics Initializing
-ReactGA.initialize('UA-130800032-1');
+ReactGA.initialize('UA-130584601-1');
 
 
 class Routers extends Component {
