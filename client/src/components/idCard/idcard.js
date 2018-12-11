@@ -214,7 +214,7 @@ class Idcard extends Component {
         return (
             <div>
                 <center>
-                    <div style={{ maxWidth: '1200px', minWidth: '300px', width: "100%", textAlign: "left" }}>
+                    <div style={{ maxWidth: '1200px', minWidth: '650px', width: "100%", textAlign: "left" }}>
                     { <div >
                         (this.props.location.state) ?
                            

@@ -20,10 +20,14 @@ import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
 import FacebookAuth from './components/FacebookAuth/facebookAuth';
+
+import HowItWorks from './components/HowItWorks/HowItWorks'
+
 import ReactGA from "react-ga";
 
 // React Google Analytics Initializing
 ReactGA.initialize('UA-130584601-1');
+
 
 class Routers extends Component {
 
@@ -47,6 +51,7 @@ class Routers extends Component {
           <Route exact path="/cloud-native" component={CloudNative} />
           <Route exact path="/directors" component={Directors} />
           <Route exact path="/subscribe" component={Contact} />
+          <Route exact path="/howitworks" component={HowItWorks} />
 
           <Route
             exact
