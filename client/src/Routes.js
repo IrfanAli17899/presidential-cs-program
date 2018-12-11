@@ -48,7 +48,6 @@ class Routers extends Component {
 
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/verification" component={VerificationCode} />
           <Route exact path="/form" component={Form} />
           <Route exact path="/block-chain" component={BlockChain} />
           <Route exact path="/artificial-inteligence" component={AI} />
@@ -56,13 +55,12 @@ class Routers extends Component {
           <Route exact path="/directors" component={Directors} />
           <Route exact path="/subscribe" component={Contact} />
           <Route exact path="/howitworks" component={HowItWorks} />
-
-
           <Route
             exact
             path="/managementcommittee"
             component={ManagementCommittee}
           />
+
           <Route exact path="/idcard" component={Idcard} />
           <Route exact path="/apply" component={FacebookAuth} />
             <Route path="*" component={NotFound} />
