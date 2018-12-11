@@ -20,8 +20,19 @@ import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
 import FacebookAuth from './components/FacebookAuth/facebookAuth';
+import ReactGA from "react-ga";
+
+// React Google Analytics Initializing
+ReactGA.initialize('UA-130712452-1');
 
 class Routers extends Component {
+
+  componentDidMount(){
+    ReactGA.pageview(window.location.pathname);
+    history.listen((location=>{
+      ReactGA.pageview(window.location.pathname)
+    }))
+  }
   render() {
     return (
       <Router history={history}>
