@@ -9,7 +9,7 @@ import AI from "./components/Ai/ai";
 import Navbar from "./components/Navbar/Navbar";
 // import Footer from './components/Footer/Footer';
 import Copyright from "./components/Copyright/Copyright";
-import PhoneNumber from "./components/auth/PhoneNumber";
+// import PhoneNumber from "./components/auth/PhoneNumber";
 import VerificationCode from "./components/auth/VerificationCode";
 
 import Directors from "../src/components/Directors/Directors";

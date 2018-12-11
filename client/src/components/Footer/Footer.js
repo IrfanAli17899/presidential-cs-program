@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import logo2 from '../../assets/assets/logo/piaic-white.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';

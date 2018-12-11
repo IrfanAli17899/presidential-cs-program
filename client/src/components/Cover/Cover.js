@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from "react";
 import logo from "../../assets/piaic-logo.svg"
 import "./Cover.css"

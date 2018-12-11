@@ -13,10 +13,10 @@ const styles = theme => ({
         flexGrow: 1,
     },
     saylaniLogo: {
-        width:'64px',
-        marginLeft:'143px',
-        marginTop:'10px',
-        marginBottom:'6px',
+        width: '64px',
+        marginLeft: '143px',
+        marginTop: '10px',
+        marginBottom: '6px',
     },
     mainCardDiv: {
         marginTop: '4%',
@@ -176,27 +176,10 @@ class Idcard extends Component {
         this.print = this.print.bind(this);
     }
     componentWillMount() {
-        console.log("form data  ===>>",this.props.location.state)
+        console.log("form data  ===>>", this.props.location.state)
         if (this.props.location.state) {
             let data = this.props.location.state
-            let id = data._id;
-            switch (true) {
-                case (id < 10):
-                    id = data.course + "0000" + id;
-                    break;
-                case (id < 100):
-                    id = data.course + "000" + id;
-                    break;
-                case (id < 1000):
-                    id = data.course + "00" + id;
-                    break;
-                case (id < 10000):
-                    id = data.course + "0" + id;
-                    break;
-                default:
-                    id = data.course + "" + id;
 
-            }
             let studentData = this.props.location.state;
 
             switch (true) {
@@ -204,7 +187,7 @@ class Idcard extends Component {
                     studentData.course = "Artificial Intelligence"
                     break;
                 case (studentData.course === "BCC"):
-                    studentData.course = "Block Chain"
+                    studentData.course = "Blockchain"
                     break;
                 case (studentData.course === "CNC"):
                     studentData.course = "Cloud Computing"
@@ -212,7 +195,7 @@ class Idcard extends Component {
                 default:
             }
             this.setState({
-                rollNo: id,
+                rollNo: studentData.rollNo,
                 studentData: studentData
             })
         } else {
@@ -220,20 +203,21 @@ class Idcard extends Component {
         }
     }
     // print
-    print(){
+    print() {
         window.print();
     }
     render() {
         const { classes } = this.props;
         const { fullName, course, imageUrl,distanceLearning,city } = this.state.studentData
+
         const rollNo = this.state.rollNo
         return (
             <div>
-            <center><div style={{maxWidth: '1200px',minWidth: '300px',width: "100%",textAlign: "left"}}>
-                {
-                    (this.props.location.state) ?
-                        <div >
-
+                <center>
+                    <div style={{ maxWidth: '1200px', minWidth: '300px', width: "100%", textAlign: "left" }}>
+                    { <div >
+                        (this.props.location.state) ?
+                           
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-12 mt-5">
@@ -319,10 +303,11 @@ class Idcard extends Component {
                                                 </div>
                                        </div>
                                        
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
 
                             {/* Instruction */}
                             <div id="pdfText">
@@ -339,10 +324,13 @@ class Idcard extends Component {
                             </Grid></div> </div>
                         :
                         // this.props.history.replace('/apply')
-                        console.log('a')
+                        console.log('a');
 
-                }
-            </div></center></div>
+                </div>
+                    }
+                </div>
+                </center>
+                </div>
         )
     }
 }
