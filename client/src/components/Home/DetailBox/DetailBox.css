@@ -1,0 +1,93 @@
+
+.my-box{
+    width:80%;
+    margin: auto;
+    padding:20px 0px; 
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.294);
+    position: relative;
+    overflow: hidden;
+}
+.my-box .card-img{
+    width: 100%;
+    height:100%;
+    background-position:top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto;
+}
+.circle-parent{
+    width: 150px;
+    height:150px;
+    padding: 5px;
+    border-radius: 50%;
+    margin: auto;
+    border: 5px solid #00ce9f;
+}
+.partner-head {
+    font-size:1.8vw;
+    margin-top:20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: #33322d;
+  }
+  .partner-intro{
+    font-size: 1vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.19;
+    letter-spacing: normal;
+    text-align: center;
+    color: #33322d;
+  }
+  .my-icons ul{
+      list-style:none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      justify-content: space-around;
+  }
+  .my-icons{
+      position: absolute;
+     background-color: rgba(0, 206, 159, 0.45);
+     top:0;
+     cursor: pointer;
+     width: 100%;
+     height:100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: flex-end;
+     transition: all ease-in-out 0.5s;
+  }
+  .my-icons{
+      opacity:0;
+  }
+  .my-icons ul{
+      transform: translateY(30px);
+      transition: all ease-in-out 0.5s;
+  }
+  .my-box:hover .my-icons ul{
+    transform: translateY(0px);
+    transition: all ease-in-out 0.5s;
+}
+  .my-box:hover .my-icons{
+      opacity:1;
+      transition: all ease-in-out 0.5s;
+  }
+  @media (max-width:786px){
+      .my-box{
+          width: 100%;
+      }
+      .partner-head{
+          font-size:3vw !important;
+      }
+      .partner-intro{
+          font-size:2vw;
+      }
+  }

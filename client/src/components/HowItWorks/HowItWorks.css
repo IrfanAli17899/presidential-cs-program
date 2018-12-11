@@ -1,0 +1,217 @@
+.hiw-box2 .countButton, .hiw-box1 .countButton, .hiw-box3 .countButton, .hiw-box5 .countButton{
+    background-color: #00cf9e;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+}
+.hiw-box4 .countButton, .hiw-box6 .countButton{
+    background-color: white;
+    color: #00cf9e;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+}
+.hiw-box2{
+    background-image: linear-gradient(to right, #e6dada, #dfedf0);
+    box-shadow: 1px 3px 20px 0 rgba(0, 0, 0, 0.16);
+}
+.hiw-box4, .hiw-box6{
+    box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(to left, #08d88d, #0eb5a3);
+}
+
+.hiw-box1, .hiw-box2{
+    padding-top: 20px;
+    /* padding-bottom: 20px; */
+}
+.hiw-box2{
+    padding-bottom: 20px;
+}
+.hiw-box1{
+    background-color: #33322d;
+}
+.hiw-box1-1{
+    padding-bottom: 30px;
+    background-color: #33322d;
+}
+.hiw-box3, .hiw-box4, .hiw-box5, .hiw-box6,.hiw-box7{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.hiw-box2 .countButton, .hiw-box7 .countButton{
+    background-color: #00cf9e;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+}
+.hiw-box3 .para1, .hiw-box5 .para1{
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    color: #017969;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1.7;
+}
+ .hiw-box4 .para1, .hiw-box6 .para1, .hiw-box7 .para1{
+    width: 100%;
+    font-size: 13px;
+    font-style: normal;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1.7;
+ }
+ .hiw-box1 .para1{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: normal;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+ }
+ .hiw-box7{
+     background-color: #33322d;
+ }
+ 
+ .hiw-box2 .para1{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: normal;
+    color: #017969;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.pakMap{
+    height: 250px;
+}
+.first-col-count{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+.hiw-cont{
+    /* min-width: 550px; */
+}
+
+@media screen and (max-width: 590px){
+    .hiw-table-box{
+        width: 300px;
+    }
+    .second-col-area p{
+        width: 100px !important;
+    }
+    .third-col-status p{
+        width: 100% !important;
+    }
+}
+.first-col-count p{
+    width: 50px;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: normal;
+    color: #017969;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.second-col-area{
+    /* width: 100%; */
+}
+.third-col-status{
+    /* width: 100%; */
+}
+.hiw-dot-active{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #00cf9e;
+    background-color: #00cf9e;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+.hiw-dot{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #00cf9e;
+    /* background-color: #00cf9e; */
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.col-area-active{
+    width: 200px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #00d09d !important;
+    color: white !important;
+    padding: 7px;
+    margin: auto;
+}
+.second-col-area p{
+    width: 200px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #017969;
+    background-color: white;
+    padding: 7px;
+    margin: auto;
+}
+.second-col-area-head{
+    width: 200px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    /* background-color: white; */
+    padding: 7px;
+    margin: auto;
+}
+.third-col-status p{
+    width: 200px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    padding: 7px;
+    margin: auto;
+}
+
+.hiw-box2-text2{
+    /* font-size: 12px; */
+    margin-top: 20px;
+}
+.hiw-box2-text2 p{
+    font-size: 13px;
+    font-weight: bolder;
+    margin-top: 4px;
+    margin-bottom: auto;
+}
+
+.hiw-box1 h1{
+    border-bottom: 1px solid #00d19c;
+    /* width: 18%; */
+    margin-bottom: 40px;
+    text-align: center;
+    /* width: 255px; */
+    /* height: 44px; */
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.92;
+    letter-spacing: normal;
+    color: #ffffff;
+}

@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import './home.css';
 import News from './News/News';
@@ -7,6 +9,10 @@ import HomeVideo from './HomeVideo/HomeVideo';
 import Countdown from './Countdown/Countdown';
 import SupportingPartners from './SupportingPartners/SupportingPartners';
 import Cover from "../Cover/Cover"
+
+import eventGroupPhoto from '../../assets/group.jpeg'
+
+import Box from "./DetailBox/DetailBox"
 
 
 
@@ -34,13 +40,15 @@ class Home extends Component {
      <div className="App">
         <HomeVideo />
         <Programs />
+
+        <div className="groupImageDiv">
+          <img className="groupImage" src={eventGroupPhoto} />
+        </div>
+
+        <Box />
+        <div className="my-gap"></div>
+
         <SupportingPartners />
-        {/* {
-          
-          <News />
-          
-        } */}
-        
         <Footer />
       </div >
       </div>

@@ -1,8 +1,11 @@
 require('sqreen');
+var sslRedirect = require('heroku-ssl-redirect');
 var express = require('express');
 
 var path   = require('path');
 var app    = express();
+
+app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '/build'));

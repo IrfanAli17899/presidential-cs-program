@@ -1,13 +1,24 @@
+/*eslint-disable*/
+
 import React, { Component } from "react";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./FormStyle.css"
+
+
 import { validateForm, Loader } from "./helpers/helper.js";
+import Recaptcha from './helpers/recaptcha'
 import { MyInput, MySelect, MyRadio } from "./Input/MyInput";
 
 import RegistrationFormMiddleware from "../../store/middleware/registrationFormMiddleware";
 import { connect } from "react-redux";
 
 import Path from '../../config/path';
+import allCities from "./cities.json"
+import Swal from 'sweetalert2';
+import ReactGA from "react-ga";
+
+
 
 
 class Form extends Component {
@@ -27,18 +38,35 @@ class Form extends Component {
                 fatherName: "",
                 homeAddress: "",
                 image: "",
-                course: ""
+                course: "",
+                province: "",
+                city: "",
+                distanceLearning: false
             },
+            userData: this.props.location.state,
             errors: {
                 hasError: false,
                 errorsObj: {}
+            },
+            showSubmitBtn: false,
+            crrProvince: "Select",
+            serverError: {
+                hasError: false,
+                message: ""
             }
         }
-        console.log(this.props);
-        if (!this.props.authToken) {
+
+
+        if (!this.state.userData) {
             this.props.history.replace('/apply')
         }
+        else if (!this.state.userData.databaseToken) {
+            this.props.history.replace('/apply')
+        } else {
+            this.state.data.fullName = this.props.location.state.name;
+        }
     }
+
 
     changeData = (ev) => {
         let { data, errors } = this.state;
@@ -53,6 +81,20 @@ class Form extends Component {
                     errors: validateForm("each", data, "image", errors)
                 })
                 break;
+            case "distanceLearning":
+                data.distanceLearning = !data.distanceLearning
+                this.setState({
+                    data
+                })
+                break;
+            case "province":
+                data.province = ev.target.value;
+                this.setState({
+                    crrProvince: ev.target.value,
+                    data,
+                    errors: validateForm("each", data, ev.target.name, errors)
+                })
+                break;
             default:
                 data[ev.target.name] = ev.target.value
                 this.setState({
@@ -62,10 +104,24 @@ class Form extends Component {
                 break;
         }
     }
+    componentDidMount() {
+        if (this.state.userData) {
+            Swal({
+                title: 'Notice',
+                text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
+                Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
+                students who are able to come to Karachi for exams are eligible for distance learning.`,
+                type: 'warning',
+            }).then((result) => {
 
+            })
+        }
+
+    }
     submitForm(ev) {
         ev.preventDefault();
         let { data } = this.state;
+        let { userId, databaseToken } = this.state.userData;
         const {
             image,
             DOB,
@@ -78,14 +134,16 @@ class Form extends Component {
             homeAddress,
             lastQualification,
             studentCnic,
-            fatherCnic
+            fatherCnic,
+            distanceLearning,
+            city,
+            province
         } = this.state.data;
 
         var validate = validateForm("all", data);
         if (validate.hasError) {
-            this.setState({ errors: validate }, (x) => {
-                console.log(this.state);
-            });
+            window.scrollTo(0, 0)
+            this.setState({ errors: validate });
             return
         }
 
@@ -104,35 +162,64 @@ class Form extends Component {
         formData.append("lastQualification", lastQualification);
         formData.append("studentCnic", studentCnic);
         formData.append("fatherCnic", fatherCnic);
-        //var myForm = new FormData(this.refs.myForm);
-        //Nothing To Do Just Fetch And Post Data All Set
-        //fetch('http://localhost:3001/form', {
-        fetch(Path.REGISTRATION_FORM, {
+        formData.append('userId', userId);
+        formData.append('distanceLearning', distanceLearning);
+        formData.append('databaseToken', databaseToken);
+        formData.append('city', city);
+        formData.append('province', province);
 
+
+
+
+        fetch(Path.REGISTRATION_FORM, {
             method: 'POST',
             body: formData,
-        }).then(x => {
-            console.log(x);
-            return x.json();
-        }).then(x => {
-            console.log(x);
+        }).then(userData => {
+
+            return userData.json();
+        }).then(userData => {
+
             this.setState({ submited: false });
-            if(x.fullName){
-                this.props.history.replace('/idcard',x)
+            console.log(userData);
+            if (userData.success == false) {
+                let serverError = {
+                    hasError: true,
+                    message: "Your Email Phone Or Cnic in already exist in Database"
+                }
+                this.setState({ serverError });
+                // alert("Your Email Phone Or Cnic in already exist in Database");
+                this.setState({})
+            }
+            if (userData.fullName) {
+                ReactGA.event({
+                    category: 'Form Registration',
+                    action: 'Success'
+                });
+                this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
+            console.log("working")
             console.log(err);
-        });
+            this.setState({ submited: false });
 
+        });
+    }
+
+    googleCaptcha = () => {
+        this.setState({ showSubmitBtn: true })
     }
 
 
 
     render() {
         const {
-            fullName, DOB, email, phoneNumber, studentCnic, fatherName, homeAddress, fatherCnic,
+            fullName, DOB, email, phoneNumber, studentCnic, fatherName, homeAddress, fatherCnic, distanceLearning, province
         } = this.state.data;
-        const { errors, file, submited } = this.state;
+
+
+
+        const { errors, file, submited, showSubmitBtn, crrProvince, serverError } = this.state;
+
         return (
 
             <div className="container-fluid p-0">
@@ -148,23 +235,29 @@ class Form extends Component {
                                 changeData: this.changeData,
                                 options: [
                                     {
-                                        DisplayName: "AI",
-                                        value: "AI"
+                                        DisplayName: "Artificial Intelligence",
+                                        value: "AIC"
                                     }, {
                                         DisplayName: "Cloud Computing",
-                                        value: "CC"
+                                        value: "CNC"
                                     }, {
-                                        DisplayName: "Block Chain",
-                                        value: "BC"
+                                        DisplayName: "Blockchain",
+                                        value: "BCC"
                                     }
                                 ],
                                 errors
                             }}
                         />
+                        <div id="check-container">
+                            <strong className="label">Distance Learning</strong>
+                            <input type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl" />
+                            <strong className="label check-message">For Distance Learning You Must Be In Karachi Or Come To Karachi For Exam</strong>
+                        </div>
 
                         <MyInput info={{
                             type: "text",
                             DisplayName: "Full Name",
+                            additionalData: "( Please specify your complete name as it appears on your CNIC. )",
                             name: "fullName",
                             id: "fullName",
                             value: fullName,
@@ -175,9 +268,10 @@ class Form extends Component {
                         }} />
                         <MyInput info={{
                             type: "text",
-                            DisplayName: "Student’s CNIC or B-Form #",
+                            DisplayName: "CNIC or B-Form #",
                             name: "studentCnic",
                             id: "studentCnic",
+                            maxlength:13,
                             value: studentCnic,
                             placeholder: "CNIC or B-Form # without hyphenation",
                             changeData: this.changeData,
@@ -187,6 +281,7 @@ class Form extends Component {
                             type: "text",
                             DisplayName: "Father’s Full Name",
                             name: "fatherName",
+                            additionalData: "( Please specify your father's complete name as it appears on his CNIC. )",
                             id: "fatherName",
                             value: fatherName,
                             placeholder: "Father’s full name",
@@ -198,6 +293,7 @@ class Form extends Component {
                             DisplayName: "Father’s CNIC #",
                             name: "fatherCnic",
                             id: "fatherCnic",
+                            maxlength:13,
                             value: fatherCnic,
                             placeholder: "Father’s CNIC # without hyphenation",
                             changeData: this.changeData,
@@ -218,7 +314,7 @@ class Form extends Component {
 
                         <MyInput info={{
                             type: "text",
-                            DisplayName: "Contact Number",
+                            DisplayName: "Your Mobile Number",
                             name: "phoneNumber",
                             id: "phoneNumber",
                             value: phoneNumber,
@@ -233,11 +329,55 @@ class Form extends Component {
                             name: "homeAddress",
                             id: "homeAddress",
                             value: homeAddress,
+                            maxlength:120,
+                            additionalData:'( maximum 120 letter )',
                             placeholder: "Your valid residential address",
                             changeData: this.changeData,
 
                             errors
                         }} />
+                        <MySelect
+                            info={{
+                                DisplayName: "Province",
+                                name: "province",
+                                id: "province",
+                                changeData: this.changeData,
+                                options: [
+                                    {
+                                        DisplayName: "Sindh",
+                                        value: "sindh"
+                                    }, {
+                                        DisplayName: "Punjab",
+                                        value: "punjab"
+                                    }, {
+                                        DisplayName: "Blochistan",
+                                        value: "blochistan"
+                                    }, {
+                                        DisplayName: "KPK",
+                                        value: "kpk"
+                                    }
+                                ],
+                                errors
+                            }}
+                        />
+                        <MySelect
+                            info={{
+                                DisplayName: "City",
+                                name: "city",
+                                id: "city",
+                                changeData: this.changeData,
+                                options:
+                                    allCities[crrProvince].map((item) => {
+                                        return {
+                                            DisplayName: item,
+                                            value: item
+                                        }
+                                    })
+                                ,
+                                errors
+                            }}
+                        />
+
 
 
 
@@ -277,30 +417,40 @@ class Form extends Component {
                         />
                         <MySelect
                             info={{
-                                DisplayName: "Highest Education Qualification",
+                                DisplayName: "Please select your highest qualification.",
                                 name: "lastQualification",
                                 id: "lastQualification",
                                 changeData: this.changeData,
                                 options: [
                                     {
                                         DisplayName: "Matric",
-                                        value: "matric"
+                                        value: "Matric"
+                                    },
+                                    {
+                                        DisplayName: "O Levels",
+                                        value: "O Levels"
                                     }, {
                                         DisplayName: "Intermediate",
-                                        value: "intermediate"
+                                        value: "Intermediate"
                                     }, {
-                                        DisplayName: "Graduated",
-                                        value: "graduated"
+                                        DisplayName: "A Levels",
+                                        value: "A Levels"
                                     }, {
-                                        DisplayName: "Master",
-                                        value: "master"
+                                        DisplayName: "Undergraduate",
+                                        value: "Undergraduate"
+                                    }, {
+                                        DisplayName: "Graduate",
+                                        value: "Graduate"
+                                    }, {
+                                        DisplayName: "Post-Graduate",
+                                        value: "Post-Graduate"
                                     }
                                 ],
                                 errors
                             }}
                         />
                         <div className="Rectangle-78">
-                            <h1 className="label">Your headshot</h1>
+                            <h1 className="label">Your Photo</h1>
                             <input type="file" className="d-none" name="imagePicker" ref="imagePicker"
                                 id="imagePicker" onChange={(ev) => this.changeData(ev)}
                                 accept="image/jpg,image/png,image/jpeg"
@@ -315,16 +465,21 @@ class Form extends Component {
                                         <p className="-File-type-jpg-jpeg-png">1) With white background</p>
                                         <p className="-File-type-jpg-jpeg-png">2) File size must be less than 1MB</p>
                                         <p className="-File-type-jpg-jpeg-png">3) File type: jpg, jpeg, png</p>
+                                        <p className="-File-type-jpg-jpeg-png">4) Upload your recent passport size picture</p>
+                                        <p className="-File-type-jpg-jpeg-png">5) Your Face should be clearly visible </p>
                                     </div>
                                     <button type="button" className="Rectangle-62" onClick={() => this.refs.imagePicker.click()}>Select</button>
                                 </div>
                             </div>
                             {errors.errorsObj["imagePicker"] && <p className="error"  >{errors.errorsObj["imagePicker"].message}</p>}
                         </div>
+                        <div>
+                            <Recaptcha googleCaptcha={this.googleCaptcha} />
+                        </div>
 
+                        <p className="my-error ">{serverError.hasError && serverError.message}</p>
 
-
-                        <button type="submit" className="Rectangle-60">Submit Application</button>
+                        <button type="submit" className={!showSubmitBtn ? "Rectangle-60 disable-btn" : "Rectangle-60 "} disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
                 </div>
             </div >
@@ -333,7 +488,7 @@ class Form extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
+
     return {
         isLoading: state.registrationFormReducer.isLoading,
         isError: state.registrationFormReducer.isError,

@@ -1,10 +1,10 @@
-/*eslint-disabled */
+/*eslint-disable */
 import React from "react";
 
 function validateForm(check, data, field, err) {
     const {
         fullName, DOB, gender, email, phoneNumber, lastQualification, studentCnic, fatherName,
-        homeAddress, course, image, fatherCnic
+        homeAddress, province, course, image, fatherCnic, city
     } = data;
 
     var errors = err ? err : {
@@ -47,15 +47,15 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !image,
-                    message: "Please Select Your Picture",
+                    message: "Please select your picture",
                 },
                 {
                     condition: image && image.size > 1000000,
-                    message: "Image Size Must Be Less Than 1 MB",
+                    message: "Image size must be less than 1 MB",
                 },
                 {
                     condition: image && !image.type.toLowerCase().match(/\/(jpg|jpeg|png)$/i),
-                    message: " Please Select A Valid Image . "
+                    message: " Please select a valid image . "
                 }
             ],
             elem: "imagePicker"
@@ -64,7 +64,7 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: homeAddress.length < 8,
-                    message: "Please Specify Your Full Adress",
+                    message: " Please specify your complete address. ",
                 }
             ],
             elem: "homeAddress"
@@ -73,13 +73,16 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: studentCnic.length !== 13,
-                    message: " Please Specify Your Full CNIC .",
+                    message: " Please enter your full CNIC number. CNIC # should contain only 13 digits. ",
                 }, {
                     condition: !/\d/.test(studentCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(studentCnic),
-                    message: " CNIC Should Have Numbers Only . ",
+                    message: " CNIC Should Have Numbers Only. ",
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(studentCnic),
-                    message: " No Space Hyphens '-' Or Any Special Character . ",
+                    message: " No Space Hyphens '-' Or Any Special Character. ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: "Candidate and Father CNIC # can not be same.",
                 }
             ],
             elem: "studentCnic"
@@ -88,14 +91,17 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: fatherCnic.length !== 13,
-                    message: " Please Specify Your Full Father CNIC . ",
+                    message: " Please enter your father's full CNIC number. CNIC # should contain only 13 digits. ",
 
                 }, {
                     condition: !/\d/.test(fatherCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(fatherCnic),
-                    message: " CNIC Should Have Numbers Only . ",
+                    message: " CNIC Should Have Numbers Only. ",
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
-                    message: " No Space Hyphens '-' Or Any Special Character . ",
+                    message: " No Space Hyphens '-' Or Any Special Character. ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: " Please Enter Your Father CNIC Number. ",
                 }
 
             ],
@@ -105,7 +111,10 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !DOB,
-                    message: "Please Select Your Date Of Birth",
+                    message: "Please Enter A Valid Date",
+                }, {
+                    condition: (Date.now() - Date.parse(DOB) < 201429092347),
+                    message: "You are not eligible for this program",
                 }
             ],
             elem: "DOB"
@@ -128,11 +137,33 @@ function validateForm(check, data, field, err) {
             ],
             elem: "lastQualification"
         },
+        province: {
+            Validate: [
+                {
+                    condition: !province || province === "Select",
+                    message: "Please Select The Province In Which You Live",
+                }
+            ],
+            elem: "province"
+        },
+        city: {
+            Validate: [
+                {
+                    condition: !city || city === "Select" || city === "Please Select Province",
+                    message: "Please Select The City In Which You Live",
+                }
+            ],
+            elem: "city"
+        },
         email: {
             Validate: [
                 {
-                    condition: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email),
-                    message: "Please Provide A Valid Email",
+                    condition: !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email),
+                    message: " Please enter a valid email address. ",
+                },
+                {
+                    condition: !/^(?=[^@]{3,}@)([\w\.-]*[a-zA-Z0-9_]@(?=.{3,}\.[^.]*$)[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])$/.test(email),
+                    message: " Please enter a valid email address. ",
                 }
             ],
             elem: "email"
@@ -141,11 +172,11 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: phoneNumber.indexOf("03") !== 0,
-                    message: " Please Provide A Valid Number . ",
+                    message: " Please enter a valid mobile phone number . ",
 
                 }, {
                     condition: phoneNumber.length !== 11,
-                    message: " Length Must Be Equal To 11 . "
+                    message: "  Phone number must contain 11 digits . "
                 },
                 {
                     condition: !/\d/.test(phoneNumber) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(phoneNumber),
@@ -185,10 +216,10 @@ function validateForm(check, data, field, err) {
         return errors
     }
     if (check === "each") {
-        var conArray1 = Validation[field].Validate;
+        var conArray = Validation[field].Validate;
         errors.errorsObj[Validation[field].elem] = { message: [] }
-        for (var k = 0; k < conArray1.length; k++) {
-            if (conArray1[k].condition) {
+        for (var j = 0; j < conArray.length; j++) {
+            if (conArray[j].condition) {
                 errors.hasError = true
                 errors.errorsObj[Validation[field].elem].message.push(conArray[j].message)
             }

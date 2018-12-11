@@ -4,7 +4,6 @@ import git12 from "./images/git1.png"
 import Banner from "../Banner/Banner"
 import Quarters from "../Quarter/Quarter"
 import Blog from "../Blog/Blog"
-import Cover from "../Cover/Cover"
 
 import anaconda from "./images/Anaconda.png"
 

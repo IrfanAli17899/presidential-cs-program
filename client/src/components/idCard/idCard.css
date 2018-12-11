@@ -1,0 +1,76 @@
+.cardBody2{
+    width: 570px;
+    height: 340px;
+    padding: 0px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 3px solid #00ce9f;
+    border-bottom: 3px solid #00ce9f;
+    min-width: 570px;
+    max-width: 570px;
+}
+.cardBody2 h1{
+    display: inline-block;
+    /* width: 50px; */
+    font-size: 24px;
+    margin-left: 10%;
+    color: #017969;
+    font-weight: 900;
+}
+.id-card-2-h1{
+    margin-left: 15% !important;
+}
+.logoImage{
+    height: 30%;
+    margin: 5%;
+}
+.idCardLocation a{
+    color: black;
+    text-decoration: underline !important;
+}
+.logoForm b{
+    color: #017969;
+}
+.logoForm{
+    margin-top: 15%;
+}
+.logoForm p{
+    color: black; 
+    margin-top: -3%;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.cardImage{
+    margin: 5%;
+    margin-left: -5%;
+    border: 1px solid #00ce9f;
+}
+
+
+.UserAuthCard b{
+    color: #017969;
+}
+.UserAuthCard{
+    margin-top: 15%;
+}
+.UserAuthCard p{
+    color: black;
+    /* margin-top: -3%; */
+    font-weight: bolder;
+    font-size: 1.1rem;
+    margin-top: 77%;
+    /* padding-top: 65%; */
+    width: 130%;
+    padding-top: 4px;
+    border-top: 1px solid;
+    /* border: 1px solid; */
+    margin-left: -35%;
+    padding-left: 10%;
+}
+
+@media screen and (max-width: 650px){
+    /* .copyright{
+        display: none;
+    } */
+}

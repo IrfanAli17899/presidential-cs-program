@@ -3,12 +3,12 @@ import React, { Component } from "react"
 
 class MyInput extends Component {
     render() {
-        const { DisplayName, type, name, value, id, changeData, errors, placeholder,
-             } = this.props.info;
+        const { DisplayName, type, name, value, id, changeData, errors, placeholder, additionalData,
+            maxlength } = this.props.info;
 
         return (
             <div className="container-fluid p-0">
-                <label className="label" htmlFor={id}>{DisplayName}</label>
+                <label className="label" htmlFor={id}>{DisplayName} <span className="additionalData">{additionalData}</span></label>
                 <input
                     type={type}
                     className={`form-control Rectangle-59 ${errors.errorsObj[name] && errors.errorsObj[name].message.length && "errorElem"}`}
@@ -17,6 +17,7 @@ class MyInput extends Component {
                     value={value}
                     id={id}
                     placeholder={placeholder}
+                    maxLength={maxlength}
                 />
                 {
                     errors.errorsObj[name] && <p className="error"  >{errors.errorsObj[name].message}</p>
@@ -31,6 +32,7 @@ class MyInput extends Component {
 class MySelect extends Component {
     render() {
         const { id, name, options, DisplayName, changeData, errors } = this.props.info;
+
         return (
             <div className="container-fluid p-0">
                 <label className="label" htmlFor={id}>{DisplayName}</label>
