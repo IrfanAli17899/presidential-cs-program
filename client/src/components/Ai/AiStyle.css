@@ -53,21 +53,8 @@
         font-size: .7vw !important;
       }
       
-      
-      
-      
-      
-      
-     
-      
-
 
     }
-    
-    
-    
-    
-    
     
     
     
@@ -85,8 +72,8 @@
       }
       .SliderData{
           color: White;
-          height:100%;
-          padding: 35vh 0;
+          /* height:100%; */
+          /* padding: 35vh 0; */
           width: 100%;
           text-align: center;
           white-space: nowrap; 
@@ -211,7 +198,7 @@
         transform: translateX(-50%);
       }
       .verticle-circle .circle{
-       margin-top:120%; 
+       /* margin-top:120%;  */
       }
       .B1{
         margin-top: 190% !important;
@@ -242,21 +229,60 @@
         box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.192);
         transition: all 1s;
       }
-      
-      
-      
-      .circle-line{
+      @media (max-width:1300px){
+        .ai-circle-line{
+          height: 88% !important;
+        }
+      }
+      @media (max-width:1399px){
+        .circle-line{
+          height: 85% !important;
+        }
+        .bc-circle-line{
+          height: 92% !important;
+        }
+      }
+      .bc-circle-line{
         display: block;
         position: absolute;
-        top:14vw;
+        top:5vw;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 92%;
+        width: 4px;
+        /* opacity:0.05 !important; */
+        background: #fde182;
+        margin-top: -4%;
+      }
+      .ai-circle-line{
+        display: block;
+        position: absolute;
+        top:13vw;
         left: 50%;
         transform: translateX(-50%);
         height: 87%;
         width: 4px;
-        opacity:0.05 !important;
+        /* opacity:0.05 !important; */
         background: #192a56;
+        margin-top: -4%;
       }
-
+      .circle-line{
+        display: block;
+        position: absolute;
+        top:14.4vw;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 83%;
+        width: 4px;
+        /* opacity:0.05 !important; */
+        background: #e20069;
+        margin-top: -4%;
+      }
+      @media (max-width:1000px){
+        .circle-line,.verticle-circle,.ai-circle-line{
+          display: none;
+        }
+      }
       .curr{
         width: 220px;
         height: 60px;
@@ -353,10 +379,10 @@
 
 
 
-
+      
       
    @media (max-width:1000px){
-     .circle-line,.verticle-circle{
+     .circle-line,.verticle-circle,.ai-circle-line,.bc-circle-line{
        display: none;
      }
      .horizontal-circle{
@@ -369,17 +395,17 @@
     
    @media (max-width:768px){
        .Artificial-Intelligence{
-           font-size:9vw;
+           font-size:7vw;
        }
        .Rectangle-67 {
-          height: 80vh;
+          height: 50vh;
           background-color: #192a56;
         }
         .SliderData{
-            padding:30vh 0;
+            /* padding:30vh 0; */
         }
        .line{
-           font-size: 2vw;
+           font-size: 2.8vw;
        }
        .line2{
           font-size: 3vw;

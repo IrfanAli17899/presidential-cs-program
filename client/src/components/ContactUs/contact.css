@@ -36,6 +36,7 @@
 
 .ContactClass {
   width:100%;
+  min-height: 90vh;
   background-image: linear-gradient(to bottom, #dfedf0, #e6dada);
   display: flex;
   justify-content: center;
@@ -48,6 +49,7 @@
 .textArea {
   resize: none;
 }
+
 
 .Rectangle-112 {
   height: 50px;
@@ -65,7 +67,9 @@
   margin-top: 20px;
   justify-content: center;
 }
-
+.input11::placeholder,.textArea::placeholder{
+color: #0000003d;
+}
 .errorContact {
   color: rgb(172, 15, 15);
   position: relative;

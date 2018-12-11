@@ -29,9 +29,9 @@ button:hover,.myDiv h1:hover{
 *{
   transition: 0.3s;
 }
-button:hover{
+/* button:hover{
   transform: scale(1.03)
-}
+} */
 
 
 @keyframes App-logo-spin {
@@ -523,15 +523,19 @@ height: 45px;
   position: absolute;
 }
 .copyright img{
-      float: right;
-    height: 40px;
-    /* padding: 9px; */
-    /* position: relative; */
-    /* margin-right: 50px; */
-
-    padding-right: 30px;
+  float: right;
+  height: 35px;
+  /* padding: 9px; */
+  /* position: relative; */
+  /* margin-right: 50px; */
+  padding-right: 30px;
+  position: absolute;
+  margin-top: -5px;
+  right: 0px;
 }
-
+.nav-flex-1 img:hover{
+  cursor: pointer;
+}
 .copyright div{
   
 }
@@ -592,7 +596,7 @@ height: 45px;
     font-size: 2.5vw;
   }
 }
-@media screen and (max-width: 7670px){
+@media screen and (max-width: 767px){
 .boxTxt {
     font-size: 1.5em;
 }
@@ -664,9 +668,9 @@ height: 45px;
   /* background-color: white; */
 }
 .slider-doc-txt p{
-  max-height: 150px;
+  /* max-height: 150px; */
   font-size: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .slider-doc-txt h1,.video-cont h1{
 

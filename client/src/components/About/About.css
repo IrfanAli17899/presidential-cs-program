@@ -19,8 +19,9 @@
   padding: 20px;
   position: relative;
   border-radius: 10px;
+  min-height: 90vh;
 }
-.whiteCir2{
+.whiteCir3{
   width: 136px;
   height: 136px;
   margin: 7px;
@@ -43,7 +44,7 @@
 .cardArea{
     /* box-shadow: 0px 0px 40px -15px lightgrey; */
     width: 250px;
-    /* padding-top: 20px; */
+    padding-top: 20px;
     padding-bottom: 20px;
   }
   .cardArea h1{

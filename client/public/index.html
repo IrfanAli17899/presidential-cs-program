@@ -2,9 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
+
+    <!-- Social Media Meta tags-->
+    <meta name="description" content="Presidential Initiative for Artificial Intelligence & Computing (PIAIC)" />
+    <meta property="og:title" content="Presidential Initiative for Artificial Intelligence & Computing" />
+    <meta property="og:description" content="PIAIC is an interdisciplinary hub for mass education, research, and business in artificial intelligence (AI), data science, cloud computing, edge computing, blockchain and internet of things (IoT) related fields. As AI and computing reshape our world, PIAIC intends to help make sure that Pakistan plays its part in this fourth industrial revolution. PIAIC aims is to transform education, research and business in Pakistan." />
+    <meta property="og:url" content="https://www.piaic.org" />
+    <meta property="og:image" content="https://www.piaic.org/static/media/presidentPic.c212542a.jpeg" />
+
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -13,6 +21,17 @@
     <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> -->
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130584601-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-130584601-1');
+    </script>
+    
     <!-- <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> -->
      <!--
@@ -41,5 +60,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+
   </body>
 </html>

@@ -9,8 +9,9 @@
   z-index: 111112;
   top: 0;   
 }
-.color{
-}
+
+
+
 a{
     text-decoration: none !important;
 }
@@ -20,6 +21,22 @@ a{
     align-items: center;
     width: 100%;
     padding-top: 10px;
+
+}
+/* .drop1{
+    position: absolute;
+    padding: 20px;
+
+} */
+
+
+
+.drop1ul li{
+    padding-left: 0px !important;
+    float: none !important;
+    padding: 12px !important;
+    text-align: left !important;
+    background-color: #00d09d;
 }
 .navbar-flex{
     color: white;
@@ -47,16 +64,17 @@ a{
 .nav-flex-2{
     flex:4;
 }
-.nav-flex-3{
-    padding: 0px 20px 0px 20px;
-}
+/* .nav-flex-ul{
+    justify-content: flex-end;  
+    width: 100%;
+} */
 .nav-flex-3 ul li:hover{
     cursor: pointer;
 }
 .nav-flex-3 ul li{
     /* float: left; */
     padding: 0px 30px 0px 30px;
-    margin-top: -5px;
+    /* margin-top: -5px; */
     /* height: 19px; */
     font-family: Montserrat;
     font-size: 14px;
@@ -164,7 +182,12 @@ a{
     padding: 0px 20px 0px 20px;
 }
 @media screen and (max-width: 1149px){
-
+    .nav-flex-1 img{
+        height: 30px;
+    }
+    body{
+        padding-top: 50px;
+    }
 .navbar_cont{
     flex-direction: column;
 }
@@ -209,10 +232,10 @@ a{
         flex-direction: row !important;
     } */
     .nav-flex-3 ul li{
-        float: left !important;
+        float: left ;
     }
-    .nav-flex-3 ul {
-        display: block !important;
+    #nav-flex-ul {
+        display: inline !important;
     }
     .navbar{
         height: 65px;
@@ -220,18 +243,48 @@ a{
     .navbar_cont{
         height: 65px;
     }
-    #nav-flex-ul{
+    /* #nav-flex-ul{
         display: block;
-    }
+    } */
     .hamb-btn{
         display: none;
     }
 }
 
-@media screen and (min-width: 451px){
 
-   
-    
+#about img{
+    height: 15px;
+    margin-left: 3px;
+}
+#about:hover .drop1ul{
+    display: block;
+}
+#about:hover .drop1ul li:hover{
+    background-color: #045654;
+}
+
+.drop1ul {
+    display: none;
+    position: absolute;
+    /* display: none; */
+    padding-top: 23px;
+    /* width: 50px; */
+    padding-left: 0px;
+    /* margin-left: 10px; */
+    /* background-color: #00d09d;
+    border: 1px solid #00d09d; */
+}
+@media screen and (max-width: 1150px){
+
+    .drop1ul {
+        position: unset;
+        border: none;
+    }
+    .drop1ul li{
+        border-bottom: none !important;
+        background-color: #00d09d3b;
+        margin-top: 0px !important;
+    }
     
 
 }

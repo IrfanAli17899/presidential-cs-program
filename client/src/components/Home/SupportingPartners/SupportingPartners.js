@@ -16,7 +16,7 @@ class SupportingPartners extends Component {
                 <div className="container App supportingCont" style={{paddingBottom: "380px",paddingTop: "50px"}}>
                     <div className="row">
                         <div className="col-12 mt-2 d-flex justify-content-center align-items-center">
-                            <p>SUPPORTING PARTNERS</p>
+                            <p>STRATEGIC PARTNERS</p>
                         </div>
                         <div className="col-12 mt-4 mb-4 supporterIcons d-flex justify-content-center align-items-center">
                             <div className="">

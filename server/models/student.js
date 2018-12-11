@@ -12,6 +12,10 @@ exports = module.exports = function (app, mongoose) {
             require: true,
             minlength: 3,
         },
+        userId: {
+            type: String,
+            require: true,
+        },
         dob: {
             type: String,
             require: true,
@@ -44,7 +48,8 @@ exports = module.exports = function (app, mongoose) {
             type: String,
             require: true,
             minlength: 13,
-            maxlength: 13
+            maxlength: 13,
+            unique: true
         },
         fatherCnic: {
             type: String,
@@ -76,7 +81,7 @@ exports = module.exports = function (app, mongoose) {
         }
     });
     // mongooseAutoInc.initialize()
-    Student.plugin(mongooseAutoInc.plugin,'idNumber')
+    Student.plugin(mongooseAutoInc.plugin, 'idNumber')
 
     app.db.model('Student', Student);
 

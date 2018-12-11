@@ -14,7 +14,7 @@ class HomeVideo extends Component {
                 <div className="container ">
                     <div className="homeVideoCont">
                         <div className="row ">
-                            <div className="col-lg-7">
+                            <div className="col-lg-8">
                                 <div className="slider-doc-f1 d-flex justify-content-center align-items-center">
                                     <div className="slider-doc-txt">
 
@@ -23,7 +23,7 @@ class HomeVideo extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-3 d-flex justify-content-center align-items-center">
+                            <div className="col-lg-4 d-flex justify-content-center align-items-center">
                             <div className="cardArea2 cardArea ">
                 <div className="imgHead2">
                 {/* <center> */}
@@ -42,8 +42,8 @@ class HomeVideo extends Component {
                             <div className="col-xl-12 mt-5 mt-xl-0 mb-5 mb-xl-0 d-flex justify-content-center align-items-center">
                             <div className="slider-doc-f2">
                     <div className="video-cont">
-                        <h1>Registration strats in</h1>
-                        <Countdown date={`2018-12-11T00:00:00`} /> 
+                        <h1>Registration starts in</h1>
+                        <Countdown date={`2018-12-12T00:00:00`} /> 
                         <button onClick={() => {this.props.history.push("subscribe")}} className="subscribe mt-4">Subscribe</button>
                         
                         </div>

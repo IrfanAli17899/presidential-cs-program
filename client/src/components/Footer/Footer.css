@@ -589,7 +589,12 @@ font-size: 15px;
 }
 
 }
-
+.ancor{
+  color: white;
+}
+.ancor:hover{
+  color: rgba(255, 255, 255, 0.685);
+}
 @media screen and (max-width: 700px){
   .copyright {
     height: 50px;

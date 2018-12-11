@@ -84,7 +84,7 @@
 .span{
   width: 25px;
   height: 25px;
-  margin: 6px;
+  margin: 2px;
   border-radius: 50%;
 }
 .span1{
@@ -119,6 +119,23 @@
   margin-top: 80px;
   margin-bottom: 30px;
 }
+
+
+
+.checking{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+margin-top: 58%;
+}
+.whiteCir:hover .checking{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* .checking ul li{
+  float: left;
+} */
 
 @media (max-width: 700px) {
   

@@ -6,15 +6,25 @@ import Blog from "../Blog/Blog"
 
 
 
-import introduction from "../../assets/CloudNative/introduction.png"
-import linux from "../../assets/CloudNative/linux-logo.png"
-import docker from "../../assets/CloudNative/docker.png"
-import js from "../../assets/CloudNative/js-logo.png"
-import nodejs from "../../assets/CloudNative/nodejs.png"
-import git from "../../assets/CloudNative/Git-Icon.png"
-import Ansible from "../../assets/CloudNative/Ansible.png"
-import kuber from "../../assets/CloudNative/Kubernetes.png"
-import aws from "../../assets/CloudNative/aws-logo.png"
+import bitcoin from "../../assets/BlockChain/1.jpg"
+import coins from "../../assets/BlockChain/block2.png"
+import bctech from "../../assets/BlockChain/block3.jpg"
+import iot from "../../assets/BlockChain/block4.jpg"
+import hyperledger from "../../assets/BlockChain/block5.png"
+import bitcoin2 from "../../assets/BlockChain/block6.png"
+import contract from "../../assets/BlockChain/block7.png"
+import solidity from "../../assets/BlockChain/block8.jpg"
+import web from "../../assets/BlockChain/block9.jpeg"
+import blockchain from "../../assets/BlockChain/block10.jpg"
+import truffle from "../../assets/BlockChain/block11.png"
+import baas from "../../assets/BlockChain/block12.jpg"
+import ico from "../../assets/BlockChain/block13.jpeg"
+import currency from "../../assets/BlockChain/block14.jpg"
+
+
+
+
+
 
 
 
@@ -61,87 +71,86 @@ class BlockChain extends Component {
               <hr />
               <div className="row">
                 <div className="col-sm-12">
-                <div className="circle-line"></div>
+                <div className="bc-circle-line"></div>
 
                   <Blog 
                     left = {true}
                     data = {
                       {
-                        image:introduction,
+                        image:bitcoin,
                         number:"1A",
                         className:"transparent b-1-t",
                         heading:"Digital Money, Bitcoin and Blockchain",
-                        para:`Cloud  native  uses  open-source  software  stacks  to  deploy  an  application  as  microservices,  packaging  each  part  into  its  own  containers  and  dynamically  orchestrating  those  containers  to  optimize  resource  utilization.  In  the  last  15  years,  cloud  application  delivery  has  moved  from  being  bound  to  physical  servers  to  running  on  virtual  machines  with  a  full  operating  system  and  now  to  containers  with  Docker  where  developers  can  specify  every  aspect  of  deployment.
-
-                        The  move  has  also  been  a  shift  from  a  heavyweight  application  deployment  cloud  model  to  a  lightweight  cloud  native  model  that  takes  less  time  to  start  up  and  deploy  applications.  Additionally,  there  has  been  a  move  from  being  bound  to  a  single  closed-source  vendor  to  an  open-source  model  with  multiple  vendors,  less  risk  of  lock-in  and  more  choice.  All  the  major  cloud  providers  AWS,  Azure,  Google  Cloud  Platform,  etc.  have  adopted  this  cloud  native  approach.  In  this  module  we  will  learn  about  the  history,  current  status  and  future  of  cloud  native  computing.`
-                      }
+                        para:"In this module, students will get an introduction to digital money, bitcoin and the blockchain. Students will learn about trestles systems and proof of work. Students will also learn the difference between private, consortium, and public blockchain networks. This module will also provide an introduction to hashing and cryptography."}
                     }
                   />
                   <Blog 
                     left = {false}
                     data = {
                       {
-                        image:linux,
+                        image:coins,
                         number:"1B",
                         className:"transparent b-1-t",
                         heading:"Crypto Tokens",
-                        para:`Linux  containers  are  poised  to  take  over  theworld;  we  will  start  this  modulewith  an  introduction  of  Linux  and  the  command  line.  For  many  non-technical  people,  the  command  line  (also  referred  to  as  CLI,  Terminal,  bash,  or  shell)  is  a  place  of  mystery.  However,  you  only  have  to  know  a  handful  of  basic  commands  to  start  feeling  comfortable.  In  this  module  we  will  cover  the  basic  commands  to  get  you  started.` }
-                    }
+                        para:"In this module, students will learn about crypto tokens, how intrinsic tokens come into existence, how bitcoins, ripples, ethereal, and NXT come into existence. Students will also learn the difference between utility and security tokens. This module will also cover the legal implications of token classification. Students will also learn the eight categories of tokens. In this module, students will learn how to create their own utility tokens."
+                      }}
                   />
                   
                    <Blog 
                     left = {true}
                     data = {
                       {
-                        image:docker,
+                        image:bctech,
                         number:"1C",
                         className:"transparent b-1-t",
                         heading:"Blockchain Revolution",
-                        para:`In  this  part  of  the  course  we  will  introduce  the  basic  mathematical  and  statistical  concepts  that  are  needed  to  practice  data  science  and  understand  deep  learning.We  will  also  implement  these  concepts  in  Python  and  TensorFlow.`}
+                        para:`In this module, students will learn how permissionless systems work. Students will also learn about enterprise blockchain and the future of finance. This module will cover how blockchain can disrupt industries including finance, banking, insurance, and even music.`}
                     }
                   />
                   <Blog 
                     left = {false}
                     data = {
                       {
-                        image:js,
+                        image:iot,
                         number:"1D",
                         className:"transparent b-1-t",
                         heading:" Introduction to Decentralized Apps",
-                        para:`JavaScript  is  the  default  language  of  the  Web  and  the  first  universal  programming  language.  In  this  module  we  will  dig  through  all  the  genuinely  elegant  parts  of  JavaScript,  including:  Syntax,  Objects,  Functions,  Inheritance,  Arrays,  Methods,  etc.  We  will  start  the  quarterby  building  a  solid  foundation  in  Functional  and  Object-Oriented  Programming  using  JavaScript  (ES  2015)and  TypeScript  using Node.js.  Assuming  no  prior  programming  experience  on  the  part  of  the  student  this  module  starts  by  focusing  on  the  fundamentals  of  composing  code  with  JavaScript.  Introduction  to  only  server  based  JavaScript/TypeScript  is  covered  i.e.  Node.js.  You'll  learn  about  the  syntax  and  structure  of  the  language  including  operators  and  expressions,  control  structures,  methods,  and  arrays  using  Node.`}
-                    }
+                        para:"In this module, students will learn about Ethereum, Decentralized Apps, Smart Contracts, and the EVM. Students will learn the benefits of the Ethereum Decentralized Platform and the fourth generation blockchain."}
+                      }
                   />
                    <Blog 
                     left = {true}
                     data = {
                       {
-                        image:js,
-                        number:"1D",
+                        image:hyperledger,
+                        number:"1E",
                         className:"transparent b-1-t",
                         heading:"Ethereum and Hyperledger Fabric Basics",
-                        para:`JavaScript  is  the  default  language  of  the  Web  and  the  first  universal  programming  language.  In  this  module  we  will  dig  through  all  the  genuinely  elegant  parts  of  JavaScript,  including:  Syntax,  Objects,  Functions,  Inheritance,  Arrays,  Methods,  etc.  We  will  start  the  quarterby  building  a  solid  foundation  in  Functional  and  Object-Oriented  Programming  using  JavaScript  (ES  2015)and  TypeScript  using Node.js.  Assuming  no  prior  programming  experience  on  the  part  of  the  student  this  module  starts  by  focusing  on  the  fundamentals  of  composing  code  with  JavaScript.  Introduction  to  only  server  based  JavaScript/TypeScript  is  covered  i.e.  Node.js.  You'll  learn  about  the  syntax  and  structure  of  the  language  including  operators  and  expressions,  control  structures,  methods,  and  arrays  using  Node.`}
-                    }
+                        para:" In this module, students will learn about blockchain nodes and how to run them. Students will also learn about the Ethereum ecosystem, Mist, and Faucets. After this completing this module, students will be able to compile, deploy and instantiate contracts. Students will also have an understanding of the different stages of a contract deployment."
+                      }}
                   />
                   <Blog 
                     left = {false}
                     data = {
                       {
-                        image:nodejs,
+                        image:bitcoin2,
                         number:"1F",
                         className:"transparent b-1-t",
                         heading:"Crypto Mining and Operations",
-                        para:`This  moduleteaches  you  how  to  build  microservices  using Node.js.  It  starts  by  introducing  Node’s  powerful  traits  and  shows  you  how  they  map  to  the  features  of  microservices  using  JavaScript.  You’ll  explore  key  development  techniques,  meet  the  rich  ecosystem  of  companion  tools  and  libraries,  and  get  a  glimpse  into  its  inner  workings.  In  recent  years  REST  (REpresentational  State  Transfer)  hasemerged  as  the  standard  architectural  design  for  web  services  and  web  APIs.  In  this  module  we  are  going  to  show  you  how  easy  it  is  to  create  a  RESTful  web  service  using Node.js, TypeScript  and  the  Express  microframework.  We  will  also  learn  gRPC  and  GraphQLbased  microservices.  By  the  end  of  the  module,  you’ll  be  able  touse  JavaScript/Typescriptto  build  a  Node  microserviceand  know  how  to  test  it,  hook  it  up  to  a  database,  and  automate  the  developmentprocess.`}
-                    }
+                        para:"In this module students will learn the process by which Bitcoins are mined and what roles do miners play in creation of Bitcoins.  The details of this module would help students understand in great details how various mining strategies are applied by various miners and the powerful hardware custom built for mining.  The students would also learn about the role of consensus in mining and the 51% attacks, how the incentives of mining attract miners and the energy consumption and ecological impact of mining."}}
                   />
                    <Blog 
                     left = {true}
                     data = {
                       {
-                        image:git,
+                        image:contract,
                         number:"2A",
                         className:"grey b-2-t",
                         heading:" Introduction to Smart Contracts",
-                        para:`You  won’t  find  a  top  programmer,  clouddeveloper,  or  AI  engineer  who  doesn’t  use  version  control.  Because  it  helps  you  produce  better  results  and  makes  collaboration  easy.  Around  the  world,  in  teams  large  and  small,  Git  is  an  essential  part  of  the  tool  chain.  We  will  start  be  covering  Gitprotocoland  Githubservices.`}
+                        para:`In this module students will be introduced to the programming and development side of Blockchain, especially that of Ethereum.  The students will learn how to use a Remix IDE to program in Solidity.  The students will go over various Blockchain concepts again such as Blockchain Basics, Blockchain Transactions, and Blockchain Blocks.  The students will learn the infrastructural concepts of the Ethereum Blockchain, such as The Ethereum Virtual Machine, how Ethereum
+                        Accounts are formed and how Ethereum Transactions occur.  They will also go over other concepts like Gas, Storage, Memory and the Stack, Instruction Set, Message Calls, Delegatecall / Callcode and Libraries, Logs, Creating contracts, and Self-destruct.
+                        `
+                      }
                     }
                   />
                   
@@ -149,11 +158,11 @@ class BlockChain extends Component {
                     left = {false}
                     data = {
                       {
-                        image:Ansible,
+                        image:solidity,
                         number:"2B",
                         className:"grey b-2-t",
                         heading:" Solidity in Depth",
-                        para:`Ansibleis  an  open-source  IT  automation  engine  which  can  remove  drudgery  from  your  work  life,  and  will  also  dramatically  improve  the  scalability,  consistency,  and  reliability  of  your  IT  environment.  In  this  module,  we’ll  start  to  explore  how  to  automate  repetitive  cloudadministration  tasks  using  Ansible.`
+                        para:`In this module students will take an in depth look at Solidity language and learn about concepts like mapping, data types, events, operators, parameters, control structures, and error handling.Students will also begin creating Solidity contracts, event handling and layout of memory and storage variables.`
                       }
                     }
                   />
@@ -161,12 +170,11 @@ class BlockChain extends Component {
                     left = {true}
                     data = {
                       {
-                        image:kuber,
+                        image:web,
                         number:"3A",
                         className:"grey b-3-t",
                         heading:"HTML, CSS, and JavaScriptCrash Course",
-                        para:`The  Kubernetes  container  orchestration  system  safely  manages  the  structure  and  flow  of  a  distributed  application,  organizing  containers  and  services  for  maximum  efficiency.  Kubernetes  serves  as  an  operating  system  for  your  clusters,  eliminating  the  need  to  factor  the  underlying  network  and  server  infrastructure  into  your  designs.In  this  quarter  we  will  teachyou  to  use  Kubernetes  to  deploy  container-based  distributed  applications.We  willstart  with  an  overview  of  Docker  and  Kubernetes  before  building  your  first  Kubernetes  cluster.  We’ll  gradually  expand  your  initial  application,  adding  features  and  deepening  your  knowledge  of  Kubernetes  architecture  and  operation.  We’ll  explore  high-value  topics  like  monitoring,  tuning,  and  scaling.By  the  end  of  the  quarter  you  will  be  able  to  appear  in  the  Certified  Kubernetes  Application  Developer  (CKAD)exam.
-                        `
+                        para:`In this module the students finally move over to Dapp development.  To accomodate Dapp development students will be given a crash course in HTML, CSS, and JavaScript and taught about various concepts of javascript in depth to help understand the interaction of Solidity and Web3.js`
                       }
                     }
                   />
@@ -174,11 +182,11 @@ class BlockChain extends Component {
                     left = {false}
                     data = {
                       {
-                        image:aws,
+                        image:blockchain,
                         number:"3B",
                         className:"grey b-3-t",
                         heading:"Blockchain WebApplications",
-                        para:`In  this  quarter  we  will  develop  an  understanding  of  core  AWS  services,  uses,  and  basic  AWS  architecture  best  practices.We  will  developproficiency  in  developing,  deploying,  and  debugging  cloud-based  applications  using  AWS.We  will  develop  the  ability  to  use  the  AWS  service  APIs,  AWS  CLI,  and  SDKs  to  write  applicationsand  understanding  of  the  AWS  shared  responsibility  model.  We  will  also  focus  on  understanding  of  application  lifecycle  management,  ability  to  use  a  CI/CD  pipeline  to  deploy  applications  on  AWS,  and  ability  to  write  code  using  AWS  security  best  practices.  Proficiency  writing  code  for  serverless  applicationsand  understanding  of  the  use  of  containers  in  the  development  processwill  also  be  covered  in  detail.  By  the  end  of  the  quarter  you  will  be  able  to  appear  in  the  AWS  Certified  Developer  –Associateexam.`
+                        para:`The students will now be ready to develop a front-end for Solidity contracts.  They’ll be taught about the Basics of React, REST API’s, in Node.js, Using Nginx to host Single Page Apps, and using Docker to deploy web apps in the cloud.`
                       }
                     }
                   />
@@ -186,11 +194,13 @@ class BlockChain extends Component {
                     left = {true}
                     data = {
                       {
-                        image:aws,
+                        image:truffle,
                         number:"3C",
                         className:"grey b-3-t",
                         heading:"Web3 & Truffle",
-                        para:`In  this  quarter  we  will  develop  an  understanding  of  core  AWS  services,  uses,  and  basic  AWS  architecture  best  practices.We  will  developproficiency  in  developing,  deploying,  and  debugging  cloud-based  applications  using  AWS.We  will  develop  the  ability  to  use  the  AWS  service  APIs,  AWS  CLI,  and  SDKs  to  write  applicationsand  understanding  of  the  AWS  shared  responsibility  model.  We  will  also  focus  on  understanding  of  application  lifecycle  management,  ability  to  use  a  CI/CD  pipeline  to  deploy  applications  on  AWS,  and  ability  to  write  code  using  AWS  security  best  practices.  Proficiency  writing  code  for  serverless  applicationsand  understanding  of  the  use  of  containers  in  the  development  processwill  also  be  covered  in  detail.  By  the  end  of  the  quarter  you  will  be  able  to  appear  in  the  AWS  Certified  Developer  –Associateexam.`
+                        para:`In this module the students will learn how to to work with Web3 & Truffle.   They’ll also learn about toolkit to aid development of decentralised applications. This course introduces the two most currently relevant and covers everything from installation and setup to custom
+                        configuration and scripting.  Building an interface to interact with a smart contract.Setting up event-driven interfaces.  It also exposes the students to Adapting Truffle’s default behavior and Writing functional tests for smart contract.
+                        `
                       }
                     }
                   />
@@ -198,11 +208,42 @@ class BlockChain extends Component {
                     left = {false}
                     data = {
                       {
-                        image:aws,
+                        image:baas,
                         number:"4A",
                         className:"grey b-3-t",
                         heading:" BaaS (Blockchain-as-a-Service)",
-                        para:`In  this  quarter  we  will  develop  an  understanding  of  core  AWS  services,  uses,  and  basic  AWS  architecture  best  practices.We  will  developproficiency  in  developing,  deploying,  and  debugging  cloud-based  applications  using  AWS.We  will  develop  the  ability  to  use  the  AWS  service  APIs,  AWS  CLI,  and  SDKs  to  write  applicationsand  understanding  of  the  AWS  shared  responsibility  model.  We  will  also  focus  on  understanding  of  application  lifecycle  management,  ability  to  use  a  CI/CD  pipeline  to  deploy  applications  on  AWS,  and  ability  to  write  code  using  AWS  security  best  practices.  Proficiency  writing  code  for  serverless  applicationsand  understanding  of  the  use  of  containers  in  the  development  processwill  also  be  covered  in  detail.  By  the  end  of  the  quarter  you  will  be  able  to  appear  in  the  AWS  Certified  Developer  –Associateexam.`
+                        para:`The students will begin to finally finish off will very high level concepts in Solidity and Blockchain, such as BaaS (Blockchain-as-a-Service).  Working with Azure Blockchain as a Service, Deploy an Ethereum Consortium network on Azure, DevOps for Blockchains on Azure, 
+                        Trying out the Visual Studio Code extension for Smart Contracts, and Building Dapps with Visual Studio.
+                        `
+                      }
+                    }
+                  />
+                  <Blog 
+                    left = {true}
+                    data = {
+                      {
+                        image:ico,
+                        number:"4B",
+                        className:"grey b-3-t",
+                        heading:"The Art of Initial Coin Offering (ICO)",
+                        para:`In this module the students will move over the the business side of Blockchain and learn about ICO.  They will learn what is an ICO, how to create and verify
+                        Your Altcoin, What are steps in launching a ICO, how to write an ICO White Paper and how to do ICO marketing?
+                        `
+                      }
+                    }
+                  />
+                  <Blog 
+                    left = {false}
+                    data = {
+                      {
+                        image:currency,
+                        number:"4C",
+                        className:"grey b-3-t",
+                        heading:"Blockchain Projects for Islamic Finance -A Match Made in Heaven",
+                        para:`In the last module of this course the students will also get an opportunity to look at the Blockchain Projects for
+                        Islamic Finance.  They will learn about developing Sharia-Compliant Financial and Blockchain Products, 
+                        applications of Smart Contracts in Islamic Finance, 
+                        private Chains in Islamic Banking, Emirates “Cheque Chain”, Islamic Trade Finance, Capital Markets-Musharaka Mutanaqisa (Diminishing Partnerships), as well as Automatic Sharia Compliance and Commodity Murabaha.`
                       }
                     }
                   />
