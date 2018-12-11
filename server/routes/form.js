@@ -142,7 +142,10 @@ exports = module.exports = function (app, mongoose) {
                             UserSchema.findOneAndUpdate({ _id: id }, { $set: { formSubmitted: true } }, { new: true })
                                 .then(response => {
                                     console.log(response);
-                                    res.status(200).send(regData);
+                                    loggedinUsers.findOneAndDelete({ databaseToken: databaseToken })
+                                        .then(tokenRes => {
+                                            res.status(200).send(regData);
+                                        })
                                 })
                             console.log("from route")
 
@@ -150,6 +153,9 @@ exports = module.exports = function (app, mongoose) {
 
                         }).catch(err => {
                             console.log(err)
+                            if (err.code == 11000) {
+                                return res.send({ success: false, message: err });
+                            }
                             res.status(400).send(err);
                         });
                     });

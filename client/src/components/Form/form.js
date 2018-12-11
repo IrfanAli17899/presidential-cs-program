@@ -16,6 +16,8 @@ import { connect } from "react-redux";
 import Path from '../../config/path';
 import allCities from "./cities.json"
 import Swal from 'sweetalert2';
+import ReactGA from "react-ga";
+
 
 
 
@@ -47,9 +49,13 @@ class Form extends Component {
                 errorsObj: {}
             },
             showSubmitBtn: false,
-            crrProvince: "Select"
+            crrProvince: "Select",
+            serverError: {
+                hasError: false,
+                message: ""
+            }
         }
-        
+
 
         if (!this.state.userData) {
             this.props.history.replace('/apply')
@@ -99,15 +105,17 @@ class Form extends Component {
         }
     }
     componentDidMount() {
-        Swal({
-            title: 'Notice',
-            text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
-            Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
-            students who are able to come to Karachi for exams are eligible for distance learning.`,
-            type: 'warning',
-        }).then((result) => {
+        if (this.state.userData) {
+            Swal({
+                title: 'Notice',
+                text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
+                Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
+                students who are able to come to Karachi for exams are eligible for distance learning.`,
+                type: 'warning',
+            }).then((result) => {
 
-        })
+            })
+        }
 
     }
     submitForm(ev) {
@@ -158,27 +166,42 @@ class Form extends Component {
         formData.append('databaseToken', databaseToken);
         formData.append('city', city);
         formData.append('province', province);
-        //var myForm = new FormData(this.refs.myForm);
-        //Nothing To Do Just Fetch And Post Data All Set
-        //fetch('http://localhost:3001/form', {
+
+
+
+
         fetch(Path.REGISTRATION_FORM, {
             method: 'POST',
             body: formData,
         }).then(userData => {
-            
+
             return userData.json();
         }).then(userData => {
-           
+
             this.setState({ submited: false });
+            console.log(userData);
+            if (userData.success == false) {
+                let serverError = {
+                    hasError: true,
+                    message: "Your Email Phone Or Cnic in already exist in Database"
+                }
+                this.setState({ serverError });
+                // alert("Your Email Phone Or Cnic in already exist in Database");
+                this.setState({})
+            }
             if (userData.fullName) {
+                ReactGA.event({
+                    category: 'Form Registration',
+                    action: 'Registered'
+                });
                 this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
-            
+            console.log("working")
+            console.log(err);
             this.setState({ submited: false });
 
         });
-
     }
 
     googleCaptcha = () => {
@@ -194,8 +217,8 @@ class Form extends Component {
 
 
 
-        const { errors, file, submited, showSubmitBtn, crrProvince } = this.state;
-        
+        const { errors, file, submited, showSubmitBtn, crrProvince, serverError } = this.state;
+
         return (
 
             <div className="container-fluid p-0">
@@ -449,6 +472,7 @@ class Form extends Component {
                             <Recaptcha googleCaptcha={this.googleCaptcha} />
                         </div>
 
+                        <p className="my-error ">{serverError.hasError && serverError.message}</p>
 
                         <button type="submit" className="Rectangle-60" disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
@@ -459,7 +483,7 @@ class Form extends Component {
 }
 
 function mapStateToProps(state) {
-    
+
     return {
         isLoading: state.registrationFormReducer.isLoading,
         isError: state.registrationFormReducer.isError,

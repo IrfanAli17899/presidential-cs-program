@@ -72,6 +72,7 @@ class Footer extends Component {
                   <li onClick={() => {this.changePage("artificial-inteligence")}} className="truncate">Artificial Intelligence</li>
                   <li onClick={() => {this.changePage("cloud-native")}}>Cloud Native</li>
                   <li onClick={() => {this.changePage("block-chain")}}>Blockchain</li>
+                  <li onClick={() => {this.changePage("howitworks")}}>How It Works</li>
                   <li onClick={() => {this.changePage("about")}}>The President</li>
                   <li onClick={() => {this.changePage("managementcommittee")}}>Management Committee</li>
                   {/* <li onClick={() => {this.changePage("apply")}}>Apply</li> */}
