@@ -4,7 +4,7 @@ import React from "react";
 function validateForm(check, data, field, err) {
     const {
         fullName, DOB, gender, email, phoneNumber, lastQualification, studentCnic, fatherName,
-        homeAddress, course, image, fatherCnic
+        homeAddress,province, course, image, fatherCnic,city
     } = data;
 
     var errors = err ? err : {
@@ -80,6 +80,9 @@ function validateForm(check, data, field, err) {
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(studentCnic),
                     message: " No Space Hyphens '-' Or Any Special Character . ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: "Candidate can only apply on  his/her own  Cnic ",
                 }
             ],
             elem: "studentCnic"
@@ -96,6 +99,9 @@ function validateForm(check, data, field, err) {
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
                     message: " No Space Hyphens '-' Or Any Special Character . ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: "Candidate can only apply on  his/her own  Cnic ",
                 }
 
             ],
@@ -128,10 +134,28 @@ function validateForm(check, data, field, err) {
             ],
             elem: "lastQualification"
         },
+        province: {
+            Validate: [
+                {
+                    condition: !province || province === "Select",
+                    message: "Please Select The Province In Which You Live",
+                }
+            ],
+            elem: "province"
+        },
+        city: {
+            Validate: [
+                {
+                    condition: !city || city === "Select" || city === "Please Select Province",
+                    message: "Please Select The City In Which You Live",
+                }
+            ],
+            elem: "city"
+        },
         email: {
             Validate: [
                 {
-                    condition: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email),
+                    condition: !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email),
                     message: "Please Provide A Valid Email",
                 }
             ],
@@ -185,10 +209,10 @@ function validateForm(check, data, field, err) {
         return errors
     }
     if (check === "each") {
-        var conArray1 = Validation[field].Validate;
+        var conArray = Validation[field].Validate;
         errors.errorsObj[Validation[field].elem] = { message: [] }
-        for (var k = 0; k < conArray1.length; k++) {
-            if (conArray1[k].condition) {
+        for (var j = 0; j < conArray.length; j++) {
+            if (conArray[j].condition) {
                 errors.hasError = true
                 errors.errorsObj[Validation[field].elem].message.push(conArray[j].message)
             }

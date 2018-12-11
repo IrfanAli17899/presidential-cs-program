@@ -20,8 +20,19 @@ import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
 import FacebookAuth from './components/FacebookAuth/facebookAuth';
+import ReactGA from "react-ga";
+
+// React Google Analytics Initializing
+ReactGA.initialize('UA-130584601-1');
 
 class Routers extends Component {
+
+  componentDidMount(){
+    ReactGA.pageview(window.location.pathname);
+    history.listen((location=>{
+      ReactGA.pageview(window.location.pathname)
+    }));
+  }
   render() {
     return (
       <Router history={history}>
@@ -31,7 +42,6 @@ class Routers extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/verification" component={VerificationCode} />
           <Route exact path="/form" component={Form} />
-          <Route exact path="/apply" component={PhoneNumber} />
           <Route exact path="/block-chain" component={BlockChain} />
           <Route exact path="/artificial-inteligence" component={AI} />
           <Route exact path="/cloud-native" component={CloudNative} />
@@ -44,7 +54,7 @@ class Routers extends Component {
             component={ManagementCommittee}
           />
           <Route exact path="/idcard" component={Idcard} />
-          <Route exact path="/facebookauth" component={FacebookAuth} />
+          <Route exact path="/apply" component={FacebookAuth} />
           <Copyright />
         </div>
       </Router>

@@ -1,13 +1,19 @@
 import React, { Component } from "react";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./FormStyle.css"
+
+
 import { validateForm, Loader } from "./helpers/helper.js";
+import Recaptcha from './helpers/recaptcha'
 import { MyInput, MySelect, MyRadio } from "./Input/MyInput";
 
 import RegistrationFormMiddleware from "../../store/middleware/registrationFormMiddleware";
 import { connect } from "react-redux";
 
 import Path from '../../config/path';
+import allCities from "./cities.json"
+
 
 
 class Form extends Component {
@@ -27,21 +33,35 @@ class Form extends Component {
                 fatherName: "",
                 homeAddress: "",
                 image: "",
-                course: ""
+                course: "",
+                province:"",
+                city:"",
+                distanceLearning: false
             },
+            userData: this.props.location.state,
             errors: {
                 hasError: false,
                 errorsObj: {}
-            }
+            },
+            showSubmitBtn: false,
+            crrProvince:"Select"
         }
-        console.log(this.props);
-        if (!this.props.authToken) {
+        console.log(this.state.userData);
+
+        if (!this.state.userData) {
             this.props.history.replace('/apply')
         }
+        else if (!this.state.userData.databaseToken) {
+            this.props.history.replace('/apply')
+        } else {
+            this.state.data.fullName = this.props.location.state.name;
+        }
     }
+    
 
     changeData = (ev) => {
         let { data, errors } = this.state;
+        let { distanceLearning } = data
         switch (ev.target.name) {
             case "imagePicker":
                 data["image"] = this.refs.imagePicker.files[0];
@@ -51,6 +71,20 @@ class Form extends Component {
                         : null,
                     data,
                     errors: validateForm("each", data, "image", errors)
+                })
+                break;
+            case "distanceLearning":
+                data.distanceLearning = !data.distanceLearning
+                this.setState({
+                    data
+                })
+                break;
+                case "province":
+                data.province = ev.target.value;
+                this.setState({
+                    crrProvince:ev.target.value,
+                    data,
+                    errors:validateForm("each", data, ev.target.name, errors)
                 })
                 break;
             default:
@@ -66,6 +100,7 @@ class Form extends Component {
     submitForm(ev) {
         ev.preventDefault();
         let { data } = this.state;
+        let { userId, databaseToken } = this.state.userData;
         const {
             image,
             DOB,
@@ -78,7 +113,10 @@ class Form extends Component {
             homeAddress,
             lastQualification,
             studentCnic,
-            fatherCnic
+            fatherCnic,
+            distanceLearning,
+            city,
+            province
         } = this.state.data;
 
         var validate = validateForm("all", data);
@@ -104,35 +142,49 @@ class Form extends Component {
         formData.append("lastQualification", lastQualification);
         formData.append("studentCnic", studentCnic);
         formData.append("fatherCnic", fatherCnic);
+        formData.append('userId', userId);
+        formData.append('distanceLearning', distanceLearning);
+        formData.append('databaseToken', databaseToken);
+        formData.append('city', city);
+        formData.append('province', province);
         //var myForm = new FormData(this.refs.myForm);
         //Nothing To Do Just Fetch And Post Data All Set
         //fetch('http://localhost:3001/form', {
         fetch(Path.REGISTRATION_FORM, {
-
             method: 'POST',
             body: formData,
-        }).then(x => {
-            console.log(x);
-            return x.json();
-        }).then(x => {
-            console.log(x);
+        }).then(userData => {
+            console.log(userData);
+            return userData.json();
+        }).then(userData => {
+            console.log(userData);
             this.setState({ submited: false });
-            if(x.fullName){
-                this.props.history.replace('/idcard',x)
+            if (userData.fullName) {
+                this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
             console.log(err);
+            this.setState({ submited: false });
+
         });
 
+    }
+
+    googleCaptcha = () => {
+        this.setState({ showSubmitBtn: true })
     }
 
 
 
     render() {
         const {
-            fullName, DOB, email, phoneNumber, studentCnic, fatherName, homeAddress, fatherCnic,
+            fullName, DOB, email, phoneNumber, studentCnic, fatherName, homeAddress, fatherCnic, distanceLearning,province
         } = this.state.data;
-        const { errors, file, submited } = this.state;
+        
+        
+        
+        const { errors, file, submited, showSubmitBtn ,crrProvince} = this.state;
+        console.log(crrProvince);
         return (
 
             <div className="container-fluid p-0">
@@ -148,20 +200,25 @@ class Form extends Component {
                                 changeData: this.changeData,
                                 options: [
                                     {
-                                        DisplayName: "AI",
-                                        value: "AI"
+                                        DisplayName: "Artificial Intelligence",
+                                        value: "AIC"
                                     }, {
                                         DisplayName: "Cloud Computing",
-                                        value: "CC"
+                                        value: "CNC"
                                     }, {
-                                        DisplayName: "Block Chain",
-                                        value: "BC"
+                                        DisplayName: "Blockchain",
+                                        value: "BCC"
                                     }
                                 ],
                                 errors
                             }}
                         />
-
+                        <div id="check-container">
+                            <strong className="label">Distance Learning</strong>
+                            <input type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl" />
+                            <strong className="label check-message">For Distance Learning You Must Be In Karachi Or Come To Karachi For Exam</strong>
+                        </div>
+                        
                         <MyInput info={{
                             type: "text",
                             DisplayName: "Full Name",
@@ -175,7 +232,7 @@ class Form extends Component {
                         }} />
                         <MyInput info={{
                             type: "text",
-                            DisplayName: "Student’s CNIC or B-Form #",
+                            DisplayName: "Student’s CNIC or CNIC (mention in your B-Form) #",
                             name: "studentCnic",
                             id: "studentCnic",
                             value: studentCnic,
@@ -238,6 +295,48 @@ class Form extends Component {
 
                             errors
                         }} />
+                        <MySelect
+                            info={{
+                                DisplayName: "Province",
+                                name: "province",
+                                id: "province",
+                                changeData: this.changeData,
+                                options: [
+                                    {
+                                        DisplayName: "Sindh",
+                                        value: "sindh"
+                                    }, {
+                                        DisplayName: "Punjab",
+                                        value: "punjab"
+                                    }, {
+                                        DisplayName: "Blochistan",
+                                        value: "blochistan"
+                                    },{
+                                        DisplayName: "KPK",
+                                        value: "kpk"
+                                    }
+                                ],
+                                errors
+                            }}
+                        />
+                         <MySelect
+                            info={{
+                                DisplayName: "City",
+                                name: "city",
+                                id: "city",
+                                changeData: this.changeData,
+                                options: 
+                               allCities[crrProvince].map((item)=>{
+                                    return {
+                                        DisplayName:item,
+                                        value:item
+                                    }
+                                })      
+                                ,
+                                errors
+                            }}
+                        />
+
 
 
 
@@ -321,10 +420,12 @@ class Form extends Component {
                             </div>
                             {errors.errorsObj["imagePicker"] && <p className="error"  >{errors.errorsObj["imagePicker"].message}</p>}
                         </div>
+                        <div>
+                            <Recaptcha googleCaptcha={this.googleCaptcha} />
+                        </div>
 
 
-
-                        <button type="submit" className="Rectangle-60">Submit Application</button>
+                        <button type="submit" className="Rectangle-60" disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
                 </div>
             </div >

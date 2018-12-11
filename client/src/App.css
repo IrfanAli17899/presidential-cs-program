@@ -34,3 +34,24 @@
 body{
   padding-top: 55px;
 }
+
+@media print {
+  body {-webkit-print-color-adjust: exact;}
+  #printButton{
+    display: none;
+  }
+
+
+  #pdfText{
+    margin-top: 20%;
+    font-size: 22px;
+  }
+
+  .copyright{
+    position: fixed;
+    bottom: 0;
+  }
+  }
+/* .idCardCont{
+  max-width: 1000px !important;
+} */

@@ -13,6 +13,27 @@
   button:focus{
       outline: none;
   }
+  .captcha{
+    display: flex;
+    margin: 30px 0px;
+    justify-content: center;
+  }
+  #check-container{
+    /* margin: 20px 0px; */
+    margin:4% 0px -2% 0;
+
+  }
+  #dl{
+    vertical-align: middle;
+    margin: 0px 10px;
+  }
+  .check-message{
+    display: block;
+    width:40vw;
+    margin-top:2px !important;
+    font-size:12px !important;
+  }
+  
 
   
   .APPLICATION-FORM {

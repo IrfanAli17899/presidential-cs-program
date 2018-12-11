@@ -6,6 +6,7 @@ import { validateForm, Loader } from "./helper.js";
 import axios from "axios";
 
 import Path from '../../config/path';
+import ReactGA from "react-ga";
 
 class ContactUS extends Component {
   constructor(props) {
@@ -49,6 +50,10 @@ class ContactUS extends Component {
       return;
     }
     this.setState({ showLoader: true });
+    ReactGA.event({
+      category: 'Student Subscription',
+      action: 'Subscribe'
+    });
     axios
       .post(Path.CONTACT_US_FORM, {
         firstName,
