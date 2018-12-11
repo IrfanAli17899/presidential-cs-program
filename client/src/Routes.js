@@ -23,7 +23,7 @@ import FacebookAuth from './components/FacebookAuth/facebookAuth';
 import ReactGA from "react-ga";
 
 // React Google Analytics Initializing
-ReactGA.initialize('UA-130712452-1');
+ReactGA.initialize('UA-130584601-1');
 
 class Routers extends Component {
 
@@ -31,7 +31,7 @@ class Routers extends Component {
     ReactGA.pageview(window.location.pathname);
     history.listen((location=>{
       ReactGA.pageview(window.location.pathname)
-    }))
+    }));
   }
   render() {
     return (
