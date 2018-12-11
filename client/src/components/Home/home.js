@@ -10,7 +10,7 @@ import Countdown from './Countdown/Countdown';
 import SupportingPartners from './SupportingPartners/SupportingPartners';
 import Cover from "../Cover/Cover"
 
-import eventGroupPhoto from '../../assets/group.jpeg'
+import eventGroupPhoto from '../../assets/piaic.jpg'
 
 import Box from "./DetailBox/DetailBox"
 
@@ -44,8 +44,10 @@ class Home extends Component {
         <div className="groupImageDiv">
           <img className="groupImage" src={eventGroupPhoto} />
         </div>
-
-        <Box />
+        {/*
+          <Box />
+          */
+        }
         <div className="my-gap"></div>
 
         <SupportingPartners />
