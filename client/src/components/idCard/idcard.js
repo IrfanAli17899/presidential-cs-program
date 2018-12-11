@@ -214,15 +214,15 @@ class Idcard extends Component {
         return (
             <div>
                 <center>
-                    <div style={{ maxWidth: '1200px', minWidth: '650px', width: "100%", textAlign: "left" }}>
-                    { <div >
-                        (this.props.location.state) ?
+                    <div style={{ maxWidth: '1200px', minWidth: '600px', width: "100%", textAlign: "left" }}>
+                    <div >
+                     
                            
                             <div className="container">
                                 <div className="row">
-                                    <div className="col-lg-6 col-md-6 col-12 mt-5">
+                                    <div className="col-xl-6 col-12 mt-5">
                                         <div className="d-flex justify-content-center align-items-center">
-                                        <div className="cardBody">
+                                        <div className="cardBody2">
                                                 <div className="row" style={{margin: 0,maxHeight: 280}}>
                                                     <div className="col-8 ">
                                                     <img src={logo} alt="Saylani" className="logoImage"/>
@@ -231,7 +231,7 @@ class Idcard extends Component {
                                                             <p><b>Full Name:</b> {fullName}</p>
                                                             <p><b>Course:</b> {course}</p>
                                                             <p><b>Distance Learning:</b> {distanceLearning ? "Yes" : "No"}</p>
-                                                            <p><b>City:</b> {city}</p>
+                                                            <p><b>City:</b> Karachi</p>
                                                     </div>
                                                     </div>
                                                     <div className="col-4 " style={{padding: 0}}>
@@ -245,7 +245,7 @@ class Idcard extends Component {
                                        </div>
                                        </div>
                                     </div>
-                                    <div className="col-lg-6 col-md-6 col-12 mt-5">
+                                    <div className="col-xl-6  col-12 mt-5">
                                         <div className="d-flex justify-content-center align-items-center">
 
                                             {/* <Col className={classes.admitCardDiv}>
@@ -281,7 +281,7 @@ class Idcard extends Component {
                                                 </div>
                                             </Col>
                                         */}
-                                       <div className="cardBody">
+                                       <div className="cardBody2">
                                                 <div className="row" style={{margin: 0,maxHeight: 280}}>
                                                     <div className="col-8 ">
                                                     <img src={logo} alt="Saylani" className="logoImage"/>
@@ -290,7 +290,7 @@ class Idcard extends Component {
                                                             <p><b>Full Name:</b> {fullName}</p>
                                                             <p><b>Course:</b> {course}</p>
                                                             <p><b>Distance Learning:</b> {distanceLearning ? "Yes" : "No"}</p>
-                                                            <p><b>City:</b> {city}</p>
+                                                            <p><b>City:</b> Karachi</p>
                                                     </div>
                                                     </div>
                                                     <div className="col-4 " style={{padding: 0}}>
@@ -316,18 +316,16 @@ class Idcard extends Component {
                                 <Typography variant="h5" className={classes.instructions}><b>Instructions:</b></Typography>
                                 <p>1) Bring two color copies of this document for attestation.</p>
                                 <p>2) Bring your original CNIC or B-Form. Also bring 2 copies of CNIC or B-Form.</p>
-                                <p>3) Bring your original marksheet, certificate or degree from your highest qualification,<br />which you have mentioned in the application form. Also bring 2 copies of marksheet, certificate or degree.</p>
+                                <p>3) Bring your original marksheet, certificate or degree of your highest qualification,<br />which you have mentioned in the application form. Also bring 2 copies of marksheet, certificate or degree.</p>
                                 <p>4) The last date for admit card & ID Card attestation is January 1, 2019.</p>
-                                <p>5) You will not be eligible to come to the entry test or classes without attestation of admit card from PIAIC.</p>
+                                <p>5) You will not be eligible to come to the entry test or classes without attestation of admit card from below address.</p>
                                 <p>6) For attestation please visit </p>
                                 <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
                             </Grid></div> </div>
-                        :
-                        // this.props.history.replace('/apply')
-                        console.log('a');
+                       
 
                 </div>
-                    }
+                    
                 </div>
                 </center>
                 </div>

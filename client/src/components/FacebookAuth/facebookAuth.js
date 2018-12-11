@@ -24,10 +24,10 @@ class FacebookAuth extends Component {
             })
             .then(data => {
                 console.log(data);
-                if (data.formSubmitted) {
+                if (data.formSubmitted == true) {
                     this.props.history.replace('/idcard', data)
                 }
-                else {
+                else if (data.formSubmitted == false) {
                     console.log("UnSubmitted", data);
                     this.props.history.replace('/form', data)
                 }

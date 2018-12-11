@@ -1,12 +1,13 @@
-.cardBody{
-    width: 650px;
+.cardBody2{
+    width: 570px;
     height: 340px;
-    /* background-color: gray; */
     padding: 0px;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-top: 3px solid #00ce9f;
     border-bottom: 3px solid #00ce9f;
+    min-width: 570px;
+    max-width: 570px;
 }
 
 .logoImage{
@@ -21,7 +22,7 @@
     margin-top: 15%;
 }
 .logoForm p{
-    color: #00DBA0; 
+    color: black; 
     margin-top: -3%;
     font-size: 1.1rem;
     font-weight: bolder;
@@ -41,7 +42,7 @@
     margin-top: 15%;
 }
 .UserAuthCard p{
-    color: #00DBA0;
+    color: black;
     /* margin-top: -3%; */
     font-weight: bolder;
     font-size: 1.1rem;
@@ -53,4 +54,10 @@
     /* border: 1px solid; */
     margin-left: -35%;
     padding-left: 10%;
+}
+
+@media screen and (max-width: 650px){
+    /* .copyright{
+        display: none;
+    } */
 }
