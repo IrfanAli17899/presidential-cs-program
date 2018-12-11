@@ -84,13 +84,13 @@ class Navbar extends Component {
                         
                         {/* <div className="drop1 border"> */}
                         <ul className="drop1ul">
-                        <Link onClick={()=>{this.catd();this.scrollTop()}} to='about'><li>The President</li></Link>
-                        <Link onClick={()=>{this.catd();this.scrollTop()}} to='managementcommittee'><li>Management Committee</li></Link>
+                        <Link to='about'><li onClick={()=>{this.catd();this.scrollTop()}} >The President</li></Link>
+                        <Link to='managementcommittee'><li onClick={()=>{this.catd();this.scrollTop()}} >Management Committee</li></Link>
                             
                         </ul>
                         {/* </div> */}
                         
-                        </li></Link>
+                        </li>
                         {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd();this.scrollTop()}}>Management Committee</li></Link> */}
 
                         {
