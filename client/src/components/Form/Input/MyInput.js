@@ -31,6 +31,8 @@ class MyInput extends Component {
 class MySelect extends Component {
     render() {
         const { id, name, options, DisplayName, changeData, errors } = this.props.info;
+        console.log("My-Options",options);
+        
         return (
             <div className="container-fluid p-0">
                 <label className="label" htmlFor={id}>{DisplayName}</label>

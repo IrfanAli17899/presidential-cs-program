@@ -75,6 +75,18 @@ exports = module.exports = function (app, mongoose) {
             type: String,
             require: true
         },
+        province: {
+            type: String,
+            require: true
+        },
+        city: {
+            type: String,
+            require: true
+        },
+        distanceLearning: {
+            type: Boolean,
+            default: false
+        },
         signUpDate: {
             type: Number,
             default: Date.now()

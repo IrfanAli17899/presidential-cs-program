@@ -16,7 +16,7 @@ exports = module.exports = function (app, mongoose) {
             required: true,
             unique: true,
         },
-        submitted: {
+        formSubmitted: {
             type: Boolean,
             default: false
         }
