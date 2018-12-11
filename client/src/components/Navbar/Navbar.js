@@ -91,6 +91,7 @@ class Navbar extends Component {
                         {/* </div> */}
                         
                         </li>
+                        </Link>
                         {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd();this.scrollTop()}}>Management Committee</li></Link> */}
 
                         {
