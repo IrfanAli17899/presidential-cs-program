@@ -49,7 +49,7 @@ class Form extends Component {
             showSubmitBtn: false,
             crrProvince: "Select"
         }
-        
+
 
         if (!this.state.userData) {
             this.props.history.replace('/apply')
@@ -99,6 +99,7 @@ class Form extends Component {
         }
     }
     componentDidMount() {
+
         Swal({
             title: 'Notice',
             text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
@@ -158,27 +159,32 @@ class Form extends Component {
         formData.append('databaseToken', databaseToken);
         formData.append('city', city);
         formData.append('province', province);
-        //var myForm = new FormData(this.refs.myForm);
-        //Nothing To Do Just Fetch And Post Data All Set
-        //fetch('http://localhost:3001/form', {
+
+
+
+
         fetch(Path.REGISTRATION_FORM, {
             method: 'POST',
             body: formData,
         }).then(userData => {
-            
+
             return userData.json();
         }).then(userData => {
-           
+
             this.setState({ submited: false });
+            console.log(userData);
+            if (userData.success == false) {
+                alert("Your Email Phone Or Cnic in already exist in Database")
+            }
             if (userData.fullName) {
                 this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
-            
+            console.log("working")
+            console.log(err);
             this.setState({ submited: false });
 
         });
-
     }
 
     googleCaptcha = () => {
@@ -195,7 +201,7 @@ class Form extends Component {
 
 
         const { errors, file, submited, showSubmitBtn, crrProvince } = this.state;
-        
+
         return (
 
             <div className="container-fluid p-0">
@@ -459,7 +465,7 @@ class Form extends Component {
 }
 
 function mapStateToProps(state) {
-    
+
     return {
         isLoading: state.registrationFormReducer.isLoading,
         isError: state.registrationFormReducer.isError,
