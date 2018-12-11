@@ -193,7 +193,7 @@ class Form extends Component {
             if (userData.fullName) {
                 ReactGA.event({
                     category: 'Form Registration',
-                    action: 'Registered'
+                    action: 'Success'
                 });
                 this.props.history.replace('/idcard', userData)
             }
