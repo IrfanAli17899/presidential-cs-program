@@ -9,7 +9,7 @@ import HomeVideo from './HomeVideo/HomeVideo';
 import Countdown from './Countdown/Countdown';
 import SupportingPartners from './SupportingPartners/SupportingPartners';
 import Cover from "../Cover/Cover"
-
+import eventGroupPhoto from '../../assets/group.jpeg'
 
 
 
@@ -36,6 +36,9 @@ class Home extends Component {
      <div className="App">
         <HomeVideo />
         <Programs />
+        <div className="groupImageDiv">
+          <img className="groupImage" src={eventGroupPhoto} />
+        </div>
         <SupportingPartners />
         {/* {
           

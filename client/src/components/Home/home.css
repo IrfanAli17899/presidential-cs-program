@@ -25,7 +25,18 @@ button:hover,.myDiv h1:hover{
 .App-link {
   color: #61dafb;
 }
-
+.groupImageDiv{
+  background-color: #f9f9f9;
+}
+.groupImage{
+  vertical-align: middle;
+  border-style: none;
+  margin-top: -5%;
+  border-radius: 10px;
+  width: 75%;
+  max-width: 800px;
+  box-shadow: 0px 0px 60px -20px black;
+}
 *{
   transition: 0.3s;
 }
