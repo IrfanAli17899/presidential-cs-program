@@ -16,6 +16,8 @@ import { connect } from "react-redux";
 import Path from '../../config/path';
 import allCities from "./cities.json"
 import Swal from 'sweetalert2';
+import ReactGA from "react-ga";
+
 
 
 
@@ -99,16 +101,17 @@ class Form extends Component {
         }
     }
     componentDidMount() {
-
-        Swal({
-            title: 'Notice',
-            text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
-            Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
-            students who are able to come to Karachi for exams are eligible for distance learning.`,
-            type: 'warning',
-        }).then((result) => {
-
-        })
+        if (this.state.userData) {
+            Swal({
+                title: 'Notice',
+                text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
+                Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
+                students who are able to come to Karachi for exams are eligible for distance learning.`,
+                type: 'warning',
+            }).then((result) => {
+    
+            })
+        }
 
     }
     submitForm(ev) {
@@ -177,6 +180,10 @@ class Form extends Component {
                 alert("Your Email Phone Or Cnic in already exist in Database")
             }
             if (userData.fullName) {
+                ReactGA.event({
+                    category: 'Form Registration',
+                    action: 'Registered'
+                });
                 this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
