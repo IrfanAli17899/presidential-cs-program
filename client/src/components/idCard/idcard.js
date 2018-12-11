@@ -11,10 +11,10 @@ const styles = theme => ({
         flexGrow: 1,
     },
     saylaniLogo: {
-        width:'64px',
-        marginLeft:'143px',
-        marginTop:'10px',
-        marginBottom:'6px',
+        width: '64px',
+        marginLeft: '143px',
+        marginTop: '10px',
+        marginBottom: '6px',
     },
     mainCardDiv: {
         marginTop: '4%',
@@ -166,27 +166,10 @@ class Idcard extends Component {
         this.print = this.print.bind(this);
     }
     componentWillMount() {
-        console.log("form data  ===>>",this.props.location.state)
+        console.log("form data  ===>>", this.props.location.state)
         if (this.props.location.state) {
             let data = this.props.location.state
-            let id = data._id;
-            switch (true) {
-                case (id < 10):
-                    id = data.course + "0000" + id;
-                    break;
-                case (id < 100):
-                    id = data.course + "000" + id;
-                    break;
-                case (id < 1000):
-                    id = data.course + "00" + id;
-                    break;
-                case (id < 10000):
-                    id = data.course + "0" + id;
-                    break;
-                default:
-                    id = data.course + "" + id;
 
-            }
             let studentData = this.props.location.state;
 
             switch (true) {
@@ -194,7 +177,7 @@ class Idcard extends Component {
                     studentData.course = "Artificial Intelligence"
                     break;
                 case (studentData.course === "BCC"):
-                    studentData.course = "Block Chain"
+                    studentData.course = "Blockchain"
                     break;
                 case (studentData.course === "CNC"):
                     studentData.course = "Cloud Computing"
@@ -202,7 +185,7 @@ class Idcard extends Component {
                 default:
             }
             this.setState({
-                rollNo: id,
+                rollNo: studentData.rollNo,
                 studentData: studentData
             })
         } else {
@@ -210,128 +193,128 @@ class Idcard extends Component {
         }
     }
     // print
-    print(){
+    print() {
         window.print();
     }
     render() {
         const { classes } = this.props;
-        const { fullName, course, imageUrl } = this.state.studentData
+        const { fullName, course, imageUrl,city } = this.state.studentData
         const rollNo = this.state.rollNo
         return (
             <div>
-            <center><div style={{maxWidth: '1200px',minWidth: '300px',width: "100%",textAlign: "left"}}>
-                {
-                    (this.props.location.state) ?
-                        <div >
+                <center><div style={{ maxWidth: '1200px', minWidth: '300px', width: "100%", textAlign: "left" }}>
+                    {
+                        (this.props.location.state) ?
+                            <div >
 
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-6 col-md-6 col-12 mt-5">
-                                        <div className="d-flex justify-content-center align-items-center">
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-lg-6 col-md-6 col-12 mt-5">
+                                            <div className="d-flex justify-content-center align-items-center">
 
-                                            {/* Admit Card */}
-                                            <Col className={classes.admitCardDiv}>
-                                                {/* <div className={classes.admitCardDiv}> */}
-                                                <img src={logo} alt="Saylani" className={classes.saylaniLogo}/>
-                                                {/* <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography> */}
-                                                <Typography className={classes.admitCardText}><b>Admit Card</b></Typography>
-                                                {/* Student Photo */}
-                                                <div className={classes.studentAdmitCardPhoto}>
-                                                    <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
-                                                </div>
-                                                {/* Roll No */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
-                                                </div>
-                                                {/* Full Name */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
-                                                </div>
-                                                {/* Course */}
-                                                <div className={classes.studentAdmitCardCouseDiv}>
-                                                    <Typography className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
-                                                </div>
-                                                {/* City */}
-                                                <div className={classes.studentAdmitCardCityDiv}>
-                                                    <Typography className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardCityTxtValue}>KHI</Typography>
-                                                </div>
-                                                {/* Authorized Signature */}
-                                                <div>
-                                                    <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
-                                                    <Typography className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
-                                                </div>
-                                                {/* </div> */}
-                                            </Col>
+                                                {/* Admit Card */}
+                                                <Col className={classes.admitCardDiv}>
+                                                    {/* <div className={classes.admitCardDiv}> */}
+                                                    <img src={logo} alt="Saylani" className={classes.saylaniLogo} />
+                                                    {/* <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography> */}
+                                                    <Typography className={classes.admitCardText}><b>Admit Card</b></Typography>
+                                                    {/* Student Photo */}
+                                                    <div className={classes.studentAdmitCardPhoto}>
+                                                        <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
+                                                    </div>
+                                                    {/* Roll No */}
+                                                    <div className={classes.studentAdmitCardRollNoDiv}>
+                                                        <Typography className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
+                                                    </div>
+                                                    {/* Full Name */}
+                                                    <div className={classes.studentAdmitCardRollNoDiv}>
+                                                        <Typography className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
+                                                    </div>
+                                                    {/* Course */}
+                                                    <div className={classes.studentAdmitCardCouseDiv}>
+                                                        <Typography className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
+                                                    </div>
+                                                    {/* City */}
+                                                    <div className={classes.studentAdmitCardCityDiv}>
+                                                        <Typography className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardCityTxtValue}>{city}</Typography>
+                                                    </div>
+                                                    {/* Authorized Signature */}
+                                                    <div>
+                                                        <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
+                                                        <Typography className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
+                                                    </div>
+                                                    {/* </div> */}
+                                                </Col>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-12 mt-5">
-                                        <div className="d-flex justify-content-center align-items-center">
+                                        <div className="col-lg-6 col-md-6 col-12 mt-5">
+                                            <div className="d-flex justify-content-center align-items-center">
 
-                                            {/* Admit Card */}
-                                            <Col className={classes.admitCardDiv}>
-                                                {/* <div className={classes.admitCardDiv}> */}
-                                                <img src={logo} alt="Saylani" className={classes.saylaniLogo}/>
-                                                {/* <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography> */}
-                                                {/* Student Photo */}
-                                                <Typography className={classes.admitCardText}><b>Identity Card</b></Typography>
-                                                <div className={classes.studentAdmitCardPhoto}>
-                                                    <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
-                                                </div>
-                                                {/* Roll No */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
-                                                </div>
-                                                {/* Full Name */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
-                                                </div>
-                                                {/* Course */}
-                                                <div className={classes.studentAdmitCardCouseDiv}>
-                                                    <Typography className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
-                                                </div>
-                                                {/* City */}
-                                                <div className={classes.studentAdmitCardCityDiv}>
-                                                    <Typography className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
-                                                    <Typography className={classes.studentAdmitCardCityTxtValue}>KHI</Typography>
-                                                </div>
-                                                {/* Authorized Signature */}
-                                                <div>
-                                                    <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
-                                                    <Typography className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
-                                                </div>
-                                                {/* </div> */}
-                                            </Col>
+                                                {/* Admit Card */}
+                                                <Col className={classes.admitCardDiv}>
+                                                    {/* <div className={classes.admitCardDiv}> */}
+                                                    <img src={logo} alt="Saylani" className={classes.saylaniLogo} />
+                                                    {/* <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography> */}
+                                                    {/* Student Photo */}
+                                                    <Typography className={classes.admitCardText}><b>Identity Card</b></Typography>
+                                                    <div className={classes.studentAdmitCardPhoto}>
+                                                        <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
+                                                    </div>
+                                                    {/* Roll No */}
+                                                    <div className={classes.studentAdmitCardRollNoDiv}>
+                                                        <Typography className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
+                                                    </div>
+                                                    {/* Full Name */}
+                                                    <div className={classes.studentAdmitCardRollNoDiv}>
+                                                        <Typography className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
+                                                    </div>
+                                                    {/* Course */}
+                                                    <div className={classes.studentAdmitCardCouseDiv}>
+                                                        <Typography className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
+                                                    </div>
+                                                    {/* City */}
+                                                    <div className={classes.studentAdmitCardCityDiv}>
+                                                        <Typography className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
+                                                        <Typography className={classes.studentAdmitCardCityTxtValue}>{city}</Typography>
+                                                    </div>
+                                                    {/* Authorized Signature */}
+                                                    <div>
+                                                        <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
+                                                        <Typography className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
+                                                    </div>
+                                                    {/* </div> */}
+                                                </Col>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Instruction */}
-                            <div id="pdfText">
-                           
-                            <Grid>
-                                <Typography variant="h5" className={classes.instructions}><b>Instructions:</b></Typography>
-                                <p>1) Bring a color copy of this document to your nearest PIAIC office for attestation.</p>
-                                <p>2) Bring your original CNIC or B-Form.</p>
-                                <p>3) Bring your original marksheet, certificate or degree from your latest qualification,<br />which you have mentioned form.</p>
-                                <p>4) Admit Card & ID Card attestation dates are from 23rd to 30th December (Mon. to Sat. 9am to 7pm)</p>
-                                <p>5) You will not be eligible to come to class without attestation of Admit Card from PIAC.</p>
-                                <p>6) An orientation class will be arranged on Sunday, DEcember 24, 2018</p>
-                                <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
-                            </Grid></div> </div>
-                        :
-                        // this.props.history.replace('/apply')
-                        console.log('a')
+                                {/* Instruction */}
+                                <div id="pdfText">
 
-                }
-            </div></center></div>
+                                    <Grid>
+                                        <Typography variant="h5" className={classes.instructions}><b>Instructions:</b></Typography>
+                                        <p>1) Bring a color copy of this document to your nearest PIAIC office for attestation.</p>
+                                        <p>2) Bring your original CNIC or B-Form.</p>
+                                        <p>3) Bring your original marksheet, certificate or degree from your latest qualification,<br />which you have mentioned form.</p>
+                                        <p>4) Admit Card & ID Card attestation dates are from 23rd to 30th December (Mon. to Sat. 9am to 7pm)</p>
+                                        <p>5) You will not be eligible to come to class without attestation of Admit Card from PIAC.</p>
+                                        <p>6) An orientation class will be arranged on Sunday, DEcember 24, 2018</p>
+                                        <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
+                                    </Grid></div> </div>
+                            :
+                            // this.props.history.replace('/apply')
+                            console.log('a')
+
+                    }
+                </div></center></div>
         )
     }
 }

@@ -18,6 +18,9 @@
     margin: 30px 0px;
     justify-content: center;
   }
+  .additionalData{
+    font-size: 11px
+  }
   #check-container{
     /* margin: 20px 0px; */
     margin:4% 0px -2% 0;

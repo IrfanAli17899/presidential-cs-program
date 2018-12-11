@@ -90,10 +90,17 @@ exports = module.exports = function (app, mongoose) {
         signUpDate: {
             type: Number,
             default: Date.now()
+        },
+        rollInternal: {
+            type: String
+        },
+        rollNo: {
+            type: String
         }
+
     });
     // mongooseAutoInc.initialize()
-    Student.plugin(mongooseAutoInc.plugin, 'idNumber')
+    Student.plugin(mongooseAutoInc.plugin, { model: 'Student', field: 'rollInternal', startAt: 1, })
 
     app.db.model('Student', Student);
 
