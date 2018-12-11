@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import './Navbar.css';
 import logo from '../../assets/assets/logo/piaic-white.svg';
@@ -79,7 +80,7 @@ class Navbar extends Component {
 
                         
                         
-                        <Link to='#'>  <li className={about ? 'active-color' : ''} id="about" onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : true , subs : false, apply: false })}}>About
+                         <li className={about ? 'active-color' : ''} id="about" onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : true , subs : false, apply: false })}}>About
                         <img src={dropMenu} />
                         
                         {/* <div className="drop1 border"> */}
@@ -91,7 +92,6 @@ class Navbar extends Component {
                         {/* </div> */}
                         
                         </li>
-                        </Link>
                         {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd();this.scrollTop()}}>Management Committee</li></Link> */}
 
                         {
