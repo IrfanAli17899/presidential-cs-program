@@ -17,7 +17,8 @@ class Navbar extends Component {
         cn : false,
         about : false,
         bc : false,
-        subs : false
+        subs : false,
+        apply : false
        }
   
   
@@ -50,15 +51,14 @@ class Navbar extends Component {
     }
 
     render() { 
-        
-        const {condition , ai , cn , bc, about , subs} = this.state;
+        const {condition , ai , cn , bc, about , subs, apply} = this.state;
         return ( 
             <div className="navbar">
             <Modal condition={condition} hideModal={this.hideModal}/>
             
                 <div className="container">
                 <div className="navbar_cont">
-                    <div className="navbar-flex nav-flex-1" onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : false , about : false , subs : false });this.scrollTop()}}><Link to='/'><img src={logo} /></Link>
+                    <div className="navbar-flex nav-flex-1" onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : false , about : false , subs : false, apply: false });this.scrollTop()}}><Link to='/'><img src={logo} /></Link>
                   
 
                    <div className="hamb-btn" onClick={() => {this.catd();this.scrollTop()}}>
@@ -71,15 +71,15 @@ class Navbar extends Component {
                     {/* <p>Aftificial Inteligence</p> */}
                     <ul id="nav-flex-ul">
 
-                    <Link to='/artificial-inteligence'> <li className={ai ? 'active-color' : ''} onClick={()=>{this.setState({ai : true , cn : false , bc : false , about : false , subs : false });this.catd();this.scrollTop()}}>Artificial Intelligence</li></Link>
+                    <Link to='/artificial-inteligence'> <li className={ai ? 'active-color' : ''} onClick={()=>{this.setState({ai : true , cn : false , bc : false , about : false , subs : false, apply: false });this.catd();this.scrollTop()}}>Artificial Intelligence</li></Link>
                         {/* <BrowserRouter></BrowserRouter> */}
-                        <Link to='/cloud-native'>  <li className={cn ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : true , bc : false , about : false , subs : false });this.catd();this.scrollTop()}}>Cloud Native</li></Link>
+                        <Link to='/cloud-native'>  <li className={cn ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : true , bc : false , about : false , subs : false, apply: false });this.catd();this.scrollTop()}}>Cloud Native</li></Link>
                          {/* <li onClick={() => {this.setState({condition: true})}} className="about">About</li> */}
-                         <Link to='/block-chain'>  <li className={bc ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : true , about : false , subs : false });this.catd();this.scrollTop()}}>Blockchain</li></Link>
+                         <Link to='/block-chain'>  <li className={bc ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : true , about : false , subs : false, apply: false });this.catd();this.scrollTop()}}>Blockchain</li></Link>
 
                         
                         
-                       <li className={about ? 'active-color' : ''} id="about" onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : true , subs : false })}}>About
+                        <Link to='#'>  <li className={about ? 'active-color' : ''} id="about" onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : true , subs : false, apply: false })}}>About
                         <img src={dropMenu} />
                         
                         {/* <div className="drop1 border"> */}
@@ -95,13 +95,13 @@ class Navbar extends Component {
 
                         {
                           
-                            <Link to='/apply'>  <li>Apply</li></Link>
+                            <Link to='/apply'>  <li className={apply ? 'active-color' : ''}  onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : false , subs : false, apply : true}); this.catd();this.scrollTop()}}>Apply</li></Link>
                                 
                         }
                         
 
                         
-                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : false , subs : true });this.catd();this.scrollTop()}}>Subscribe</li></Link>
+                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false , about : false , subs : true, apply: false });this.catd();this.scrollTop()}}>Subscribe</li></Link>
 
                     </ul>
                     
