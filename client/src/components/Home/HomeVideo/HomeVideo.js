@@ -1,6 +1,8 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Countdown from '../Countdown/Countdown';
+import {Link} from "react-router-dom"
 import { withRouter } from 'react-router-dom';
 import president from '../../../assets/presidentPic.jpeg';
 
@@ -42,8 +44,11 @@ class HomeVideo extends Component {
                             <div className="col-xl-12 mt-5 mt-xl-0 mb-5 mb-xl-0 d-flex justify-content-center align-items-center">
                             <div className="slider-doc-f2">
                     <div className="video-cont">
-                        <h1>Registration starts in</h1>
-                        <Countdown date={`2018-12-12T00:00:00`} /> 
+                        {/* <h1>Registration starts in</h1> */}
+                        {/* <Countdown date={`2018-12-12T00:00:00`} />  */}
+                        
+                        <button onClick={() => {this.props.history.push("apply")}} className="subscribe mt-4">Apply</button>
+                        
                         <button onClick={() => {this.props.history.push("subscribe")}} className="subscribe mt-4">Subscribe</button>
                         
                         </div>
