@@ -4,7 +4,7 @@ import React from "react";
 function validateForm(check, data, field, err) {
     const {
         fullName, DOB, gender, email, phoneNumber, lastQualification, studentCnic, fatherName,
-        homeAddress,province, course, image, fatherCnic,city
+        homeAddress, province, course, image, fatherCnic, city
     } = data;
 
     var errors = err ? err : {
@@ -112,6 +112,9 @@ function validateForm(check, data, field, err) {
                 {
                     condition: !DOB,
                     message: "Please Select Your Date Of Birth",
+                }, {
+                    condition: (Date.now() - Date.parse(DOB) < 201429092347),
+                    message: "You are not eligible for this program",
                 }
             ],
             elem: "DOB"
@@ -156,6 +159,10 @@ function validateForm(check, data, field, err) {
             Validate: [
                 {
                     condition: !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email),
+                    message: " Please enter a valid email address. ",
+                },
+                {
+                    condition: !/^(?=[^@]{3,}@)([\w\.-]*[a-zA-Z0-9_]@(?=.{3,}\.[^.]*$)[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])$/.test(email),
                     message: " Please enter a valid email address. ",
                 }
             ],

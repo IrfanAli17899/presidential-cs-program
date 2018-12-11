@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 
 import Path from '../../config/path';
 import allCities from "./cities.json"
+import Swal from 'sweetalert2';
 
 
 
@@ -46,7 +47,7 @@ class Form extends Component {
             showSubmitBtn: false,
             crrProvince: "Select"
         }
-        console.log(this.state.userData);
+        
 
         if (!this.state.userData) {
             this.props.history.replace('/apply')
@@ -61,7 +62,6 @@ class Form extends Component {
 
     changeData = (ev) => {
         let { data, errors } = this.state;
-        let { distanceLearning } = data
         switch (ev.target.name) {
             case "imagePicker":
                 data["image"] = this.refs.imagePicker.files[0];
@@ -96,7 +96,18 @@ class Form extends Component {
                 break;
         }
     }
+    componentDidMount() {
+        Swal({
+            title: 'Notice',
+            text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
+            Peshawar, Lahore, and Quetta.  Therefore, only students who live in Karachi are eligible to participate in onsite classes. In addition, 
+            students who are able to come to Karachi for exams are eligible for distance learning.`,
+            type: 'warning',
+        }).then((result) => {
 
+        })
+
+    }
     submitForm(ev) {
         ev.preventDefault();
         let { data } = this.state;
@@ -121,9 +132,7 @@ class Form extends Component {
 
         var validate = validateForm("all", data);
         if (validate.hasError) {
-            this.setState({ errors: validate }, (x) => {
-                console.log(this.state);
-            });
+            this.setState({ errors: validate });
             return
         }
 
@@ -154,16 +163,16 @@ class Form extends Component {
             method: 'POST',
             body: formData,
         }).then(userData => {
-            console.log(userData);
+            
             return userData.json();
         }).then(userData => {
-            console.log(userData);
+           
             this.setState({ submited: false });
             if (userData.fullName) {
                 this.props.history.replace('/idcard', userData)
             }
         }).catch((err) => {
-            console.log(err);
+            
             this.setState({ submited: false });
 
         });
@@ -184,7 +193,7 @@ class Form extends Component {
 
 
         const { errors, file, submited, showSubmitBtn, crrProvince } = this.state;
-        console.log(crrProvince);
+        
         return (
 
             <div className="container-fluid p-0">
@@ -448,7 +457,7 @@ class Form extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
+    
     return {
         isLoading: state.registrationFormReducer.isLoading,
         isError: state.registrationFormReducer.isError,

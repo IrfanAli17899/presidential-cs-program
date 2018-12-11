@@ -167,7 +167,16 @@
     border-top-left-radius:4px;
     border-bottom-left-radius: 4px; 
   }
-   
+  #swal2-content{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: justify !important;
+  }
+   .swal2-confirm{
+     color: white;
+     background-color: #00ce9f !important;
+     border: none !important
+   }
   
     input[type="radio"] {
       display:none;
