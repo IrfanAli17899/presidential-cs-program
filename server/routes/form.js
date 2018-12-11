@@ -153,6 +153,9 @@ exports = module.exports = function (app, mongoose) {
 
                         }).catch(err => {
                             console.log(err)
+                            if (err.code == 11000) {
+                                return res.send({ success: false, message: err });
+                            }
                             res.status(400).send(err);
                         });
                     });
