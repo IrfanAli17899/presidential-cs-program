@@ -321,6 +321,8 @@
         line-height: 1.5;
         letter-spacing: normal;
         text-align: justify;
+        word-break: break-all;
+        word-spacing: 1px;
         color: #192a56;
       }
       .sec-head{

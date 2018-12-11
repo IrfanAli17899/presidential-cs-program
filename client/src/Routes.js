@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import Home from "./components/Home/home";
 // import About from './components/About/About';
 import About from "./components/About/about";
@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Copyright from "./components/Copyright/Copyright";
 // import PhoneNumber from "./components/auth/PhoneNumber";
 import VerificationCode from "./components/auth/VerificationCode";
+import NotFound from "./components/404/404"
 
 import Directors from "../src/components/Directors/Directors";
 import Contact from "../src/components/ContactUs/ContactUs";
@@ -27,9 +28,9 @@ ReactGA.initialize('UA-130584601-1');
 
 class Routers extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     ReactGA.pageview(window.location.pathname);
-    history.listen((location=>{
+    history.listen((location => {
       ReactGA.pageview(window.location.pathname)
     }));
   }
@@ -37,7 +38,10 @@ class Routers extends Component {
     return (
       <Router history={history}>
         <div>
+
           <Navbar />
+          <Switch>
+
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/verification" component={VerificationCode} />
@@ -48,6 +52,7 @@ class Routers extends Component {
           <Route exact path="/directors" component={Directors} />
           <Route exact path="/subscribe" component={Contact} />
 
+
           <Route
             exact
             path="/managementcommittee"
@@ -55,8 +60,12 @@ class Routers extends Component {
           />
           <Route exact path="/idcard" component={Idcard} />
           <Route exact path="/apply" component={FacebookAuth} />
+            <Route path="*" component={NotFound} />
+
+          </Switch>
           <Copyright />
         </div>
+
       </Router>
     );
   }
