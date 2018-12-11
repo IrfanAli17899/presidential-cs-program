@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import './HowItWorks.css';
 import pakMap from '../../assets/pakMap.png';

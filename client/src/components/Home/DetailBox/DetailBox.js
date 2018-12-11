@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from "react"
 import "./DetailBox.css";
 import linkedinIcon from "../../../assets/linkedin-icon.png";
@@ -12,7 +14,7 @@ import YousufLakhani from "../../../assets/members-committee/YousufLakhani.jpeg"
 class Box extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid my-bara-container">
                 <div className="container">
                     <div className="row">
                         <div className="con-can col-lg-4 col-sm-6 mt-5 d-flex justify-content-center align-items-center">
