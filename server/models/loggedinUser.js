@@ -2,8 +2,12 @@ exports = module.exports = function (app, mongoose) {
 
     'use strict';
     var Schema = mongoose.Schema;
-    const UserSchema = new Schema({
-        name: {
+    const loggedinUser = new Schema({
+        databaseToken: {
+            type: String,
+            required: true,
+        },
+        userId: {
             type: String,
             required: true,
         },
@@ -11,18 +15,17 @@ exports = module.exports = function (app, mongoose) {
             type: String,
             required: true
         },
+        name: {
+            type: String,
+            required: true,
+        },
         email: {
             type: String,
             required: true,
-            unique: true,
-        },
-        submitted: {
-            type: Boolean,
-            default: false
         }
     });
 
 
-    app.db.model('User', UserSchema);
+    app.db.model('loggedinUser', loggedinUser);
 
 }

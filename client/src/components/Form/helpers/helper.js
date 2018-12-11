@@ -131,7 +131,7 @@ function validateForm(check, data, field, err) {
         email: {
             Validate: [
                 {
-                    condition: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email),
+                    condition: !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email),
                     message: "Please Provide A Valid Email",
                 }
             ],
@@ -185,10 +185,10 @@ function validateForm(check, data, field, err) {
         return errors
     }
     if (check === "each") {
-        var conArray1 = Validation[field].Validate;
+        var conArray = Validation[field].Validate;
         errors.errorsObj[Validation[field].elem] = { message: [] }
-        for (var k = 0; k < conArray1.length; k++) {
-            if (conArray1[k].condition) {
+        for (var j = 0; j < conArray.length; j++) {
+            if (conArray[j].condition) {
                 errors.hasError = true
                 errors.errorsObj[Validation[field].elem].message.push(conArray[j].message)
             }
