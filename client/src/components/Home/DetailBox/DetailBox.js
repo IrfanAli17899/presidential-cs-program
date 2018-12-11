@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from "react"
 import "./DetailBox.css";
 import linkedinIcon from "../../../assets/linkedin-icon.png";
