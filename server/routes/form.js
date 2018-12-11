@@ -129,7 +129,7 @@ exports = module.exports = function (app, mongoose) {
                         const UserSchema = app.db.models.User;
                         let id = regData.userId;
                         console.log(id);
-                        UserSchema.findOneAndUpdate({ _id: id }, { $set: { submitted: true } }, { new: true })
+                        UserSchema.findOneAndUpdate({ _id: id }, { $set: { formSubmitted: true } }, { new: true })
                             .then(response => {
 
                                 console.log(response);

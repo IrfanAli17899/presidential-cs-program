@@ -4,7 +4,7 @@ import React from "react";
 function validateForm(check, data, field, err) {
     const {
         fullName, DOB, gender, email, phoneNumber, lastQualification, studentCnic, fatherName,
-        homeAddress, course, image, fatherCnic
+        homeAddress,province, course, image, fatherCnic,city
     } = data;
 
     var errors = err ? err : {
@@ -80,6 +80,9 @@ function validateForm(check, data, field, err) {
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(studentCnic),
                     message: " No Space Hyphens '-' Or Any Special Character . ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: "Candidate can only apply on  his/her own  Cnic ",
                 }
             ],
             elem: "studentCnic"
@@ -96,6 +99,9 @@ function validateForm(check, data, field, err) {
                 }, {
                     condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
                     message: " No Space Hyphens '-' Or Any Special Character . ",
+                }, {
+                    condition: fatherCnic === studentCnic,
+                    message: "Candidate can only apply on  his/her own  Cnic ",
                 }
 
             ],
@@ -127,6 +133,24 @@ function validateForm(check, data, field, err) {
                 }
             ],
             elem: "lastQualification"
+        },
+        province: {
+            Validate: [
+                {
+                    condition: !province || province === "Select",
+                    message: "Please Select The Province In Which You Live",
+                }
+            ],
+            elem: "province"
+        },
+        city: {
+            Validate: [
+                {
+                    condition: !city || city === "Select" || city === "Please Select Province",
+                    message: "Please Select The City In Which You Live",
+                }
+            ],
+            elem: "city"
         },
         email: {
             Validate: [

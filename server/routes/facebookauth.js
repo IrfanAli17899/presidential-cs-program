@@ -22,10 +22,10 @@ exports = module.exports = function (app, mongoose) {
 
                 const UserSchema = app.db.models.User;
 
-                UserSchema.findOne({ facebookId: fbId }).then(response => {
+                UserSchema.findOne({ facebookId: fbId }).then(userRes => {
 
 
-                    if (!response) {
+                    if (!userRes) {
 
                         data.facebookId = fbId;
 
@@ -33,10 +33,10 @@ exports = module.exports = function (app, mongoose) {
 
                     }
 
-                    let userData = JSON.parse(JSON.stringify(response));
+                    let userData = JSON.parse(JSON.stringify(userRes));
 
 
-                    if (!userData.submitted) {
+                    if (!userData.formSubmitted) {
 
                         console.log("submited")
 
@@ -127,7 +127,7 @@ exports = module.exports = function (app, mongoose) {
 
                 let dataToSend = JSON.parse(JSON.stringify(loggedinUserData));
 
-                dataToSend.submitted = false;
+                dataToSend.formSubmitted = false;
 
                 return res.status(200).send(dataToSend);
 
@@ -151,7 +151,7 @@ exports = module.exports = function (app, mongoose) {
 
                 let dataToSend = JSON.parse(JSON.stringify(sumittedForm));
 
-                dataToSend.submitted = true;
+                dataToSend.formSubmitted = true;
 
                 return res.status(200).send(dataToSend);
 
