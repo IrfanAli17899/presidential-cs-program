@@ -9,7 +9,7 @@ import AI from "./components/Ai/ai";
 import Navbar from "./components/Navbar/Navbar";
 // import Footer from './components/Footer/Footer';
 import Copyright from "./components/Copyright/Copyright";
-import PhoneNumber from "./components/auth/PhoneNumber";
+// import PhoneNumber from "./components/auth/PhoneNumber";
 import VerificationCode from "./components/auth/VerificationCode";
 
 import Directors from "../src/components/Directors/Directors";
@@ -20,9 +20,23 @@ import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
 import FacebookAuth from './components/FacebookAuth/facebookAuth';
+
 import HowItWorks from './components/HowItWorks/HowItWorks'
 
+import ReactGA from "react-ga";
+
+// React Google Analytics Initializing
+ReactGA.initialize('UA-130584601-1');
+
+
 class Routers extends Component {
+
+  componentDidMount(){
+    ReactGA.pageview(window.location.pathname);
+    history.listen((location=>{
+      ReactGA.pageview(window.location.pathname)
+    }));
+  }
   render() {
     return (
       <Router history={history}>

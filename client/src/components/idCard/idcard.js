@@ -4,13 +4,19 @@ import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { Grid, Col, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from '../../assets/assets/logo/piaic-green.svg';
+import './idCard.css';
+
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
     },
     saylaniLogo: {
-        width: '10%',
+        width: '64px',
+        marginLeft: '143px',
+        marginTop: '10px',
+        marginBottom: '6px',
     },
     mainCardDiv: {
         marginTop: '4%',
@@ -24,7 +30,7 @@ const styles = theme => ({
         borderWidth: '5px 2px 5px 2px',
         borderColor: '#00ce9f #707070 #00ce9f #707070',
         width: '350px',
-        marginLeft: '10%'
+        // marginLeft: '10%'
     },
     PIAIC: {
         color: '#008C79',
@@ -53,14 +59,16 @@ const styles = theme => ({
         color: '#017969',
         marginLeft: '10%',
         marginTop: '3%',
-        fontFamily: 'George'
+        fontFamily: 'George',
+        fontSize: '16px',
     },
     studentAdmitCardRollNoTxtValue: {
         color: '#00DBA0',
-        marginLeft: '16.6%',
+        marginLeft: '3%',
         fontFamily: 'George',
         fontWeight: '600',
         display: 'inline',
+        fontSize: '16px',
     },
     studentAdmitCardFullNameDiv: {
         marginTop: '4%',
@@ -70,14 +78,16 @@ const styles = theme => ({
         color: '#017969',
         marginLeft: '10%',
         marginTop: '3%',
-        fontFamily: 'George'
+        fontFamily: 'George',
+        fontSize: '16px',
     },
     studentAdmitCardFullNameTxtValue: {
         color: '#00DBA0',
-        marginLeft: '9.5%',
+        marginLeft: '3%',
         fontFamily: 'George',
         fontWeight: '600',
         display: 'inline',
+        fontSize: '16px',
     },
     studentAdmitCardCouseDiv: {
         marginTop: '4%',
@@ -87,14 +97,16 @@ const styles = theme => ({
         color: '#017969',
         marginLeft: '10%',
         marginTop: '3%',
-        fontFamily: 'George'
+        fontFamily: 'George',
+        fontSize: '16px',
     },
     studentAdmitCardCourseTxtValue: {
         color: '#00DBA0',
-        marginLeft: '18%',
+        marginLeft: '3%',
         fontFamily: 'George',
         fontWeight: '600',
         display: 'inline',
+        fontSize: '16px',
     },
     studentAdmitCardCityDiv: {
         marginTop: '4%',
@@ -104,14 +116,24 @@ const styles = theme => ({
         color: '#017969',
         marginLeft: '10%',
         marginTop: '3%',
-        fontFamily: 'George'
+        fontFamily: 'George',
+        fontSize: '16px',
     },
     studentAdmitCardCityTxtValue: {
         color: '#00DBA0',
-        marginLeft: '25.5%',
+        marginLeft: '3%',
         fontFamily: 'George',
         fontWeight: '600',
         display: 'inline',
+        fontSize: '16px',
+    },
+    studentAdmitCardCityTxtValue2: {
+        color: '#00DBA0',
+        marginLeft: '3%',
+        fontFamily: 'George',
+        fontWeight: '600',
+        display: 'inline',
+        fontSize: '16px',
     },
     studentAdmitCardAuthorizeSignLine: {
         marginTop: '18%',
@@ -122,7 +144,8 @@ const styles = theme => ({
     studentAdmitCardAuthorizeSignTxt: {
         marginTop: '1%',
         color: '#017969',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: '16px',
     },
 
     instructions: {
@@ -150,29 +173,13 @@ class Idcard extends Component {
             rollNo: undefined,
             studentData: {}
         }
+        this.print = this.print.bind(this);
     }
     componentWillMount() {
-        console.log("form data  ===>>",this.props.location.state)
+        console.log("form data  ===>>", this.props.location.state)
         if (this.props.location.state) {
             let data = this.props.location.state
-            let id = data._id;
-            switch (true) {
-                case (id < 10):
-                    id = data.course + "0000" + id;
-                    break;
-                case (id < 100):
-                    id = data.course + "000" + id;
-                    break;
-                case (id < 1000):
-                    id = data.course + "00" + id;
-                    break;
-                case (id < 10000):
-                    id = data.course + "0" + id;
-                    break;
-                default:
-                    id = data.course + "" + id;
 
-            }
             let studentData = this.props.location.state;
 
             switch (true) {
@@ -180,7 +187,7 @@ class Idcard extends Component {
                     studentData.course = "Artificial Intelligence"
                     break;
                 case (studentData.course === "BCC"):
-                    studentData.course = "Block Chain"
+                    studentData.course = "Blockchain"
                     break;
                 case (studentData.course === "CNC"):
                     studentData.course = "Cloud Computing"
@@ -188,129 +195,142 @@ class Idcard extends Component {
                 default:
             }
             this.setState({
-                rollNo: id,
+                rollNo: studentData.rollNo,
                 studentData: studentData
             })
         } else {
             this.props.history.replace('/apply')
         }
     }
+    // print
+    print() {
+        window.print();
+    }
     render() {
         const { classes } = this.props;
-        const { fullName, course, imageUrl } = this.state.studentData
+        const { fullName, course, imageUrl,distanceLearning,city } = this.state.studentData
+
         const rollNo = this.state.rollNo
         return (
             <div>
-                {
-                    (this.props.location.state) ?
-                        <div >
-
+                <center>
+                    <div style={{ maxWidth: '1200px', minWidth: '300px', width: "100%", textAlign: "left" }}>
+                    { <div >
+                        (this.props.location.state) ?
+                           
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-12 mt-5">
                                         <div className="d-flex justify-content-center align-items-center">
+                                        <div className="cardBody">
+                                                <div className="row" style={{margin: 0,maxHeight: 280}}>
+                                                    <div className="col-8 ">
+                                                    <img src={logo} alt="Saylani" className="logoImage"/>
+                                                    <div className="logoForm">
+                                                            <p><b>Roll No:</b> {rollNo}</p>
+                                                            <p><b>Full Name:</b> {fullName}</p>
+                                                            <p><b>Course:</b> {course}</p>
+                                                            <p><b>Distance Learning:</b> {distanceLearning ? "Yes" : "No"}</p>
+                                                            <p><b>City:</b> {city}</p>
+                                                    </div>
+                                                    </div>
+                                                    <div className="col-4 " style={{padding: 0}}>
+                                                    <div className="cardImage" style={{width:"100%",height:"50%",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
+                                                    <div className="UserAuthCard">
+                                                            <p><b>Authorized Signature</b> </p>
 
-                                            {/* Admit Card */}
-                                            <Col className={classes.admitCardDiv}>
-                                                {/* <div className={classes.admitCardDiv}> */}
-                                                {/* <img src={logo} alt="Saylani" className={classes.saylaniLogo}/> */}
-                                                <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography>
-                                                <Typography variant="h7" className={classes.admitCardText}><b>Admit Card</b></Typography>
-                                                {/* Student Photo */}
-                                                <div className={classes.studentAdmitCardPhoto}>
-                                                    <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
+                                                    </div>
+                                                    </div>
                                                 </div>
-                                                {/* Roll No */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
-                                                </div>
-                                                {/* Full Name */}
-                                                <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
-                                                </div>
-                                                {/* Course */}
-                                                <div className={classes.studentAdmitCardCouseDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
-                                                </div>
-                                                {/* City */}
-                                                <div className={classes.studentAdmitCardCityDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCityTxtValue}>KHI</Typography>
-                                                </div>
-                                                {/* Authorized Signature */}
-                                                <div>
-                                                    <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
-                                                    <Typography variant="h10" className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
-                                                </div>
-                                                {/* </div> */}
-                                            </Col>
-                                        </div>
+                                       </div>
+                                       </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-12 mt-5">
                                         <div className="d-flex justify-content-center align-items-center">
 
-                                            {/* Admit Card */}
-                                            <Col className={classes.admitCardDiv}>
-                                                {/* <div className={classes.admitCardDiv}> */}
-                                                {/* <img src={logo} alt="Saylani" className={classes.saylaniLogo}/> */}
-                                                <Typography variant="h5" className={classes.PIAIC}>PIAIC</Typography>
-                                                {/* Student Photo */}
-                                                <Typography variant="h7" className={classes.admitCardText}><b>Identity Card</b></Typography>
+                                            {/* <Col className={classes.admitCardDiv}>
+                                                <img src={logo} alt="Saylani" className={classes.saylaniLogo}/>
+                                                <Typography className={classes.admitCardText}><b>Identity Card</b></Typography>
                                                 <div className={classes.studentAdmitCardPhoto}>
-                                                    <img src={imageUrl} alt="user-pic" style={{ width: '100%', height: '100%' }} />
+                                                <div style={{width:"100%",height:"100%",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
                                                 </div>
-                                                {/* Roll No */}
+                                                
                                                 <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
+                                                    <Typography className={classes.studentAdmitCardRollNoTxt}><b>Roll No:</b></Typography>
+                                                    <Typography className={classes.studentAdmitCardRollNoTxtValue}>{rollNo}</Typography>
                                                 </div>
-                                                {/* Full Name */}
                                                 <div className={classes.studentAdmitCardRollNoDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
+                                                    <Typography className={classes.studentAdmitCardFullNameTxt}><b>Full Name:</b></Typography>
+                                                    <Typography className={classes.studentAdmitCardFullNameTxtValue}>{fullName}</Typography>
                                                 </div>
-                                                {/* Course */}
                                                 <div className={classes.studentAdmitCardCouseDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
+                                                    <Typography className={classes.studentAdmitCardCourseTxt}><b>Course:</b></Typography>
+                                                    <Typography className={classes.studentAdmitCardCourseTxtValue}>{course}</Typography>
                                                 </div>
-                                                {/* City */}
                                                 <div className={classes.studentAdmitCardCityDiv}>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
-                                                    <Typography variant="h7" className={classes.studentAdmitCardCityTxtValue}>KHI</Typography>
+                                                    <Typography className={classes.studentAdmitCardCityTxt}><b>Distance Learning:</b></Typography>
+                                                    <Typography className={classes.studentAdmitCardCityTxtValue2}>{distanceLearning ? "Yes" : "No"}</Typography>
                                                 </div>
-                                                {/* Authorized Signature */}
+                                                <div className={classes.studentAdmitCardCityDiv}>
+                                                    <Typography className={classes.studentAdmitCardCityTxt}><b>City:</b></Typography>
+                                                    <Typography className={classes.studentAdmitCardCityTxtValue}>{city}</Typography>
+                                                </div>
                                                 <div>
-                                                    <div className={classes.studentAdmitCardAuthorizeSignLine}></div>
-                                                    <Typography variant="h10" className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
+                                                    <div className={classes.studentAdmitCardAuthorizeSignLine}ssss></div>
+                                                    <Typography className={classes.studentAdmitCardAuthorizeSignTxt}><b>Authorized Signature</b></Typography>
                                                 </div>
-                                                {/* </div> */}
                                             </Col>
+                                        */}
+                                       <div className="cardBody">
+                                                <div className="row" style={{margin: 0,maxHeight: 280}}>
+                                                    <div className="col-8 ">
+                                                    <img src={logo} alt="Saylani" className="logoImage"/>
+                                                    <div className="logoForm">
+                                                    <p><b>Roll No:</b> {rollNo}</p>
+                                                            <p><b>Full Name:</b> {fullName}</p>
+                                                            <p><b>Course:</b> {course}</p>
+                                                            <p><b>Distance Learning:</b> {distanceLearning ? "Yes" : "No"}</p>
+                                                            <p><b>City:</b> {city}</p>
+                                                    </div>
+                                                    </div>
+                                                    <div className="col-4 " style={{padding: 0}}>
+                                                    <div className="cardImage" style={{width:"100%",height:"50%",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
+                                                    <div className="UserAuthCard">
+                                                            <p><b>Authorized Signature</b> </p>
+
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                       </div>
+                                       
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
 
                             {/* Instruction */}
+                            <div id="pdfText">
+                           
                             <Grid>
                                 <Typography variant="h5" className={classes.instructions}><b>Instructions:</b></Typography>
-                                <p>1) Bring a color copy of this document to your nearest PIAIC office for attestation.</p>
-                                <p>2) Bring your original CNIC or B-Form.</p>
-                                <p>3) Bring your original marksheet, certificate or degree from your latest qualification,<br />which you have mentioned form.</p>
-                                <p>4) Admit Card & ID Card attestation dates are from 23rd to 30th December (Mon. to Sat. 9am to 7pm)</p>
-                                <p>5) You will not be eligible to come to class without attestation of Admit Card from PIAC.</p>
-                                <p>6) An orientation class will be arranged on Sunday, DEcember 24, 2018</p>
-                                <div className={classes.buttonPrint}><Button block className={classes.printBtn} bsSize="large">Print</Button></div>
-                            </Grid></div>
+                                <p>1) Bring two color copies of this document for attestation.</p>
+                                <p>2) Bring your original CNIC or B-Form. Also bring 2 copies of CNIC or B-Form.</p>
+                                <p>3) Bring your original marksheet, certificate or degree from your highest qualification,<br />which you have mentioned in the application form. Also bring 2 copies of marksheet, certificate or degree.</p>
+                                <p>4) The last date for admit card & ID Card attestation is January 1, 2019.</p>
+                                <p>5) You will not be eligible to come to the entry test or classes without attestation of admit card from PIAIC.</p>
+                                <p>6) For attestation please visit </p>
+                                <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
+                            </Grid></div> </div>
                         :
                         // this.props.history.replace('/apply')
-                        console.log('a')
+                        console.log('a');
 
-                }
-            </div>
+                </div>
+                    }
+                </div>
+                </center>
+                </div>
         )
     }
 }

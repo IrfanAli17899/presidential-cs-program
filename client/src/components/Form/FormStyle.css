@@ -13,6 +13,30 @@
   button:focus{
       outline: none;
   }
+  .captcha{
+    display: flex;
+    margin: 30px 0px;
+    justify-content: center;
+  }
+  .additionalData{
+    font-size: 11px
+  }
+  #check-container{
+    /* margin: 20px 0px; */
+    margin:4% 0px -2% 0;
+
+  }
+  #dl{
+    vertical-align: middle;
+    margin: 0px 10px;
+  }
+  .check-message{
+    display: block;
+    width:40vw;
+    margin-top:2px !important;
+    font-size:12px !important;
+  }
+  
 
   
   .APPLICATION-FORM {
@@ -95,7 +119,7 @@
   .-File-type-jpg-jpeg-png {
     margin:0 auto;
    padding: 5px 50px;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -133,7 +157,7 @@
   .img-container{
     display: inline-block;
     float: left;
-    height:150px;
+    height:195px;
     width:150px;
     background-position: 50% 50%;
     background-size: contain;
@@ -143,7 +167,16 @@
     border-top-left-radius:4px;
     border-bottom-left-radius: 4px; 
   }
-   
+  #swal2-content{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: justify !important;
+  }
+   .swal2-confirm{
+     color: white;
+     background-color: #00ce9f !important;
+     border: none !important
+   }
   
     input[type="radio"] {
       display:none;

@@ -46,16 +46,16 @@ exports = module.exports = function (app, mongoose) {
         if (!req.file) {
             return res.status(400).send({ message: "Please Provide Your Image" });
         }
-        if (!body.fatherName || body.homeAddress.length < 3) {
+        if (!body.fatherName || body.fatherName.length < 3) {
             return res.status(400).send({ message: "Please Provide Your Father Name" });
         }
-        if (!body.fullName || body.homeAddress.length < 3) {
+        if (!body.fullName || body.fullName.length < 3) {
             return res.status(400).send({ message: "Please Provide Your Full Name" });
         }
         if (!body.email) {
             return res.status(400).send({ message: "Please Provide Your Email" });
         }
-        if (!body.course || body.course.length < 3) {
+        if (!body.course || body.course.length !== 3) {
             return res.status(400).send({ message: "Please Provide Your course" });
         }
         if (!body.phoneNumber || !validator.isNumeric(body.phoneNumber)) {
@@ -76,10 +76,15 @@ exports = module.exports = function (app, mongoose) {
         if (!body.dob) {
             return res.status(400).send({ message: "Please Provide Your Date of Birth" });
         }
-        if (!body.fatherNameCnic || !validator.isNumeric(body.fatherNameCnic))
-            if (!body.databaseToken) {
-                return res.status(401).send({ message: "You Are Not Allowed To Continue" });
-            }
+        if (!body.fatherCnic || !validator.isNumeric(body.fatherCnic)) {
+            return res.status(400).send({ message: "Please Provide Your valid father Cnic" });
+        }
+        if (body.fatherNameCnic === body.studentCnic) {
+            return res.status(400).send({ message: "Please Provide A Seprate  Father / Student Cnic" });
+        }
+        if (!body.databaseToken) {
+            return res.status(401).send({ message: "You Are Not Allowed To Continue" });
+        }
 
 
 
@@ -120,69 +125,73 @@ exports = module.exports = function (app, mongoose) {
 
                     body.imageUrl = imgData.secure_url;
 
-                    const newStudent = new app.db.models.Student(body);
+                    var StudentSchm = app.db.models.Student;
+                    StudentSchm.nextCount(function (err, count) {
+                        body.rollNo = createRollNo(count, body.course);
+                        console.log(body);
 
-                    newStudent.save().then(regData => {
-                        console.log("registration data");
-                        console.log(regData);
+                        const newStudent = new app.db.models.Student(body);
 
-                        const UserSchema = app.db.models.User;
-                        let id = regData.userId;
-                        console.log(id);
-                        UserSchema.findOneAndUpdate({ _id: id }, { $set: { submitted: true } }, { new: true })
-                            .then(response => {
+                        newStudent.save().then(regData => {
+                            console.log("registration data");
+                            console.log(regData);
 
-                                console.log(response);
-                                res.status(200).send(regData);
+                            const UserSchema = app.db.models.User;
+                            let id = regData.userId;
+                            console.log(id);
+                            UserSchema.findOneAndUpdate({ _id: id }, { $set: { formSubmitted: true } }, { new: true })
+                                .then(response => {
+                                    console.log(response);
+                                    loggedinUsers.findOneAndDelete({ databaseToken: databaseToken })
+                                        .then(tokenRes => {
+                                            res.status(200).send(regData);
+                                        })
+                                })
+                            console.log("from route")
 
-                            })
-                        console.log("from route")
+                            // res.status(200).send(regData);
 
-                        // res.status(200).send(regData);
-
-                    }).catch(err => {
-                        console.log(err)
-                        res.status(400).send(err);
+                        }).catch(err => {
+                            console.log(err)
+                            if (err.code == 11000) {
+                                return res.send({ success: false, message: err });
+                            }
+                            res.status(400).send(err);
+                        });
                     });
+
+
 
                 });
 
             }
         })
 
-        // cloudinary.v2.uploader.upload(req.file.path, {
-        //     secure: true,
-        //     transformation:
-        //         [
-        //             { width: 150, height: 150 }
-        //         ]
-        // }, (err, imgData) => {
-
-        //     if (err) {
-        //         console.log(err);
-        //         return res.status(500).send({ message: err.message });
-        //     }
-
-        //     console.log(imgData.secure_url);
-
-        //     body.imageUrl = imgData.secure_url;
-
-        //     const newStudent = new app.db.models.Student(body);
-
-        //     newStudent.save().then(x => {
-        //         console.log(x);
-        //         console.log("from route")
-        //         res.status(200).send(x);
-        //     }).catch(err => {
-        //         console.log(err)
-        //         res.status(400).send(err);
-        //     });
-
-        // });
-        // console.log("image==>>2")
-
     });
 
+
+    function createRollNo(count, course) {
+        let rollNo;
+        switch (true) {
+            case (count < 10):
+                return rollNo = course + "00000" + count;
+                break;
+            case (count < 100):
+                return rollNo = course + "0000" + count;
+                break;
+            case (count < 1000):
+                return rollNo = course + "000" + count;
+                break;
+            case (count < 10000):
+                return rollNo = course + "00" + count;
+                break;
+            case (count < 100000):
+                return rollNo = course + "0" + count;
+                break;
+            default:
+                return rollNo = course + "" + count;
+        }
+    }
 
     app.use('/form', router);
 

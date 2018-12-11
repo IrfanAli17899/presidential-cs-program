@@ -1,4 +1,4 @@
-/*eslint-disabled */
+/*eslint-disable */
 import React from "react";
 
 function validateForm(check, data, field, err) {

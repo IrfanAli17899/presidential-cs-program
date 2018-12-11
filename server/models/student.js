@@ -75,13 +75,32 @@ exports = module.exports = function (app, mongoose) {
             type: String,
             require: true
         },
+        province: {
+            type: String,
+            require: true
+        },
+        city: {
+            type: String,
+            require: true
+        },
+        distanceLearning: {
+            type: Boolean,
+            default: false
+        },
         signUpDate: {
             type: Number,
             default: Date.now()
+        },
+        rollInternal: {
+            type: String
+        },
+        rollNo: {
+            type: String
         }
+
     });
     // mongooseAutoInc.initialize()
-    Student.plugin(mongooseAutoInc.plugin, 'idNumber')
+    Student.plugin(mongooseAutoInc.plugin, { model: 'Student', field: 'rollInternal', startAt: 1, })
 
     app.db.model('Student', Student);
 
