@@ -62,7 +62,7 @@ class Routers extends Component {
           />
 
           <Route exact path="/idcard" component={Idcard} />
-          <Route exact path="/apply" component={FacebookAuth} />
+          
             <Route path="*" component={NotFound} />
 
           </Switch>
