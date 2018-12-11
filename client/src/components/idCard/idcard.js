@@ -208,7 +208,7 @@ class Idcard extends Component {
     }
     render() {
         const { classes } = this.props;
-        const { fullName, course, imageUrl,distanceLearning,city } = this.state.studentData
+        const { fullName, course, imageUrl,distanceLearning,city,gender } = this.state.studentData
 
         const rollNo = this.state.rollNo
         return (
@@ -226,6 +226,7 @@ class Idcard extends Component {
                                                 <div className="row" style={{margin: 0,maxHeight: 280}}>
                                                     <div className="col-8 ">
                                                     <img src={logo} alt="Saylani" className="logoImage"/>
+                                                    <h1>ADMIT CARD</h1>
                                                     <div className="logoForm">
                                                             <p><b>Roll No:</b> {rollNo}</p>
                                                             <p><b>Full Name:</b> {fullName}</p>
@@ -285,6 +286,7 @@ class Idcard extends Component {
                                                 <div className="row" style={{margin: 0,maxHeight: 280}}>
                                                     <div className="col-8 ">
                                                     <img src={logo} alt="Saylani" className="logoImage"/>
+                                                    <h1 className="id-card-2-h1">ID CARD</h1>
                                                     <div className="logoForm">
                                                     <p><b>Roll No:</b> {rollNo}</p>
                                                             <p><b>Full Name:</b> {fullName}</p>
@@ -319,7 +321,9 @@ class Idcard extends Component {
                                 <p>3) Bring your original marksheet, certificate or degree of your highest qualification,<br />which you have mentioned in the application form. Also bring 2 copies of marksheet, certificate or degree.</p>
                                 <p>4) The last date for admit card & ID Card attestation is January 1, 2019.</p>
                                 <p>5) You will not be eligible to come to the entry test or classes without attestation of admit card from below address.</p>
-                                <p>6) For attestation please visit </p>
+                                <p className="idCardLocation">6) For attestation please visit : {gender=="male" ? <a target="_blank" href="https://goo.gl/maps/hhBnYccqcAE2">Saylani Welfare Head Office, A-25, Bahadurabad Chowrangi
+Karachi, Pakistan</a> : <a target="_blank" href="https://goo.gl/maps/fidKSi1akfq">Axiom Enterprises
+ 245/M/2 Block 6 PECHS Karachi Pakistan</a>} </p>
                                 <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
                             </Grid></div> </div>
                        

@@ -44,7 +44,7 @@ class FacebookAuth extends Component {
                     <div id="facebook-myForm">
                         <div className="facebookButton">
                             <FacebookLogin
-                                appId="2189492634459305"
+                                appId="2173426792978278"
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 callback={this.responseFacebook}
