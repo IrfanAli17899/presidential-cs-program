@@ -124,6 +124,9 @@ class Form extends Component {
         //}
 
     }
+    alreadyApplied(){
+        this.props.history.replace('/already-applied')
+    }
     submitForm(ev) {
         ev.preventDefault();
         let { data } = this.state;
@@ -240,6 +243,7 @@ class Form extends Component {
                 <div className="Rectangle-58">
                     <form id="myForm" ref="myForm" onSubmit={(ev) => this.submitForm(ev)}  >
                         <h1 className="APPLICATION-FORM ">APPLICATION FORM</h1>
+                        <button type="button" className="Rectangle-60" onClick={this.alreadyApplied.bind(this)}>Already Applied</button>
                         <MySelect
                             info={{
                                 DisplayName: "Course",

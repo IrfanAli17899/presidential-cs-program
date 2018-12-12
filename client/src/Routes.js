@@ -17,6 +17,7 @@ import ManagementCommittee from "./components/ManagementCommittee/ManagementComm
 import Idcard from "./components/idCard/idcard";
 //import FacebookAuth from './components/FacebookAuth/facebookAuth';
 import HowItWorks from './components/HowItWorks/HowItWorks'
+import AlreadyApplied from './components/AlreadyApplied/alreadyApplied'
 import ReactGA from "react-ga";
 
 // React Google Analytics Initializing
@@ -46,6 +47,9 @@ class Routers extends Component {
             <Route exact path="/subscribe" component={Contact} />
             <Route exact path="/howitworks" component={HowItWorks} />
             <Route exact path="/managementcommittee" component={ManagementCommittee} />
+            <Route exact path="/idcard" component={Idcard} />
+            <Route exact path="/apply" component={Form} />
+            <Route exact path="/already-applied" component={AlreadyApplied} />
             <Route path="*" component={NotFound} />
           </Switch>
           <Copyright />
