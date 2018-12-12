@@ -65,7 +65,6 @@ class AlreadyApplied extends Component {
         email
       })
       .then(response => {
-        console.log("response from server ", response);
         this.setState({
           data: {
             studentCnic: "",
@@ -77,7 +76,6 @@ class AlreadyApplied extends Component {
           message: ""
         });
         if(response.data.success){
-            console.log(response.data);
             ReactGA.event({
                 category: 'Already Applied',
                 action: 'Success'
@@ -85,7 +83,6 @@ class AlreadyApplied extends Component {
             this.props.history.replace('/idcard', response.data.userData)
         }
         else {
-            console.log("respose 1 else ",response);
             ReactGA.event({
                 category: 'Already Applied',
                 action: 'Not Found'
@@ -97,7 +94,6 @@ class AlreadyApplied extends Component {
         
       })
       .catch(err => {
-        console.log("respose 2 else ",err);
         this.setState({
             showLoader: false,
             showNotFoundError: true,
@@ -105,7 +101,6 @@ class AlreadyApplied extends Component {
       });
     }
     catch(error){
-        console.log("respose 3 else ",error);
         this.setState({
             showLoader: false,
             showNotFoundError: true,
