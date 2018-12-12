@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import { loadReCaptcha , ReCaptcha } from 'react-recaptcha-google'
 
