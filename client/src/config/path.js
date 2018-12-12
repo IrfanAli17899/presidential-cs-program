@@ -14,4 +14,6 @@ export default class path {
 
     static FACEBOOK_AUTH = path.BASE_URL + '/facebookauth';
 
+    static FIND_ID_CARD = path.BASE_URL + '/findIdCard';
+
 }

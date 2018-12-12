@@ -7,6 +7,7 @@ exports = module.exports = function(app,mongoose) {
   require('./contactForm')(app,mongoose);
   require('./auth')(app,mongoose);
   require('./facebookauth')(app,mongoose);
+  require('./findIdCard')(app,mongoose);
 }
 
 

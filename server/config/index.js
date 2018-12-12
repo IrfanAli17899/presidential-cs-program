@@ -20,8 +20,8 @@ exports = module.exports = function(app) {
         app.set("crosDomains",process.env.crosDomains);
     }
     else {
-        app.set("mongodb-url",'"mongodb://localhost:27017/PIAIC');
-        // app.set("mongodb-url","mongodb://piaicuser:piaic_1234@ds133152.mlab.com:33152/piaic-dev");
+        //app.set("mongodb-url",'"mongodb://localhost:27017/PIAIC');
+        app.set("mongodb-url","mongodb://piaicuser:piaic_1234@ds133152.mlab.com:33152/piaic-dev");
     
         //cloudinary Stroage Credentials  
         app.set("cloud_name",'dgtzrxfyd');

@@ -56,7 +56,12 @@ class Form extends Component {
             }
         }
 
+        ReactGA.event({
+            category: 'Form Registration',
+            action: 'Started'
+        });
 
+        /*
         if (!this.state.userData) {
             this.props.history.replace('/apply')
         }
@@ -65,6 +70,7 @@ class Form extends Component {
         } else {
             this.state.data.fullName = this.props.location.state.name;
         }
+        */
     }
 
 
@@ -105,7 +111,7 @@ class Form extends Component {
         }
     }
     componentDidMount() {
-        if (this.state.userData) {
+        //if (this.state.userData) {
             Swal({
                 title: 'Notice',
                 text: `We are launching classes starting in Karachi. Soon we will add Islamabad,
@@ -115,13 +121,16 @@ class Form extends Component {
             }).then((result) => {
 
             })
-        }
+        //}
 
+    }
+    alreadyApplied(){
+        this.props.history.replace('/already-applied')
     }
     submitForm(ev) {
         ev.preventDefault();
         let { data } = this.state;
-        let { userId, databaseToken } = this.state.userData;
+        //let { userId, databaseToken } = this.state.userData;
         const {
             image,
             DOB,
@@ -162,44 +171,51 @@ class Form extends Component {
         formData.append("lastQualification", lastQualification);
         formData.append("studentCnic", studentCnic);
         formData.append("fatherCnic", fatherCnic);
-        formData.append('userId', userId);
+        //formData.append('userId', userId);
         formData.append('distanceLearning', distanceLearning);
-        formData.append('databaseToken', databaseToken);
+        //formData.append('databaseToken', databaseToken);
         formData.append('city', city);
         formData.append('province', province);
-
-
-
-
+        ReactGA.event({
+            category: 'Form Registration',
+            action: 'Form Submitted'
+        });
         fetch(Path.REGISTRATION_FORM, {
             method: 'POST',
             body: formData,
-        }).then(userData => {
-
-            return userData.json();
-        }).then(userData => {
-
+        }).then(response => {
+            return response.json();
+        }).then(responseJson => {
             this.setState({ submited: false });
-            console.log(userData);
-            if (userData.success == false) {
+            //console.log(responseJson);
+            if (responseJson.success == false) {
+                
                 let serverError = {
                     hasError: true,
-                    message: "Your Email Phone Or Cnic in already exist in Database"
+                    message: responseJson.message
+                    //message: "Your Email Phone Or Cnic in already exist in Database"
                 }
+                
                 this.setState({ serverError });
                 // alert("Your Email Phone Or Cnic in already exist in Database");
                 this.setState({})
             }
-            if (userData.fullName) {
+            else {
                 ReactGA.event({
                     category: 'Form Registration',
                     action: 'Success'
                 });
-                this.props.history.replace('/idcard', userData)
+                this.props.history.replace('/idcard', responseJson.userData)
             }
         }).catch((err) => {
-            console.log("working")
-            console.log(err);
+            //console.log("working")
+            //console.log(err);
+            let serverError = {
+                hasError: true,
+                message: err
+                //message: "Your Email Phone Or Cnic in already exist in Database"
+            }
+            this.setState({ serverError });
             this.setState({ submited: false });
 
         });
@@ -227,6 +243,7 @@ class Form extends Component {
                 <div className="Rectangle-58">
                     <form id="myForm" ref="myForm" onSubmit={(ev) => this.submitForm(ev)}  >
                         <h1 className="APPLICATION-FORM ">APPLICATION FORM</h1>
+                        <button type="button" className="Rectangle-60" onClick={this.alreadyApplied.bind(this)}>Already Applied</button>
                         <MySelect
                             info={{
                                 DisplayName: "Course",

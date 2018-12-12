@@ -178,7 +178,7 @@ class Idcard extends Component {
         this.print = this.print.bind(this);
     }
     componentWillMount() {
-        console.log("form data  ===>>", this.props.location.state)
+        //console.log("form data  ===>>", this.props.location.state)
         if (this.props.location.state) {
             let data = this.props.location.state
 
@@ -324,7 +324,7 @@ class Idcard extends Component {
                                 <p>4) The last date for admit card & ID Card attestation is January 1, 2019.</p>
                                 <p>5) You will not be eligible to come to the entry test or classes without attestation of admit card from below address.</p>
                                 <p className="idCardLocation">6) For attestation please visit : {gender=="male" ? <a target="_blank" href="https://goo.gl/maps/hhBnYccqcAE2">Saylani Welfare Head Office, A-25, Bahadurabad Chowrangi
-Karachi, Pakistan</a> : <a target="_blank" href="https://goo.gl/maps/fidKSi1akfq">Axiom Enterprises
+Karachi, Pakistan</a> : <a target="_blank" href="https://goo.gl/maps/fidKSi1akfq">PIAIC Headquarters
  245/M/2 Block 6 PECHS Karachi Pakistan</a>} </p>
                                 <div className={classes.buttonPrint}><Button onClick={this.print} block className={classes.printBtn} id="printButton" bsSize="large">Print</Button></div>
                             </Grid></div> </div>
