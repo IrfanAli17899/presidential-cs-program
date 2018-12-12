@@ -178,7 +178,7 @@ class Idcard extends Component {
         this.print = this.print.bind(this);
     }
     componentWillMount() {
-        console.log("form data  ===>>", this.props.location.state)
+        //console.log("form data  ===>>", this.props.location.state)
         if (this.props.location.state) {
             let data = this.props.location.state
 

@@ -9,21 +9,14 @@ import AI from "./components/Ai/ai";
 import Navbar from "./components/Navbar/Navbar";
 // import Footer from './components/Footer/Footer';
 import Copyright from "./components/Copyright/Copyright";
-// import PhoneNumber from "./components/auth/PhoneNumber";
-import VerificationCode from "./components/auth/VerificationCode";
 import NotFound from "./components/404/404"
-
-import Directors from "../src/components/Directors/Directors";
 import Contact from "../src/components/ContactUs/ContactUs";
 import BlockChain from "./components/BlockChain/BlockChain";
-
 import history from "./History";
 import ManagementCommittee from "./components/ManagementCommittee/ManagementCommittee";
 import Idcard from "./components/idCard/idcard";
-import FacebookAuth from './components/FacebookAuth/facebookAuth';
-
+//import FacebookAuth from './components/FacebookAuth/facebookAuth';
 import HowItWorks from './components/HowItWorks/HowItWorks'
-
 import ReactGA from "react-ga";
 
 // React Google Analytics Initializing
@@ -45,26 +38,15 @@ class Routers extends Component {
 
           <Navbar />
           <Switch>
-
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/form" component={Form} />
-          <Route exact path="/block-chain" component={BlockChain} />
-          <Route exact path="/artificial-inteligence" component={AI} />
-          <Route exact path="/cloud-native" component={CloudNative} />
-          <Route exact path="/directors" component={Directors} />
-          <Route exact path="/subscribe" component={Contact} />
-          <Route exact path="/howitworks" component={HowItWorks} />
-          <Route
-            exact
-            path="/managementcommittee"
-            component={ManagementCommittee}
-          />
-
-          <Route exact path="/idcard" component={Idcard} />
-          
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/block-chain" component={BlockChain} />
+            <Route exact path="/artificial-inteligence" component={AI} />
+            <Route exact path="/cloud-native" component={CloudNative} />
+            <Route exact path="/subscribe" component={Contact} />
+            <Route exact path="/howitworks" component={HowItWorks} />
+            <Route exact path="/managementcommittee" component={ManagementCommittee} />
             <Route path="*" component={NotFound} />
-
           </Switch>
           <Copyright />
         </div>

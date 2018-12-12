@@ -38,57 +38,54 @@ exports = module.exports = function (app, mongoose) {
         }
         const body = req.body;
 
-
-        // console.log(app.db.models.Student);
-
-
-
         if (!req.file) {
-            return res.status(400).send({ message: "Please Provide Your Image" });
+            return res.send({ success: false, message: "Please Provide Your Image" });
         }
         if (!body.fatherName || body.fatherName.length < 3) {
-            return res.status(400).send({ message: "Please Provide Your Father Name" });
+            return res.send({ success: false, message: "Please Provide Your Father Name" });
         }
         if (!body.fullName || body.fullName.length < 3) {
-            return res.status(400).send({ message: "Please Provide Your Full Name" });
+            return res.send({ success: false, message: "Please Provide Your Full Name" });
         }
         if (!body.email) {
-            return res.status(400).send({ message: "Please Provide Your Email" });
+            return res.send({ success: false, message: "Please Provide Your Email" });
         }
         if (!body.course || body.course.length !== 3) {
-            return res.status(400).send({ message: "Please Provide Your course" });
+            return res.send({ success: false, message: "Please Provide Your course" });
         }
         if (!body.phoneNumber || !validator.isNumeric(body.phoneNumber)) {
-            return res.status(400).send({ message: "Please Provide Your Phone Number" });
+            return res.send({ success: false, message: "Please Provide Your Phone Number" });
         }
         if (!body.gender || body.gender !== "male" && body.gender !== "female") {
-            return res.status(400).send({ message: "Please Provide Your gender" });
+            return res.send({ success: false, message: "Please Provide Your gender" });
         }
         if (!body.homeAddress || body.homeAddress.length < 6) {
-            return res.status(400).send({ message: "Please Provide Your Valid Home Address" });
+            return res.send({ success: false, message: "Please Provide Your Valid Home Address" });
         }
         if (!body.lastQualification) {
-            return res.status(400).send({ message: "Please Provide Your Last Qualification" });
+            return res.send({ success: false, message: "Please Provide Your Last Qualification" });
         }
         if (!body.studentCnic || !validator.isNumeric(body.studentCnic)) {
-            return res.status(400).send({ message: "Please Provide Your Cnic" });
+            return res.send({ success: false, message: "Please Provide Your Cnic" });
         }
         if (!body.dob) {
-            return res.status(400).send({ message: "Please Provide Your Date of Birth" });
+            return res.send({ success: false, message: "Please Provide Your Date of Birth" });
         }
         if (!body.fatherCnic || !validator.isNumeric(body.fatherCnic)) {
-            return res.status(400).send({ message: "Please Provide Your valid father Cnic" });
+            return res.send({ success: false, message: "Please Provide Your valid father Cnic" });
         }
         if (body.fatherNameCnic === body.studentCnic) {
-            return res.status(400).send({ message: "Please Provide A Seprate  Father / Student Cnic" });
+            return res.send({ success: false, message: "Please Provide A Seprate  Father / Student Cnic" });
         }
+        /*
         if (!body.databaseToken) {
             return res.status(401).send({ message: "You Are Not Allowed To Continue" });
         }
+        */
 
+       uploadImage(req,res);
 
-
-
+            /*
         let databaseToken = body.databaseToken;
 
 
@@ -165,9 +162,50 @@ exports = module.exports = function (app, mongoose) {
                 });
 
             }
-        })
+        });*/
 
     });
+
+    function uploadImage(req, res){
+        cloudinary.v2.uploader.upload(req.file.path, {
+            secure: true,
+            transformation:
+                [{ width: 150, height: 150 }]
+        }, 
+        (err, imgData) => {
+            if (err) {
+                console.log(err);
+                // change it to unable to process your image, please try again
+                return res.send({ success: false, message: err.message });
+            }
+            console.log(imgData.secure_url);
+            saveUserData(req,res,imgData);
+        });
+    }
+
+    function saveUserData(req, res, imgData){
+        console.log("in saveUserData");
+        var body = req.body;
+        body.imageUrl = imgData.secure_url;
+        var StudentSchema = app.db.models.Student;
+        StudentSchema.nextCount(function (err, count) {
+            body.rollNo = createRollNo(count, body.course);
+            console.log(body);
+            const newStudent = new app.db.models.Student(body);
+            newStudent.save().then(regData => {
+                console.log("registration data >> ",regData);
+                res.status(200).send({success:true , userData:regData});
+            })
+            .catch(err => {
+                // manage errors
+                console.log(err)
+                if (err.code == 11000) {
+                    return res.send({ success: false, message: "You have provided information which already exists, Please try again" });
+                }
+                res.send({ success: false, message: "Unknown error, Please try again" });
+            });
+        });
+    }
 
 
     function createRollNo(count, course) {
