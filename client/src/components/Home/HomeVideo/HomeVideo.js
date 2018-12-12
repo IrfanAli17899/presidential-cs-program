@@ -46,11 +46,9 @@ class HomeVideo extends Component {
                     <div className="video-cont">
                         
                         
-                        { <h1>Registration resumes in </h1> }
-                        { <Countdown date={`2018-12-13T00:00:00`} /> }
-                        
-                       
-                        
+                        { /*<h1>Registration resumes in </h1> */}
+                        { /*<Countdown date={`2018-12-13T00:00:00`} /> */}
+                        <button onClick={() => {this.props.history.push("apply")}} className="subscribe mt-4">Apply</button>
                         <button onClick={() => {this.props.history.push("subscribe")}} className="subscribe mt-4">Subscribe</button>
                         
                         </div>

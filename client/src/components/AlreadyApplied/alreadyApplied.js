@@ -127,7 +127,7 @@ class AlreadyApplied extends Component {
             <div id="myForm" style={{ width: "70vw" }}>
               <div className="main">
                 <div className="beta">
-                  <h1 className="APPLICATION-FORM">Find my Id Card</h1>
+                  <h1 className="APPLICATION-FORM">Find My Id Card</h1>
                   <div className="row">
                     <div className="col-md-12 row2mail">
                       <label className="label">

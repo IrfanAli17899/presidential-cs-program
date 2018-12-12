@@ -97,15 +97,17 @@ class Navbar extends Component {
                         {/* <Link to='/managementcommittee'>  <li className={manageCommitte ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , manageCommitte : true , about : false , subs : false });this.catd();this.scrollTop()}}>Management Committee</li></Link> */}
 
                         {
-                          /*
+                          
                             <Link to='/apply'>  <li className={apply ? 'active-color' : ''}  onClick={()=>{this.setState({ai : false , cn : false , bc : false ,hiw: false, about : false , subs : false, apply : true}); this.catd();this.scrollTop()}}>Apply</li></Link>
-                            */    
+                                
                         }
                         
 
-                        
-                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false ,hiw: false, about : false , subs : true, apply: false });this.catd();this.scrollTop()}}>Subscribe</li></Link>
-
+                        {
+                        /*
+                            <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false ,hiw: false, about : false , subs : true, apply: false });this.catd();this.scrollTop()}}>Subscribe</li></Link>
+                        */
+                        }
                     </ul>
                     
                     
