@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -142,6 +143,7 @@ class AlreadyApplied extends Component {
                         onChange={this.handleChnage}
                         name="studentCnic"
                         className="form-control input11"
+                        maxLength="13"
                         placeholder="CNIC or B-Form # without hyphenation"
                       />
                       {errors && errors.errorsObj.studentCnic && (
@@ -160,11 +162,12 @@ class AlreadyApplied extends Component {
                         )}
                       </label>
                       <input
-                        type="number"
+                        type="text"
                         value={contactNumber}
                         name="contactNumber"
                         onChange={this.handleChnage}
                         className="form-control input11"
+                        maxLength="11"
                         placeholder="03XX-XXXXXXX"
                       />
                       {errors && errors.errorsObj.contactNumber && (

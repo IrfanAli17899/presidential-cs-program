@@ -337,7 +337,7 @@ class Form extends Component {
                             value: phoneNumber,
                             placeholder: "Your valid mobile number ( 03XXXXXXXXX )",
                             changeData: this.changeData,
-
+                            maxlength:11,
                             errors
                         }} />
                         <MyInput info={{
