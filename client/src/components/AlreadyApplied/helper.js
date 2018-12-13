@@ -31,7 +31,7 @@ function validateForm(check, data, field, err) {
       ],
       elem: "studentCnic"
     },
-    
+    /*
     contactNumber: {
       Validate: [
         {
@@ -66,7 +66,7 @@ function validateForm(check, data, field, err) {
         }
       ],
       elem: "email"
-    },
+    },*/
   };
   if (check === "all") {
     for (var i in Validation) {
