@@ -270,9 +270,10 @@ class Form extends Component {
                                 <input className="checky" type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl"/>
                                     <span className="checkmark"></span>
                                 </label> */}
-                                <strong className="label">Online Learning</strong>
+                                <strong className="label">Online Learning
                                 <input type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl" />
-                                <strong className="label check-message">Only check this box if you are interested in joining the class online. For distance learning, you must be in Karachi or come to Karachi for all exams.</strong>
+                                </strong>
+                                <strong className="check-message">Only check this box if you are interested in joining the class online. For distance learning, you must be in Karachi or come to Karachi for all exams.</strong>
                         </div>
 
                             <MyInput info={{

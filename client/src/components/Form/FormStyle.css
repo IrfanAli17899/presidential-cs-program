@@ -30,9 +30,8 @@
   .additionalData{
     font-size: 11px
   }
-  #check-container{
-    /* margin: 20px 0px; */
-    margin:4% 0px -2% 0;
+  #container-check{
+    margin:3% 0px -0.5% 0;
 
   }
 
@@ -42,9 +41,11 @@
   }
   .check-message{
     display: block;
-    width:40vw;
+    white-space: pre-wrap;
+    width: 550px;
+    color: #017969;    
     margin-top:2px !important;
-    font-size:12px !important;
+    font-size:10px !important;
   }
 
   /* Customize the label (the container) */
@@ -60,6 +61,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 
 /* Hide the browser's default checkbox */
 .container-check input {
@@ -354,6 +356,7 @@
         border-bottom-left-radius: 5px;
 
     }
+  
     .img-container{
         width: 100%;
         border-top-left-radius: 5px;
@@ -366,5 +369,9 @@
         width: 90%;
         display: block;
         margin: 20px auto;
+    }
+    .check-message{
+      width: 90%;
+      margin: 20px auto;
     }
 }

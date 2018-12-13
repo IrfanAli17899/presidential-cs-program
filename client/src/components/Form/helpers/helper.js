@@ -90,17 +90,17 @@ function validateForm(check, data, field, err) {
         fatherCnic: {
             Validate: [
                 {
-                    condition: fatherCnic.length !== 13,
+                    condition: fatherCnic && fatherCnic.length !== 13,
                     message: " Please enter your father's full CNIC number. CNIC # should contain only 13 digits. ",
 
                 }, {
-                    condition: !/\d/.test(fatherCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(fatherCnic),
+                    condition: fatherCnic && (!/\d/.test(fatherCnic) || /^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 @&$]*)?$/.test(fatherCnic)),
                     message: " CNIC Should Have Numbers Only. ",
                 }, {
-                    condition: /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
-                    message: " No Space Hyphens '-' Or Any Special Character. ",
+                    condition: fatherCnic && /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(fatherCnic),
+                    message: "  No Space Hyphens '-' Or Any Special Character. ",
                 }, {
-                    condition: fatherCnic === studentCnic,
+                    condition: fatherCnic && fatherCnic === studentCnic,
                     message: " Please Enter Your Father CNIC Number. ",
                 }
 
