@@ -9,6 +9,7 @@ exports = module.exports = function (app, mongoose) {
         if (!body.studentCnic) {
             return res.send({success:false, message: "Please Provide Your CNIC or B-Form #" });
         }
+        /*
         if (!body.email) {
             return res.send({success:false, message: "Please Provide Your Email Name" });
         }        
@@ -18,9 +19,10 @@ exports = module.exports = function (app, mongoose) {
         if(!validator.isNumeric(body.contactNumber)){
             return res.send({success:false, message: "Please Provide a Valid Phone Number" });
         }
-
+        */
         const student = app.db.models.Student;
-        student.findOne({ email: body.email,phoneNumber:body.contactNumber, studentCnic: body.studentCnic},
+        //student.findOne({ email: body.email,phoneNumber:body.contactNumber, studentCnic: body.studentCnic},
+        student.findOne({ studentCnic: body.studentCnic},
             {   distanceLearning: 1, 
                 dob: 1,
                 course: 1,

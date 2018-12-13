@@ -243,7 +243,7 @@ class Form extends Component {
                 <div className="Rectangle-58">
                     <form id="myForm" ref="myForm" onSubmit={(ev) => this.submitForm(ev)}  >
                         <h1 className="APPLICATION-FORM">APPLICATION FORM</h1>
-                        <button type="button" className="Rectangle-60" onClick={this.alreadyApplied.bind(this)}>Already Applied</button>
+                        <button type="button" className="Rectangle-60" onClick={this.alreadyApplied.bind(this)}>Already Applied? Access Your Card Here</button>
                         <MySelect
                             info={{
                                 DisplayName: "Course",
@@ -270,7 +270,7 @@ class Form extends Component {
                                 <input className="checky" type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl"/>
                                     <span className="checkmark"></span>
                                 </label> */}
-                                <strong className="label">Distance Learning</strong>
+                                <strong className="label">Online Learning</strong>
                                 <input type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl" />
                                 <strong className="label check-message">Only check this box if you are interested in joining the class online. For distance learning, you must be in Karachi or come to Karachi for all exams.</strong>
                         </div>

@@ -41,6 +41,7 @@ class AlreadyApplied extends Component {
     });
   };
   onSubmit = () => {
+      console.log("test>>");
     let { data, message } = this.state;
     const {
         studentCnic,
@@ -153,6 +154,9 @@ class AlreadyApplied extends Component {
                       )}
                     </div>
                   </div>
+                  
+                  {
+                      /*
                   <div className="row">
                     <div className="col-md-12 row2mail">
                       <label className="label">
@@ -177,6 +181,10 @@ class AlreadyApplied extends Component {
                       )}
                     </div>
                   </div>
+                   */
+                }
+                  {/*
+                
                   <div className="row">
                     <div className="col-md-12 row2mail">
                       <label className="label">
@@ -200,7 +208,7 @@ class AlreadyApplied extends Component {
                       )}
                     </div>
                   </div>
-                  
+                   */}
                   <div className="row btnRow">
                     <div className="col-md-6">
                       <button
