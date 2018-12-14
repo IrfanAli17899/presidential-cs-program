@@ -20,8 +20,8 @@ exports = module.exports = function(app) {
         app.set("crosDomains",process.env.crosDomains);
     }
     else {
-        //app.set("mongodb-url",'"mongodb://localhost:27017/PIAIC');
-        app.set("mongodb-url","mongodb://piaicuser:piaic_1234@ds133152.mlab.com:33152/piaic-dev");
+        app.set("mongodb-url",'"mongodb://localhost:27017/PIAIC');
+        // app.set("mongodb-url","mongodb://piaicuser:piaic_1234@ds133152.mlab.com:33152/piaic-dev");
     
         //cloudinary Stroage Credentials  
         app.set("cloud_name",'dgtzrxfyd');
@@ -30,6 +30,7 @@ exports = module.exports = function(app) {
         app.set("authy_api_key",'7OY1Yp5wcEjkEQfHO1hsAg8nlzx8X3gi');
         app.set("showLogs",true);
         app.set("crosDomains",'http://localhost:3000');
+        app.set("jwtsalt", "somemagicalwords");
     }
 
 }
