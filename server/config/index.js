@@ -30,6 +30,7 @@ exports = module.exports = function(app) {
         app.set("authy_api_key",'7OY1Yp5wcEjkEQfHO1hsAg8nlzx8X3gi');
         app.set("showLogs",true);
         app.set("crosDomains",'http://localhost:3000');
+        app.set("jwtsalt", "somemagicalwords");
     }
 
 }

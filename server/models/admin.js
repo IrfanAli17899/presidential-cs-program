@@ -2,7 +2,7 @@ exports = module.exports = function (app, mongoose) {
     var validator = require('validator');
     'use strict';
     var Schema = mongoose.Schema;
-    const adminTable = new Schema({
+    const admin = new Schema({
         userName: {
             type: String,
             required: true,
@@ -28,10 +28,15 @@ exports = module.exports = function (app, mongoose) {
         phoneNumber: {
             type: String,
             required: true
+        },
+        role: {
+            type: String,
+            enum: ["SuperAdmin", "Admin"],
+            required: true
         }
     });
 
 
-    app.db.model('admin', adminTable);
+    app.db.model('Admin', admin);
 
 }

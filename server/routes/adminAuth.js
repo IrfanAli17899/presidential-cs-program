@@ -1,5 +1,6 @@
 exports = module.exports = function (app, mongoose) {
 
+
     var express = require('express');
     var router = express.Router();
     var { SHA256 } = require('crypto-js');
@@ -8,29 +9,31 @@ exports = module.exports = function (app, mongoose) {
     router.post('/', function (req, res, next) {
 
         let body = req.body;
+
         console.log(body);
-        body.password = SHA256(JSON.stringify(body.password) + "someMgicalWords").toString();
+
+        body.password = SHA256(JSON.stringify(body.password) + app.get('jwtsalt')).toString();
 
         // res.send(body);
 
-        const AdminTable = app.db.models.admin;
+        const admin = app.db.models.Admin;
 
-        // AdminTable.save().then(data => {
+        // admin.save().then(data => {
         //     res.send(data);
         // })
 
-        AdminTable.findOne({ userName: body.userName, password: body.password }).then(data => {
+        admin.findOne({ userName: body.userName, password: body.password }).then(data => {
 
             if (!data) {
-                return res.send({ sucess: false, message: "Please Provide A Valid UserName Password" })
+                return res.send({ sucess: false, message: "Please Provide A Valid UserName or Password" })
             }
 
             let userData = data;
 
-            console.log(userData)
+            app.log(userData);
 
 
-            databaseToken = jwt.sign({ userName: userData.userName, _id: userData._id }, "somemagicalwords");
+            databaseToken = jwt.sign({ userName: userData.userName, _id: userData._id }, app.get('jwtsalt'));
 
             let tokenTableData = { databaseToken, userName: userData.userName, adminId: userData._id }
 
@@ -41,18 +44,18 @@ exports = module.exports = function (app, mongoose) {
 
             LoggedinAdmin.save().then(tokenData => {
 
-                console.log(tokenData)
+                app.log(tokenData)
 
                 return res.send({ sucess: true, tokenData });
 
             }).catch(err => {
-                res.send(err);
+                res.send({ success: false, message: err.message });
             })
 
 
         }).catch(err => {
 
-            res.send(err);
+            res.send({ success: false, message: err.message });
 
         })
 
@@ -61,7 +64,7 @@ exports = module.exports = function (app, mongoose) {
     });
 
 
-    app.use('/login', router);
+    app.use('/adminauth', router);
 
 }
 
