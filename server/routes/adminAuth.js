@@ -28,6 +28,7 @@ exports = module.exports = function (app, mongoose) {
                 return res.send({ sucess: false, message: "Please Provide A Valid UserName or Password" })
             }
 
+
             let userData = data;
 
             app.log(userData);
@@ -42,11 +43,32 @@ exports = module.exports = function (app, mongoose) {
 
             const LoggedinAdmin = new app.db.models.loggedinAdmin(tokenTableData);
 
-            LoggedinAdmin.save().then(tokenData => {
+            LoggedinAdmin.save().then(userData => {
 
-                app.log(tokenData)
+                app.log(userData)
 
-                return res.send({ sucess: true, tokenData });
+                const role = app.db.models.Role;
+
+                role.find({ roles: "SuperAdmin" }).then(roleData => {
+
+                    console.log(roleData);
+
+                    if (!roleData) {
+                        return res.send({ success: true, userData, routes: [] });
+
+                    }
+
+                    let routes = [];
+                    
+                    roleData.map(data => {
+                        routes.push(data.path);
+                    })
+                    app.log(routes);
+
+                    return res.send({ success: true, userData: userData, routes: routes });
+
+                })
+
 
             }).catch(err => {
                 res.send({ success: false, message: err.message });
