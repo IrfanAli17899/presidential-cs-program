@@ -19,7 +19,7 @@ exports = module.exports = function (app, mongoose) {
         {
             type: Date,
             default: Date.now,
-            expires: 60
+            expires: 60//Time in Seconds To Expire The Token
         }
     });
 
