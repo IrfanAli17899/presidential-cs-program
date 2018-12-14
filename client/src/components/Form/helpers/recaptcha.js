@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import { loadReCaptcha , ReCaptcha } from 'react-recaptcha-google'
 
@@ -31,7 +33,7 @@ class Recaptcha extends Component {
             ref={(el) => {this.captchaDemo = el;}}
             size="normal"
             render="explicit"
-            sitekey="6Ld23X8UAAAAAL8MBi3sB9jdTRx9ic6EDb5BcsL0"
+            sitekey="6LccZYAUAAAAAL30FxZ0DhVQQZKnrJPZTjlaxCUk"
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
             type= 'image'

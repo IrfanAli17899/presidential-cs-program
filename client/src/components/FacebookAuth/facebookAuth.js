@@ -42,9 +42,11 @@ class FacebookAuth extends Component {
             <div className="container-fluid p-0">
                 <div className="facebook-Rectangle-588">
                     <div id="facebook-myForm">
+                    <h1 className="fbButtonText">Kindly use Desktop Computers / Laptops to apply this program.</h1>
                         <div className="facebookButton">
+                        
                             <FacebookLogin
-                                appId="2189492634459305"
+                                appId="2173426792978278"
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 callback={this.responseFacebook}

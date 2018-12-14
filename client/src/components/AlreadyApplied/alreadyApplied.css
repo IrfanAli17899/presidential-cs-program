@@ -1,0 +1,129 @@
+#myForm {
+  padding: 5% 0;
+}
+
+.Rectangle-58 {
+  /* width: 100%; */
+  height: 100%;
+  background-image: linear-gradient(to bottom, #dfedf0, #e6dada);
+  display: flex;
+  justify-content: center;
+}
+
+.APPLICATION-FORM {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0%;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: center;
+  color: #017969;
+}
+
+.label {
+  font-size: 18px;
+  margin: 3% 0;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #017969;
+}
+
+.ContactClass {
+  width:100%;
+  min-height: 90vh;
+  background-image: linear-gradient(to bottom, #dfedf0, #e6dada);
+  display: flex;
+  justify-content: center;
+}
+
+.row2mail {
+  margin-top: 20px;
+}
+
+.textArea {
+  resize: none;
+}
+
+
+.Rectangle-112 {
+  height: 50px;
+  border-radius: 5px;
+  background-color: #00ce9f;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.btnRow {
+  margin-top: 20px;
+  justify-content: center;
+}
+.input11::placeholder,.textArea::placeholder{
+color: #0000003d;
+}
+.errorContact {
+  color: rgb(172, 15, 15);
+  position: relative;
+  font-size: 15px;
+  /* margin: 10px 0; */
+  margin-top: 10px;
+  margin-bottom: -20px;
+  text-align: justify;
+  width: 552px;
+  padding: 5px;
+  transition: all ease-in-out 2s;
+  width: inherit;
+}
+
+.errorElem {
+  border: 1px solid rgba(172, 15, 15, 0.589) !important;
+}
+
+.input11 {
+  height: 50px;
+}
+
+.staric {
+  font-size: 20px;
+}
+.calculate-heigth{
+  background-image: linear-gradient(to bottom, #dfedf0, #e6dada);
+  height : calc(100vh - 110px);
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.calculate-heigth h1{
+  color: #017969;
+  font-size: 3.4em;
+}
+.calculate-heigth h2{
+  color : #05a08b;
+  font-size : 1.8em;
+  text-align: center
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+}
+
+.beta{
+  width: 40vw;
+}
+
+@media(max-width:1024px){
+  .beta{
+    width: 100%;
+  }
+}

@@ -4,12 +4,21 @@
     display: flex;
     justify-content: center;
   }
+
+  .Rectangle-59::placeholder{
+    color: #00000063;
+  }
+  .disable-btn{
+    background: lightgray!important;
+    cursor: not-allowed!important;
+  }
   #myForm{
       padding:5% 0;
   }
   select:focus,input:focus{
      box-shadow: none !important;
   }
+
   button:focus{
       outline: none;
   }
@@ -21,21 +30,92 @@
   .additionalData{
     font-size: 11px
   }
-  #check-container{
-    /* margin: 20px 0px; */
-    margin:4% 0px -2% 0;
+  #container-check{
+    margin:3% 0px -0.5% 0;
 
   }
+
   #dl{
     vertical-align: middle;
     margin: 0px 10px;
   }
   .check-message{
     display: block;
-    width:40vw;
+    white-space: pre-wrap;
+    width: 550px;
+    color: #017969;    
     margin-top:2px !important;
-    font-size:12px !important;
+    font-size:10px !important;
   }
+
+  /* Customize the label (the container) */
+.container-check{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+.container-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-check input:checked ~ .checkmark {
+  background-color: #039e89;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+} 
   
   .my-error{
     display: block;
@@ -276,6 +356,7 @@
         border-bottom-left-radius: 5px;
 
     }
+  
     .img-container{
         width: 100%;
         border-top-left-radius: 5px;
@@ -288,5 +369,9 @@
         width: 90%;
         display: block;
         margin: 20px auto;
+    }
+    .check-message{
+      width: 90%;
+      margin: 20px auto;
     }
 }

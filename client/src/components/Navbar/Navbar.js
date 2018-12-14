@@ -103,9 +103,11 @@ class Navbar extends Component {
                         }
                         
 
-                        
-                        <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false ,hiw: false, about : false , subs : true, apply: false });this.catd();this.scrollTop()}}>Subscribe</li></Link>
-
+                        {
+                        /*
+                            <Link to='/subscribe'>  <li className={subs ? 'active-color' : ''} onClick={()=>{this.setState({ai : false , cn : false , bc : false ,hiw: false, about : false , subs : true, apply: false });this.catd();this.scrollTop()}}>Subscribe</li></Link>
+                        */
+                        }
                     </ul>
                     
                     

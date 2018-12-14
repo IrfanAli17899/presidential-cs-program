@@ -9,12 +9,25 @@
     min-width: 570px;
     max-width: 570px;
 }
-
+.cardBody2 h1{
+    display: inline-block;
+    /* width: 50px; */
+    font-size: 24px;
+    margin-left: 10%;
+    color: #017969;
+    font-weight: 900;
+}
+.id-card-2-h1{
+    margin-left: 15% !important;
+}
 .logoImage{
     height: 30%;
     margin: 5%;
 }
-
+.idCardLocation a{
+    color: black;
+    text-decoration: underline !important;
+}
 .logoForm b{
     color: #017969;
 }

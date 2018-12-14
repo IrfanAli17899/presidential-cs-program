@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { Component } from 'react';
 import './HowItWorks.css';
 import pakMap from '../../assets/pakMap.png';
@@ -24,6 +26,7 @@ class HowItWorks extends Component {
             <div>
               <div className="hiw-table-box">
                 <table>
+                  <tbody>
                   <tr>
                     <td></td>
                     <td className="second-col-area-head"><p>City by City Roadmap</p></td>
@@ -54,6 +57,8 @@ class HowItWorks extends Component {
                     <td className="second-col-area"><p>Quetta</p></td>
                     <td className="third-col-status"><p>Coming Soon</p></td>
                   </tr>
+                  </tbody>
+
                 </table>
                 </div>
             </div>
@@ -103,7 +108,7 @@ The fee structure for distance learning students is PKR 500 per month for 12 mon
 
         <div className="row hiw-box6 ">
           <div className="col-sm-2  d-flex justify-content-center align-items-center"><div className="countButton d-flex justify-content-center align-items-center">6</div></div>
-          <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">Please note, this is a highly prestigious program. Due to the high level of difficulty, only 10% of students will be awarded the PIAIC certifications signed by the President of the Islamic Republic of Pakistan</p></div></div>
+          <div className="col-sm-8 mt-4 mt-sm-0  d-flex justify-content-center align-items-center"><div><p className="para1">Please note, this is a highly prestigious program. Due to the high level of difficulty, only 10% of students will be awarded the PIAIC certifications.</p></div></div>
           <div className="col-sm-2 "></div>
         </div>
         <div className="row hiw-box7 ">
