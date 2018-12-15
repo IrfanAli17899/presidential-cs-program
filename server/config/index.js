@@ -9,6 +9,7 @@ exports = module.exports = function(app) {
     console.log("process.env.authy_api_key === ",process.env.authy_api_key);
     console.log("process.env.showLogs === ",process.env.showLogs);
     console.log("process.env.crosDomains === ",process.env.crosDomains);
+    console.log("process.env.jwtsalt === ",process.env.jwtsalt);
     
     if(process.env.NODE_ENV=='production'){
         app.set("mongodb-url",process.env.mongodburl);
@@ -18,6 +19,7 @@ exports = module.exports = function(app) {
         app.set("authy_api_key",process.env.authy_api_key);
         app.set("showLogs",process.env.showLogs);
         app.set("crosDomains",process.env.crosDomains);
+        app.set("jwtsalt", process.env.jwtsalt);
     }
     else {
         // app.set("mongodb-url",'"mongodb://localhost:27017/PIAIC');
