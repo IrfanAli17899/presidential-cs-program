@@ -16,12 +16,16 @@ exports = module.exports = function (app, mongoose) {
                 body.rollNo = req.body.value;
                 delete body.empty;
                 break;
-            case ("CNIC"):
+            case ("cnic"):
                 body.studentCnic = req.body.value;
                 delete body.empty;
                 break;
-            case ("PhoneNumber"):
+            case ("phoneNumber"):
                 body.phoneNumber = req.body.value;
+                delete body.empty;
+                break;
+            case ("email"):
+                body.email = req.body.value;
                 delete body.empty;
                 break;
         }
