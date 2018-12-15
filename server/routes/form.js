@@ -171,8 +171,6 @@ exports = module.exports = function (app, mongoose) {
     function uploadImage(req, res){
         cloudinary.v2.uploader.upload(req.file.path, {
             secure: true,
-            transformation:
-                [{ width: 150, height: 150 }]
         }, 
         (err, imgData) => {
             if (err) {
