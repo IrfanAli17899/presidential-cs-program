@@ -314,6 +314,7 @@ class Form extends Component {
                                 type: "text",
                                 DisplayName: "Father’s CNIC #",
                                 name: "fatherCnic",
+                                additionalData: " ( Optional )",
                                 id: "fatherCnic",
                                 maxlength: 13,
                                 value: fatherCnic,

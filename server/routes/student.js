@@ -82,7 +82,7 @@ exports = module.exports = function (app, mongoose) {
                     return res.send({ sucess: false, message: "Unable To Update Please Check Your Provided Info" });
                 }
                 app.log(data);
-                res.send({ sucess: true, data });
+                res.send({ sucess: true, studentData:data });
 
             }).catch(err => {
                 return res.send({ sucess: false, message: err.message })
