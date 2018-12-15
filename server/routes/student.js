@@ -16,12 +16,16 @@ exports = module.exports = function (app, mongoose) {
                 body.rollNo = req.body.value;
                 delete body.empty;
                 break;
-            case ("CNIC"):
+            case ("cnic"):
                 body.studentCnic = req.body.value;
                 delete body.empty;
                 break;
-            case ("PhoneNumber"):
+            case ("phoneNumber"):
                 body.phoneNumber = req.body.value;
+                delete body.empty;
+                break;
+            case ("email"):
+                body.email = req.body.value;
                 delete body.empty;
                 break;
         }
@@ -78,7 +82,7 @@ exports = module.exports = function (app, mongoose) {
                     return res.send({ sucess: false, message: "Unable To Update Please Check Your Provided Info" });
                 }
                 app.log(data);
-                res.send({ sucess: true, data });
+                res.send({ sucess: true, studentData:data });
 
             }).catch(err => {
                 return res.send({ sucess: false, message: err.message })

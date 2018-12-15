@@ -238,7 +238,7 @@ class Idcard extends Component {
                                                     </div>
                                                     </div>
                                                     <div className="col-4 " style={{padding: 0}}>
-                                                    <div className="cardImage" style={{width:"100%",height:"50%",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
+                                                    <div className="cardImage" style={{width:"160px",height:"160px",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
                                                     <div className="UserAuthCard">
                                                             <p><b>Authorized Signature</b> </p>
 
@@ -298,7 +298,7 @@ class Idcard extends Component {
                                                     </div>
                                                     </div>
                                                     <div className="col-4 " style={{padding: 0}}>
-                                                    <div className="cardImage" style={{width:"100%",height:"50%",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
+                                                    <div className="cardImage" style={{width:"160px",height:"160px",backgroundImage:`url(${imageUrl})`,backgroundPosition:"center",backgroundSize: "cover"}}></div>
                                                     <div className="UserAuthCard">
                                                             <p><b>Authorized Signature</b> </p>
 

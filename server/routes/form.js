@@ -71,9 +71,11 @@ exports = module.exports = function (app, mongoose) {
         if (!body.dob) {
             return res.send({ success: false, message: "Please Provide Your Date of Birth" });
         }
+        /*
         if (!body.fatherCnic || !validator.isNumeric(body.fatherCnic)) {
             return res.send({ success: false, message: "Please Provide Your valid father Cnic" });
         }
+        */
         if (body.fatherNameCnic === body.studentCnic) {
             return res.send({ success: false, message: "Please Provide A Seprate  Father / Student Cnic" });
         }

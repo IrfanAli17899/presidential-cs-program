@@ -52,10 +52,7 @@ exports = module.exports = function (app, mongoose) {
             unique: true
         },
         fatherCnic: {
-            type: String,
-            require: true,
-            minlength: 13,
-            maxlength: 13
+            type: String
         },
         fatherName: {
             type: String,
