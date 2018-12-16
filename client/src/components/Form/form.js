@@ -17,15 +17,16 @@ import Path from '../../config/path';
 import allCities from "./cities.json"
 import Swal from 'sweetalert2';
 import ReactGA from "react-ga";
-
-
-
+import Modal from './Modal/Modal';
 
 class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            src: "",
             submited: false,
+            condition: false,
+            imageForModal: "",
             data: {
                 fullName: "",
                 DOB: "",
@@ -43,6 +44,7 @@ class Form extends Component {
                 city: "",
                 distanceLearning: false
             },
+            file2: null,
             userData: this.props.location.state,
             errors: {
                 hasError: false,
@@ -61,23 +63,26 @@ class Form extends Component {
             action: 'Started'
         });
 
-        /*
-        if (!this.state.userData) {
-            this.props.history.replace('/apply')
-        }
-        else if (!this.state.userData.databaseToken) {
-            this.props.history.replace('/apply')
-        } else {
-            this.state.data.fullName = this.props.location.state.name;
-        }
-        */
     }
 
 
+    hideModal = () => {
+        this.setState({ condition: false });
+    };
+
+
     changeData = (ev) => {
+        if (ev.target.files && ev.target.files.length > 0) {
+            const reader = new FileReader();
+            reader.addEventListener("load", () =>
+                this.setState({ src: reader.result })
+            );
+            reader.readAsDataURL(ev.target.files[0]);
+        }
         let { data, errors } = this.state;
         switch (ev.target.name) {
             case "imagePicker":
+                this.setState({ condition: true });
                 data["image"] = this.refs.imagePicker.files[0];
                 this.setState({
                     file: this.refs.imagePicker.files[0]
@@ -129,7 +134,8 @@ class Form extends Component {
     }
     submitForm(ev) {
         ev.preventDefault();
-        let { data } = this.state;
+        let { data, file2 } = this.state;
+
         //let { userId, databaseToken } = this.state.userData;
         const {
             image,
@@ -148,7 +154,8 @@ class Form extends Component {
             city,
             province
         } = this.state.data;
-
+        console.log(file2);
+        console.log(image);
         var validate = validateForm("all", data);
         if (validate.hasError) {
             window.scrollTo(0, 0)
@@ -159,7 +166,7 @@ class Form extends Component {
         this.setState({ submited: true })
 
         var formData = new FormData();
-        formData.append("image", image);
+        formData.append("image", file2);
         formData.append("dob", DOB);
         formData.append("course", course);
         formData.append("email", email);
@@ -186,8 +193,9 @@ class Form extends Component {
         }).then(response => {
             return response.json();
         }).then(responseJson => {
+            
             this.setState({ submited: false });
-            //console.log(responseJson);
+
             if (responseJson.success == false) {
 
                 let serverError = {
@@ -208,8 +216,7 @@ class Form extends Component {
                 this.props.history.replace('/idcard', responseJson.userData)
             }
         }).catch((err) => {
-            //console.log("working")
-            //console.log(err);
+            
             let serverError = {
                 hasError: true,
                 message: err
@@ -225,6 +232,28 @@ class Form extends Component {
         this.setState({ showSubmitBtn: true })
     }
 
+    setFile(file) {
+
+        let self = this;
+
+        this.setState({ file: file });
+
+        //return a promise that resolves with a File instance
+        function urltoFile(url, filename, mimeType) {
+            mimeType = mimeType || (url.match(/^data:([^;]+);/) || '')[1];
+            return (fetch(url)
+                .then(function (res) { return res.arrayBuffer(); })
+                .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+            );
+        }
+
+        //Usage example:
+        urltoFile(file, 'a.png')
+            .then(function (file) {
+                self.setState({ file2: file });
+            })
+
+    }
 
 
     render() {
@@ -234,11 +263,12 @@ class Form extends Component {
 
 
 
-        const { errors, file, submited, showSubmitBtn, crrProvince, serverError } = this.state;
+        const { errors, condition, src, file, imageForModal, submited, showSubmitBtn, crrProvince, serverError } = this.state;
 
         return (
 
             <div className="container-fluid p-0">
+                <Modal setFile={(file) => { this.setFile(file) }} sorce={src} condition={condition} imageUrl={imageForModal} hideModal={this.hideModal} />
                 {submited && <Loader />}
                 <div className="Rectangle-58">
                     <form id="myForm" ref="myForm" onSubmit={(ev) => this.submitForm(ev)}  >
@@ -270,261 +300,260 @@ class Form extends Component {
                                 <input className="checky" type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl"/>
                                     <span className="checkmark"></span>
                                 </label> */}
-                                <strong className="label">Online Learning
+                            <strong className="label">Online Learning
                                 <input type="checkbox" onChange={(ev) => this.changeData(ev)} checked={distanceLearning} name="distanceLearning" id="dl" />
-                                </strong>
-                                <strong className="check-message">Only check this box if you are interested in joining the class online. For distance learning, you must be in Karachi or come to Karachi for all exams.</strong>
+                            </strong>
+                            <strong className="check-message">Only check this box if you are interested in joining the class online. For distance learning, you must be in Karachi or come to Karachi for all exams.</strong>
                         </div>
 
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Full Name",
-                                additionalData: "( Please specify your complete name as it appears on your CNIC. )",
-                                name: "fullName",
-                                id: "fullName",
-                                value: fullName,
-                                placeholder: "Your Full Name",
-                                changeData: this.changeData,
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Full Name",
+                            additionalData: "( Please specify your complete name as it appears on your CNIC. )",
+                            name: "fullName",
+                            id: "fullName",
+                            value: fullName,
+                            placeholder: "Your Full Name",
+                            changeData: this.changeData,
 
-                                errors
-                            }} />
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "CNIC or B-Form #",
-                                name: "studentCnic",
-                                id: "studentCnic",
-                                maxlength: 13,
-                                value: studentCnic,
-                                placeholder: "CNIC or B-Form # without hyphenation",
-                                changeData: this.changeData,
-                                errors
-                            }} />
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Father’s Full Name",
-                                name: "fatherName",
-                                additionalData: "( Please specify your father's complete name as it appears on his CNIC. )",
-                                id: "fatherName",
-                                value: fatherName,
-                                placeholder: "Father’s full name",
-                                changeData: this.changeData,
-                                errors
-                            }} />
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Father’s CNIC #",
-                                name: "fatherCnic",
-                                additionalData: " ( Optional )",
-                                id: "fatherCnic",
-                                maxlength: 13,
-                                value: fatherCnic,
-                                placeholder: "Father’s CNIC # without hyphenation",
-                                changeData: this.changeData,
-                                errors
-                            }} />
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Email Address",
-                                name: "email",
-                                id: "email",
-                                value: email,
-                                placeholder: "Your valid email address",
-                                changeData: this.changeData,
+                            errors
+                        }} />
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "CNIC or B-Form #",
+                            name: "studentCnic",
+                            id: "studentCnic",
+                            maxlength: 13,
+                            value: studentCnic,
+                            placeholder: "CNIC or B-Form # without hyphenation",
+                            changeData: this.changeData,
+                            errors
+                        }} />
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Father’s Full Name",
+                            name: "fatherName",
+                            additionalData: "( Please specify your father's complete name as it appears on his CNIC. )",
+                            id: "fatherName",
+                            value: fatherName,
+                            placeholder: "Father’s full name",
+                            changeData: this.changeData,
+                            errors
+                        }} />
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Father’s CNIC #",
+                            name: "fatherCnic",
+                            id: "fatherCnic",
+                            maxlength: 13,
+                            value: fatherCnic,
+                            placeholder: "Father’s CNIC # without hyphenation",
+                            changeData: this.changeData,
+                            errors
+                        }} />
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Email Address",
+                            name: "email",
+                            id: "email",
+                            value: email,
+                            placeholder: "Your valid email address",
+                            changeData: this.changeData,
 
-                                errors
-                            }} />
+                            errors
+                        }} />
 
 
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Your Mobile Number",
-                                name: "phoneNumber",
-                                id: "phoneNumber",
-                                value: phoneNumber,
-                                placeholder: "Your valid mobile number ( 03XXXXXXXXX )",
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Your Mobile Number",
+                            name: "phoneNumber",
+                            id: "phoneNumber",
+                            value: phoneNumber,
+                            placeholder: "Your valid mobile number ( 03XXXXXXXXX )",
+                            changeData: this.changeData,
+                            maxlength: 11,
+                            errors
+                        }} />
+                        <MyInput info={{
+                            type: "text",
+                            DisplayName: "Address",
+                            name: "homeAddress",
+                            id: "homeAddress",
+                            value: homeAddress,
+                            maxlength: 120,
+                            additionalData: '( maximum 120 letter )',
+                            placeholder: "Your valid residential address",
+                            changeData: this.changeData,
+
+                            errors
+                        }} />
+                        <MySelect
+                            info={{
+                                DisplayName: "Province",
+                                name: "province",
+                                id: "province",
                                 changeData: this.changeData,
-                                maxlength: 11,
+                                options: [
+                                    {
+                                        DisplayName: "Sindh",
+                                        value: "sindh"
+                                    }, {
+                                        DisplayName: "Punjab",
+                                        value: "punjab"
+                                    }, {
+                                        DisplayName: "Blochistan",
+                                        value: "blochistan"
+                                    }, {
+                                        DisplayName: "KPK",
+                                        value: "kpk"
+                                    }
+                                ],
                                 errors
-                            }} />
-                            <MyInput info={{
-                                type: "text",
-                                DisplayName: "Address",
-                                name: "homeAddress",
-                                id: "homeAddress",
-                                value: homeAddress,
-                                maxlength: 120,
-                                additionalData: '( maximum 120 letter )',
-                                placeholder: "Your valid residential address",
+                            }}
+                        />
+                        <MySelect
+                            info={{
+                                DisplayName: "City",
+                                name: "city",
+                                id: "city",
                                 changeData: this.changeData,
-
-                                errors
-                            }} />
-                            <MySelect
-                                info={{
-                                    DisplayName: "Province",
-                                    name: "province",
-                                    id: "province",
-                                    changeData: this.changeData,
-                                    options: [
-                                        {
-                                            DisplayName: "Sindh",
-                                            value: "sindh"
-                                        }, {
-                                            DisplayName: "Punjab",
-                                            value: "punjab"
-                                        }, {
-                                            DisplayName: "Blochistan",
-                                            value: "blochistan"
-                                        }, {
-                                            DisplayName: "KPK",
-                                            value: "kpk"
+                                options:
+                                    allCities[crrProvince].map((item) => {
+                                        return {
+                                            DisplayName: item,
+                                            value: item
                                         }
-                                    ],
-                                    errors
-                                }}
-                            />
-                            <MySelect
-                                info={{
-                                    DisplayName: "City",
-                                    name: "city",
-                                    id: "city",
-                                    changeData: this.changeData,
-                                    options:
-                                        allCities[crrProvince].map((item) => {
-                                            return {
-                                                DisplayName: item,
-                                                value: item
-                                            }
-                                        })
-                                    ,
-                                    errors
-                                }}
-                            />
-
-
-
-
-                            <MyInput info={{
-                                type: "date",
-                                DisplayName: "Date Of Birth",
-                                name: "DOB",
-                                id: "DOB",
-                                value: DOB,
-                                changeData: this.changeData,
-
+                                    })
+                                ,
                                 errors
-                            }} />
-                            <MyRadio
-                                info={{
-                                    type: "radio",
-                                    name: "gender",
-                                    DisplayName: "Gender",
-                                    options: [
-                                        {
-                                            DisplayName: "Male",
-                                            id: "Male",
-                                            value: "male",
-                                        },
-                                        {
-                                            DisplayName: "Female",
-                                            id: "Female",
-                                            value: "female",
-                                        }
-                                    ],
+                            }}
+                        />
 
-                                    changeData: this.changeData,
-                                    errors
 
-                                }}
 
+
+                        <MyInput info={{
+                            type: "date",
+                            DisplayName: "Date Of Birth",
+                            name: "DOB",
+                            id: "DOB",
+                            value: DOB,
+                            changeData: this.changeData,
+
+                            errors
+                        }} />
+                        <MyRadio
+                            info={{
+                                type: "radio",
+                                name: "gender",
+                                DisplayName: "Gender",
+                                options: [
+                                    {
+                                        DisplayName: "Male",
+                                        id: "Male",
+                                        value: "male",
+                                    },
+                                    {
+                                        DisplayName: "Female",
+                                        id: "Female",
+                                        value: "female",
+                                    }
+                                ],
+
+                                changeData: this.changeData,
+                                errors
+
+                            }}
+
+                        />
+                        <MySelect
+                            info={{
+                                DisplayName: "Please select your highest qualification.",
+                                name: "lastQualification",
+                                id: "lastQualification",
+                                changeData: this.changeData,
+                                options: [
+                                    {
+                                        DisplayName: "Matric",
+                                        value: "Matric"
+                                    },
+                                    {
+                                        DisplayName: "O Levels",
+                                        value: "O Levels"
+                                    }, {
+                                        DisplayName: "Intermediate",
+                                        value: "Intermediate"
+                                    }, {
+                                        DisplayName: "A Levels",
+                                        value: "A Levels"
+                                    }, {
+                                        DisplayName: "Undergraduate",
+                                        value: "Undergraduate"
+                                    }, {
+                                        DisplayName: "Graduate",
+                                        value: "Graduate"
+                                    }, {
+                                        DisplayName: "Post-Graduate",
+                                        value: "Post-Graduate"
+                                    }
+                                ],
+                                errors
+                            }}
+                        />
+                        <div className="Rectangle-78">
+                            <h1 className="label">Your Photo</h1>
+                            <input type="file" className="d-none" name="imagePicker" ref="imagePicker"
+                                id="imagePicker" onChange={(ev) => this.changeData(ev)}
+                                accept="image/jpg,image/png,image/jpeg"
                             />
-                            <MySelect
-                                info={{
-                                    DisplayName: "Please select your highest qualification.",
-                                    name: "lastQualification",
-                                    id: "lastQualification",
-                                    changeData: this.changeData,
-                                    options: [
-                                        {
-                                            DisplayName: "Matric",
-                                            value: "Matric"
-                                        },
-                                        {
-                                            DisplayName: "O Levels",
-                                            value: "O Levels"
-                                        }, {
-                                            DisplayName: "Intermediate",
-                                            value: "Intermediate"
-                                        }, {
-                                            DisplayName: "A Levels",
-                                            value: "A Levels"
-                                        }, {
-                                            DisplayName: "Undergraduate",
-                                            value: "Undergraduate"
-                                        }, {
-                                            DisplayName: "Graduate",
-                                            value: "Graduate"
-                                        }, {
-                                            DisplayName: "Post-Graduate",
-                                            value: "Post-Graduate"
-                                        }
-                                    ],
-                                    errors
-                                }}
-                            />
-                            <div className="Rectangle-78">
-                                <h1 className="label">Your Photo</h1>
-                                <input type="file" className="d-none" name="imagePicker" ref="imagePicker"
-                                    id="imagePicker" onChange={(ev) => this.changeData(ev)}
-                                    accept="image/jpg,image/png,image/jpeg"
-                                />
-                                <div className="">
-                                    <div className="img-container" style={{
-                                        backgroundImage: file ? `url(${file})` : `url(http://www.westminsterbc.org.uk/wp-content/uploads/2015/09/men-placeholder.png)`
-                                    }}>
-                                    </div>
-                                    <div className="Rectangle-63">
-                                        <div>
-                                            <p className="-File-type-jpg-jpeg-png">1) With white background</p>
-                                            <p className="-File-type-jpg-jpeg-png">2) File size must be less than 1MB</p>
-                                            <p className="-File-type-jpg-jpeg-png">3) File type: jpg, jpeg, png</p>
-                                            <p className="-File-type-jpg-jpeg-png">4) Upload your recent passport size picture</p>
-                                            <p className="-File-type-jpg-jpeg-png">5) Your Face should be clearly visible </p>
-                                        </div>
-                                        <button type="button" className="Rectangle-62" onClick={() => this.refs.imagePicker.click()}>Select</button>
-                                    </div>
+                            <div className="">
+                                <div className="img-container" style={{
+                                    backgroundImage: file ? `url(${file})` : `url(http://www.westminsterbc.org.uk/wp-content/uploads/2015/09/men-placeholder.png)`
+                                }}>
                                 </div>
-                                {errors.errorsObj["imagePicker"] && <p className="error"  >{errors.errorsObj["imagePicker"].message}</p>}
+                                <div className="Rectangle-63">
+                                    <div>
+                                        <p className="-File-type-jpg-jpeg-png">1) With white background</p>
+                                        <p className="-File-type-jpg-jpeg-png">2) File size must be less than 1MB</p>
+                                        <p className="-File-type-jpg-jpeg-png">3) File type: jpg, jpeg, png</p>
+                                        <p className="-File-type-jpg-jpeg-png">4) Upload your recent passport size picture</p>
+                                        <p className="-File-type-jpg-jpeg-png">5) Your Face should be clearly visible </p>
+                                    </div>
+                                    <button type="button" className="Rectangle-62" onClick={() => this.refs.imagePicker.click()}>Select</button>
+                                </div>
                             </div>
-                            <div>
-                                <Recaptcha googleCaptcha={this.googleCaptcha} />
-                            </div>
+                            {errors.errorsObj["imagePicker"] && <p className="error"  >{errors.errorsObj["imagePicker"].message}</p>}
+                        </div>
+                        <div>
+                            <Recaptcha googleCaptcha={this.googleCaptcha} />
+                        </div>
 
-                            <p className="my-error ">{serverError.hasError && serverError.message}</p>
+                        <p className="my-error ">{serverError.hasError && serverError.message}</p>
 
-                            <button type="submit" className={!showSubmitBtn ? "Rectangle-60 disable-btn" : "Rectangle-60 "} disabled={!showSubmitBtn}>Submit Application</button>
+                        <button type="submit" className={!showSubmitBtn ? "Rectangle-60 disable-btn" : "Rectangle-60 "} disabled={!showSubmitBtn}>Submit Application</button>
                     </form>
                 </div>
-                </div >
-                )
-            }
-        }
-        
+            </div >
+        )
+    }
+}
+
 function mapStateToProps(state) {
 
     return {
-                    isLoading: state.registrationFormReducer.isLoading,
-                isError: state.registrationFormReducer.isError,
-                errorMessage: state.registrationFormReducer.errorMessage,
-                successMessage: state.registrationFormReducer.successMessage,
-                authToken: state.authReducer.authToken,
-            };
-        }
-        
+        isLoading: state.registrationFormReducer.isLoading,
+        isError: state.registrationFormReducer.isError,
+        errorMessage: state.registrationFormReducer.errorMessage,
+        successMessage: state.registrationFormReducer.successMessage,
+        authToken: state.authReducer.authToken,
+    };
+}
+
 function mapDispatchToProps(dispatch) {
     return {
-                    submitRegistrationFrom: (registrationForm) => {dispatch(RegistrationFormMiddleware.submitRegistrationFrom(registrationForm))}
-                };
-            }
-            
-            export default connect(mapStateToProps, mapDispatchToProps)(Form);
+        submitRegistrationFrom: (registrationForm) => { dispatch(RegistrationFormMiddleware.submitRegistrationFrom(registrationForm)) }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

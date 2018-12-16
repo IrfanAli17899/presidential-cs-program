@@ -14,6 +14,7 @@ exports = module.exports = function (app, mongoose) {
   require('./findIdCard')(app, mongoose);
   require('./student')(app, mongoose);
   require('./adminAuth')(app, mongoose);
+  require('./imageUpload')(app, mongoose);
 
 }
 

@@ -21,7 +21,7 @@ class HomeVideo extends Component {
                                     <div className="slider-doc-txt">
 
                                         <h1>Presidential Initiative for Artificial Intelligence &amp; Computing (PIAIC)</h1>
-                                        <p>PIAIC is an interdisciplinary hub for mass education, research, and business in artificial intelligence (AI), data science, cloud computing, edge computing, blockchain and internet of things (IoT) related fields. As AI and computing reshape our world, PIAIC intends to help make sure that Pakistan plays its part in this fourth industrial revolution. PIAIC's aim is to transform education, research and business in Pakistan.</p>
+                                        <p>The mission of PIAIC is to reshape Pakistan by revolutionizing education, research, and business by adopting latest, cutting-edge technologies. Experts are calling this the 4th industrial revolution. We want Pakistan to become a global hub for AI, data science, cloud native computing, edge computing, blockchain, augmented reality, and internet of things.</p>
                                     </div>
                                 </div>
                             </div>
